@@ -1,6 +1,17 @@
 const fs = require('fs');
 const profiles =JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/users.json`)) ;
 
+exports.checkId = (req, res, next, val) =>{
+    const id = val * 1;
+    console.log(`Profile id is ${val}`);
+    if( id > profiles.length){
+         return res.status(404).json({
+             status: "fail",
+             message:"Invalid id"
+         });
+     }
+    next();
+}
 
 //Routes handler
 exports.getAllProiles = (req, res) =>{
@@ -17,13 +28,6 @@ exports.getAllProiles = (req, res) =>{
 exports.getProfile = (req, res) =>{
     const id = req.params.id;
     const profile = profiles.find(el =>el._id === id );
-    //if(id > profiles.length){
-    if(!profile){
-        return res.status(404).json({
-            status: "fail",
-            message:"Invalid id"
-        })
-    }
     res.status(200).json({
         status:"success",
         data:{
@@ -49,13 +53,7 @@ exports.createProfile = (req, res)=>{
 }
 
 exports.updateProfile =  (req, res) =>{
-    const id = req.params.id;
-       if( id> profiles.length){
-            return res.status(404).json({
-                status: "fail",
-                message:"Invalid id"
-            })
-        }
+   
         res.status(204).json({
             status:"success",
             data:{
@@ -67,13 +65,7 @@ exports.updateProfile =  (req, res) =>{
 };
 
 exports.deletProfile = (req, res) =>{
-    const id = req.params.id;
-       if( id> profiles.length){
-            return res.status(404).json({
-                status: "fail",
-                message:"Invalid id"
-            })
-        }
+   
         res.status(204).json({
             status:"success",
             data:

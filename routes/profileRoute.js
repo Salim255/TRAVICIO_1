@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const profileControler = require('../controlers/profileControler');
 
+//params middleware
+router.param('id',profileControler.checkId);
 
 router.route('/')
     .get(profileControler.getAllProiles)
