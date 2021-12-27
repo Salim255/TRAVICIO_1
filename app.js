@@ -6,7 +6,20 @@ const app = express();
 app.use(express.json());//will put the data coming from body in req object
 const profiles =JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/users.json`)) ;
 
+
+//Mddleware
+app.use((req, res, next) =>{
+    console.log('Hello from middleware 👋🏾');
+    next();
+});
+app.use((req, res, next) =>{
+    req.requestTime = new Date().toISOString();
+    next();
+});
+//////END MIDDLEWARE
+
 const getAllProiles = (req, res) =>{
+    console.log(req.requestTime);
     res.status(200).json({
         status:"success",
         results: profiles.length,
