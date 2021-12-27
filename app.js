@@ -1,11 +1,12 @@
 const fs = require('fs');
 const express = require('express');
+const { profile } = require('console');
 const app = express();
 
 app.use(express.json());//will put the data coming from body in req object
 const profiles =JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/users.json`)) ;
 
-app.get('/api/v1/profiles', (req, res) =>{
+const getAllProiles = (req, res) =>{
     res.status(200).json({
         status:"success",
         results: profiles.length,
@@ -13,13 +14,10 @@ app.get('/api/v1/profiles', (req, res) =>{
             profiles
         }
     });
-});
+}
 
-app.get('/api/v1/profile/:id', (req, res) =>{
-   
+const getProfile = (req, res) =>{
     const id = req.params.id;
-
-   
     const profile = profiles.find(el =>el._id === id );
     //if(id > profiles.length){
     if(!profile){
@@ -34,25 +32,43 @@ app.get('/api/v1/profile/:id', (req, res) =>{
             profile
         } 
     });
-});
+}; 
 
-app.post('/api/v1/profiles', (req, res)=>{
-       console.log(req.body);
-       const newId = profiles[profiles.length - 1 ]._id + 1;
-       const newProfile = Object.assign({_id: newId}, req.body);
-       profiles.push(newProfile);
-       fs.writeFile(`${__dirname}/dev-data/data/users.json`, JSON.stringify(profiles), err =>{
-                res.status(201).json({
-                    status: "success",
-                    data:{
-                        profile: newProfile
-                    }
-                })
-       });
-       
-})
+const createProfile = (req, res)=>{
+    console.log(req.body);
+    const newId = profiles[profiles.length - 1 ]._id + 1;
+    const newProfile = Object.assign({_id: newId}, req.body);
+    profiles.push(newProfile);
+    fs.writeFile(`${__dirname}/dev-data/data/users.json`, JSON.stringify(profiles), err =>{
+             res.status(201).json({
+                 status: "success",
+                 data:{
+                     profile: newProfile
+                 }
+             })
+    });
+    
+}
 
-app.delete('/api/v1/profiles/:id' , (req, res) =>{
+const updateProfile =  (req, res) =>{
+    const id = req.params.id;
+       if( id> profiles.length){
+            return res.status(404).json({
+                status: "fail",
+                message:"Invalid id"
+            })
+        }
+        res.status(204).json({
+            status:"success",
+            data:{
+                profile: 'Update this proile'
+            }
+             
+            
+        })
+};
+
+const deletProfile = (req, res) =>{
     const id = req.params.id;
        if( id> profiles.length){
             return res.status(404).json({
@@ -66,7 +82,23 @@ app.delete('/api/v1/profiles/:id' , (req, res) =>{
                 null
             
         })
-})
+}
+
+
+/* app.get('/api/v1/profiles', getAllProiles );
+app.post('/api/v1/profiles', createProfile );
+app.get('/api/v1/profile/:id', getProfile );
+app.patch('/api/v1/profiles/:id', updateProfile );
+app.delete('/api/v1/profiles/:id' ,deletProfile ); */
+
+app.route('/api/v1/profiles')
+    .get(getAllProiles)
+    .post(createProfile);
+
+ app.route('/api/v1/profiles/:id')
+    .get(getProfile)
+    .patch(updateProfile)
+    .delete(deletProfile);
 
 const port = 8000;
 app.listen(port,() => {
