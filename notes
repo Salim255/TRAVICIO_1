@@ -1,2 +1,3 @@
 npm init
 npm i express@4
+npm i morgan //will show our request in the terminal

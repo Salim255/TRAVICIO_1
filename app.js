@@ -2,12 +2,16 @@ const fs = require('fs');
 const express = require('express');
 const { profile } = require('console');
 const app = express();
+const morgan = require('morgan');
 
-app.use(express.json());//will put the data coming from body in req object
+
 const profiles =JSON.parse(fs.readFileSync(`${__dirname}/dev-data/data/users.json`)) ;
 
 
 //Mddleware
+app.use(express.json());//will put the data coming from body in req object(parse the data from the body)
+app.use(morgan('dev'));//3de middle were
+
 app.use((req, res, next) =>{
     console.log('Hello from middleware 👋🏾');
     next();
@@ -18,6 +22,8 @@ app.use((req, res, next) =>{
 });
 //////END MIDDLEWARE
 
+
+//Routes handler
 const getAllProiles = (req, res) =>{
     console.log(req.requestTime);
     res.status(200).json({
@@ -104,6 +110,8 @@ app.get('/api/v1/profile/:id', getProfile );
 app.patch('/api/v1/profiles/:id', updateProfile );
 app.delete('/api/v1/profiles/:id' ,deletProfile ); */
 
+
+//Routes
 app.route('/api/v1/profiles')
     .get(getAllProiles)
     .post(createProfile);
@@ -113,6 +121,9 @@ app.route('/api/v1/profiles')
     .patch(updateProfile)
     .delete(deletProfile);
 
+
+
+//We start the server    
 const port = 8000;
 app.listen(port,() => {
     console.log(`App runing on port ${port}...`);
