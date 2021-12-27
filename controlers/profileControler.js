@@ -1,7 +1,7 @@
 const fs = require('fs');
 const profiles =JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/users.json`)) ;
 
-exports.checkId = (req, res, next, val) =>{
+exports.checkId = (req, res, next, val) => {
     const id = val * 1;
     console.log(`Profile id is ${val}`);
     if( id > profiles.length){
@@ -11,6 +11,18 @@ exports.checkId = (req, res, next, val) =>{
          });
      }
     next();
+}
+
+exports.checkBody = (req, res, next) => {
+       if(!req.body.name || !req.body.price){
+          return res.status(400).json(
+              {
+              status:"fail",
+              message: "Messing name or price"
+            }
+            );
+       } 
+       next();
 }
 
 //Routes handler

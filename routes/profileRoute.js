@@ -7,7 +7,7 @@ router.param('id',profileControler.checkId);
 
 router.route('/')
     .get(profileControler.getAllProiles)
-    .post(profileControler.createProfile);
+    .post(profileControler.checkBody,profileControler.createProfile);
 
 router.route('/:id')
     .get(profileControler.getProfile)
