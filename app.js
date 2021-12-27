@@ -104,24 +104,71 @@ const deletProfile = (req, res) =>{
 }
 
 
-/* app.get('/api/v1/profiles', getAllProiles );
-app.post('/api/v1/profiles', createProfile );
-app.get('/api/v1/profile/:id', getProfile );
-app.patch('/api/v1/profiles/:id', updateProfile );
-app.delete('/api/v1/profiles/:id' ,deletProfile ); */
+//USERS
+const getAllUsers = (req, res) =>{
+    res.status(500).json({
+        status:"error",
+        message:'This route is not yet defined'
+    });
+};
+
+const createUser = (req, res) =>{
+    res.status(500).json({
+        status:"error",
+        message: "This route is not yet defined"
+    });
+}; 
+
+const getUser = (req, res) =>{
+    res.status(200).json({
+        status:"error",
+        message: "This route is not yet defined"
+    });
+}; 
+
+const updateUser = (req, res) =>{
+    res.status(200).json({
+        status:"error",
+        message: "This route is not yet defined"
+    });
+}; 
+
+const deleteUser = (req, res) =>{
+    res.status(500).json({
+        status:"error",
+        message: "This route is not yet defined"
+    });
+}; 
 
 
 //Routes
-app.route('/api/v1/profiles')
+const profileRouter = express.Router();
+const userRouter =  express.Router();
+
+//Mounting new router in the route
+app.use('/api/v1/profiles', profileRouter);
+app.use('/api/v1/users', userRouter);
+///</>
+
+
+profileRouter.route('/')
     .get(getAllProiles)
     .post(createProfile);
 
- app.route('/api/v1/profiles/:id')
+profileRouter.route('/:id')
     .get(getProfile)
     .patch(updateProfile)
     .delete(deletProfile);
 
 
+userRouter.route('/')
+   .get(getAllUsers)
+   .post(createUser);
+
+userRouter.route('/:id')
+   .get(getUser)
+   .patch(updateUser)
+   .delete(deleteUser)
 
 //We start the server    
 const port = 8000;
