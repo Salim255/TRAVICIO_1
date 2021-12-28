@@ -1,20 +1,6 @@
-const fs = require('fs');
+const Profile = require('./../models/profileModel');
 
-const profiles = JSON.parse(
-  fs.readFileSync(`${__dirname}/../dev-data/data/users.json`)
-);
 
-exports.checkId = (req, res, next, val) => {
-  const id = val * 1;
-  console.log(`Profile id is ${val}`);
-  if (id > profiles.length) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid id',
-    });
-  }
-  next();
-};
 
 exports.checkBody = (req, res, next) => {
   if (!req.body.name || !req.body.price) {
@@ -31,37 +17,31 @@ exports.getAllProiles = (req, res) => {
   console.log(req.requestTime);
   res.status(200).json({
     status: 'success',
-    results: profiles.length,
+    /* results: profiles.length,
     data: {
       profiles,
-    },
+    }, */
   });
 };
 
 exports.getProfile = (req, res) =>{
-  const { id } = req.params;
-  const profile = profiles.find((el) => el._id === id);
+  //const { id } = req.params;
+  /* const profile = profiles.find((el) => el._id === id);
   res.status(200).json({
     status: 'success',
     data: {
       profile,
     },
-  });
+  }); */
 };
 
 exports.createProfile = (req, res) => {
-  console.log(req.body);
-  const newId = profiles[profiles.length - 1]._id + 1;
-  const newProfile = Object.assign({_id: newId} , req.body);
-    profiles.push(newProfile);
-    fs.writeFile(`${__dirname}/dev-data/data/users.json`, JSON.stringify(profiles), () =>{
-             res.status(201).json({
-                 status: "success",
-                 data:{
-                     profile: newProfile
-                 }
-             })
-    });
+  res.status(201).json({
+    status: "success",
+    /* data:{
+        profile: newProfile
+    } */
+ });
     
 }
 
