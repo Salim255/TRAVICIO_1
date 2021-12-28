@@ -7,7 +7,7 @@ const profileControler = require('../controlers/profileControler');
 
 router.route('/')
     .get(profileControler.getAllProiles)
-    .post(profileControler.checkBody,profileControler.createProfile);
+    .post(profileControler.createProfile);
 
 router.route('/:id')
     .get(profileControler.getProfile)
