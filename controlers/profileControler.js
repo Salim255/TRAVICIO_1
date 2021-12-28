@@ -19,24 +19,7 @@ exports.getAllProiles =async (req, res) => {
   }
 };
 
-exports.getProfile = async(req, res) =>{
- try {
-    const profile = await Profile.findById(req.params.id);
 
-    res.status(200).json({
-      status: 'success',
-      data: {
-        profile,
-      },
-    }); 
-  } catch (error) {
-       res.status(404).json({
-         status:'fail',
-         message: error
-       })
-  }
-  
-};
 
 exports.createProfile = async (req, res) => {
   try {
@@ -60,16 +43,45 @@ exports.createProfile = async (req, res) => {
   
 }
 
-exports.updateProfile =  (req, res) =>{
-   
-        res.status(204).json({
-            status:"success",
-            data:{
-                profile: 'Update this proile'
-            }
-             
-            
+exports.getProfile = async(req, res) =>{
+  try {
+     const profile = await Profile.findById(req.params.id);
+ 
+     res.status(200).json({
+       status: 'success',
+       data: {
+         profile,
+       },
+     }); 
+   } catch (error) {
+        res.status(404).json({
+          status:'fail',
+          message: error
         })
+   }
+   
+ };
+
+exports.updateProfile = async (req, res) =>{
+   try {
+        const profile = await Profile.findByIdAndUpdate(req.params.id, req.body, {
+          new: true,//This willll send us the new updated document
+          runValidators: true
+        });
+
+        res.status(200).json({
+          status:"success",
+          data: {
+              profile
+          }
+      })
+   } catch (error) {
+      res.status(404).json({
+        status:'fail',
+        message: error
+      })
+   }
+        
 };
 
 exports.deletProfile = (req, res) =>{
