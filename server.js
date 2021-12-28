@@ -15,12 +15,18 @@ mongoose.connect(DB, {
 });//The option for the decraptionss
 
 const profileSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Profile must have a name'],
+    unique: true,
+ },
     user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
   },
+
   phone:{
-      type: String
+      type: Number
   },
   company: {
     type: String
@@ -127,7 +133,25 @@ const profileSchema = new mongoose.Schema({
 
 const Profile = mongoose.model('Profile', profileSchema);
 
-const app = require('./app');
+const testProfile = new Profile({
+    name: "doska",
+    phone: '0644992589',
+    company: 'TOYOTA',
+    location: 'madrid',
+    status: 'developer',
+    
+});
+
+testProfile
+.save()
+.then( doc => {
+    console.log(doc);
+})
+.catch( (err) =>{  
+    console.log("Error 💥 : ", err);
+});
+
+const app = require('./app')
 
 //console.log(app.get('env'));
 //We start the server

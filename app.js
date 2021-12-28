@@ -15,7 +15,7 @@ app.use(express.json()); //will put the data coming from body in req object(pars
 app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
-  console.log('Hello from middleware 👋🏾');
+  console.log('Hello from middleware 👋🏽 ');
   next();
 });
 app.use((req, res, next) => {
