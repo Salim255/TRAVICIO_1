@@ -1,30 +1,41 @@
 const Profile = require('../models/profileModel');
 
-
-
-
-
 //Routes handler
-exports.getAllProiles = (req, res) => {
-  console.log(req.requestTime);
-  res.status(200).json({
-    status: 'success',
-    /* results: profiles.length,
-    data: {
-      profiles,
-    }, */
-  });
+exports.getAllProiles =async (req, res) => {
+  try {
+      const profiles = await Profile.find();
+      res.status(200).json({
+        status: 'success',
+        results: profiles.length,
+        data: {
+          profiles,
+        }, 
+      });
+  } catch (error) {
+      res.status(404).json({
+        status: 'faild',
+        message: error
+      })
+  }
 };
 
-exports.getProfile = (req, res) =>{
-  //const { id } = req.params;
-  /* const profile = profiles.find((el) => el._id === id);
-  res.status(200).json({
-    status: 'success',
-    data: {
-      profile,
-    },
-  }); */
+exports.getProfile = async(req, res) =>{
+ try {
+    const profile = await Profile.findById(req.params.id);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        profile,
+      },
+    }); 
+  } catch (error) {
+       res.status(404).json({
+         status:'fail',
+         message: error
+       })
+  }
+  
 };
 
 exports.createProfile = async (req, res) => {

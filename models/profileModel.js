@@ -6,10 +6,10 @@ const profileSchema = new mongoose.Schema({
       required: [true, 'Profile must have a name'],
       unique: true,
    },
-     /*  user: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'user'
-    }, */
+    }, 
   
     phone:{
         type: Number
