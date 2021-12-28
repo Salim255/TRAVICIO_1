@@ -7,10 +7,15 @@ const profileRouter = require('./routes/profileRoute');
 const userRouter = require('./routes/userRoute');
 
 //Mddleware
+ 
+if(process.env.NODE_ENV === 'development' ){
+    app.use(morgan('dev'));//3de middle were
+}
 app.use(express.json());//will put the data coming from body in req object(parse the data from the body)
+
 app.use(express.static(`${__dirname}/public`));
 
-app.use(morgan('dev'));//3de middle were
+
 
 app.use((req, res, next) =>{
     console.log('Hello from middleware 👋🏾');
