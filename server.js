@@ -8,10 +8,124 @@ const DB = process.env.DATASBASE.replace('<PASSWORD>', process.env.DATABASE_PASS
 mongoose.connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: true
+    useFindAndModify: true,
+    useUnifiedTopology: true
 }).then(() =>{
     console.log('BD connection successful');
-});//The option for the decroptionss
+});//The option for the decraptionss
+
+const profileSchema = new mongoose.Schema({
+    user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user'
+  },
+  phone:{
+      type: String
+  },
+  company: {
+    type: String
+  },
+  location: {
+    type: String
+  },
+  status: {
+    type: String,
+    required: true
+  },
+  skills: {
+    type: [String],
+    required: true
+  },
+  bio: {
+    type: String
+  },
+  rating:{
+      type: Number,
+      default: 4.5
+  },
+  experience: [
+    {
+      title: {
+        type: String,
+        required: true
+      },
+      company: {
+        type: String,
+        required: true
+      },
+      location: {
+        type: String
+      },
+      from: {
+        type: Date,
+        required: true
+      },
+      to: {
+        type: Date
+      },
+      current: {
+        type: Boolean,
+        default: false
+      },
+      description: {
+        type: String
+      }
+    }
+  ],
+  education: [
+    {
+      school: {
+        type: String,
+        required: true
+      },
+      degree: {
+        type: String,
+        required: true
+      },
+      fieldofstudy: {
+        type: String,
+        required: true
+      },
+      from: {
+        type: Date,
+        required: true
+      },
+      to: {
+        type: Date
+      },
+      current: {
+        type: Boolean,
+        default: false
+      },
+      description: {
+        type: String
+      }
+    }
+  ],
+  social: {
+    youtube: {
+      type: String
+    },
+    twitter: {
+      type: String
+    },
+    facebook: {
+      type: String
+    },
+    linkedin: {
+      type: String
+    },
+    instagram: {
+      type: String
+    }
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const Profile = mongoose.model('Profile', profileSchema);
 
 const app = require('./app');
 
