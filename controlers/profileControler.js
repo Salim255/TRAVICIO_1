@@ -37,7 +37,7 @@ exports.createProfile = async (req, res) => {
    } catch (error) {
      res.status(400).json({
        status: 'faild',
-       message: 'Invalid datat sent'
+       message: error
      })
   }
   

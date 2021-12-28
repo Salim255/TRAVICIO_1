@@ -29,11 +29,16 @@ const profileSchema = new mongoose.Schema({
       required: true
     },
     bio: {
-      type: String
+      type: String,
+      trim: true
     },
-    rating:{
+    ratingsAverage:{
         type: Number,
         default: 4.5
+    },
+    ratingsQuantity:{
+        type: Number,
+        default: 0
     },
     hourlyWage:[
       {
@@ -47,9 +52,7 @@ const profileSchema = new mongoose.Schema({
     }
       
    ],
-    portfolioImage:{
-            type:String
-    },
+    portfolioImages:[String],
     experience: [
       {
         title: {
@@ -75,7 +78,8 @@ const profileSchema = new mongoose.Schema({
           default: false
         },
         description: {
-          type: String
+          type: String,
+          trim: true
         }
       }
     ],
@@ -105,7 +109,8 @@ const profileSchema = new mongoose.Schema({
           default: false
         },
         description: {
-          type: String
+          type: String,
+          trim: true
         }
       }
     ],
@@ -124,10 +129,11 @@ const profileSchema = new mongoose.Schema({
         type: String
       }
     },
-    date: {
+    createdAt: {
       type: Date,
-      default: Date.now
-    }
+      default: Date.now()
+    },
+    
   });
   
   const Profile = mongoose.model('Profile', profileSchema);
