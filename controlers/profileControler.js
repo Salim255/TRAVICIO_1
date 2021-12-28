@@ -52,7 +52,7 @@ exports.getProfile = (req, res) =>{
 exports.createProfile = (req, res) => {
   console.log(req.body);
   const newId = profiles[profiles.length - 1]._id + 1;
-  const newProfile = Object.assign({_id: newId}, req.body);
+  const newProfile = Object.assign({_id: newId} , req.body);
     profiles.push(newProfile);
     fs.writeFile(`${__dirname}/dev-data/data/users.json`, JSON.stringify(profiles), () =>{
              res.status(201).json({
