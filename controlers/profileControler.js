@@ -4,12 +4,22 @@ const Profile = require('../models/profileModel');
 exports.getAllProiles =async (req, res) => {
   try {
       //Build query
+      //1) Filtring
       const queryObj = { ...req.query };
+      
       const excludedFields = ['page', 'sort', 'limit', 'field'];
       excludedFields.forEach(el => delete queryObj[el]);
       
-      const query = Profile.find(queryObj);
-     /*  const query = await Profile.find().where('location').equals('madrid').where('jobStatus').equals('developer'); */
+      //2) Advanced filtring
+      let queryStr  = JSON.stringify(queryObj);
+      //console.log(queryStr);
+      
+      queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
+      
+  
+
+      const query = Profile.find(JSON.parse(queryStr));
+    
 
      //Excute query
      const profiles = await query;
