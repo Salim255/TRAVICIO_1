@@ -118,5 +118,48 @@ exports.deletProfile =  async (req, res) =>{
   })
  }
     
+};
+
+exports.getProfileStats = async (req, res) =>{
+  try {
+    const stats =  await Profile.aggregate([
+      {
+        $match:{
+          ratingsAverage:{ $gte: 4.5 }
+        }
+      },
+      {
+          $group: {
+             _id:{$toUpper: '$jobStatus'} , 
+             numProfiles: { $sum: 1},
+             numRating: { $sum: '$ratingsQuantity'},
+             avgRating: { $avg: '$ratingsAverage'},
+          }
+      },
+      {
+        $sort:{
+          avgRating :1
+        }
+      },
+     /*  {
+        $match: { _id: { $ne: 'BEAKER' } }
+      } */
+      
+    ]);
+    res.status(200).json({
+      status:"success",
+      data: 
+        {
+          stats
+        }
+      
+  })
+  } catch (error) {
+    res.status(404).json({
+      status:'fail',
+      message: error
+    })
+   }
 }
+
 

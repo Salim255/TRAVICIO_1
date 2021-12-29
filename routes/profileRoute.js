@@ -8,6 +8,8 @@ router
     .route('/top-5-cheap')
     .get(profileControler.aliasTopProfiles, profileControler.getAllProiles );
 
+router.route('/profile-stats').get(profileControler.getProfileStats);
+
 router.route('/')
     .get(profileControler.getAllProiles)
     .post(profileControler.createProfile);
