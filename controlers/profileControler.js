@@ -41,6 +41,21 @@ exports.getAllProiles =async (req, res) => {
       }else{
          query = query.select('-__v -education -skills');
       }
+
+
+      //4)Pagination
+      const page = req.query.page * 1 || 1;
+      const limit = req.query.limit * 1 || 100;
+      const skip = (page - 1) * limit;
+      //?page=2&limit=5, 1-10 pag1, 11-20 page2 , 21-30 page3
+      query = query.skip(skip).limit(limit);
+
+      if(req.query.page){
+        const numProfiles = await Profile.countDocuments();
+        if(skip >= numProfiles ){
+           throw new Error('This page does not exist');
+        }
+      }
      //Excute query
      const profiles = await query;
 
