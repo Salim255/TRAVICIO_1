@@ -31,7 +31,16 @@ exports.getAllProiles =async (req, res) => {
       }else{
         query = query.sort('-ratingsAverage');
       }
-
+     
+      //3) Field limiting
+      if(req.query.fields){
+        
+          const fields = req.query.fields.split(',').join(' ');
+          query = query.select(fields);
+          console.log(fields);
+      }else{
+         query = query.select('-__v -education -skills');
+      }
      //Excute query
      const profiles = await query;
 
