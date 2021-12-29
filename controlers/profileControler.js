@@ -1,5 +1,6 @@
 const Profile = require('../models/profileModel');
 const APIFeatures = require('../utils/apiFeatures');
+const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 //Routes handler
 exports.aliasTopProfiles = (req, res, next) =>{
@@ -29,8 +30,6 @@ exports.getAllProiles = catchAsync(async (req, res, next) => {
      });
 });
 
-
-
 exports.createProfile = catchAsync(async (req, res, next) => {
   const newProfile = await Profile.create(req.body);
   res.status(201).json({
@@ -41,9 +40,11 @@ exports.createProfile = catchAsync(async (req, res, next) => {
     }); 
 });
 
-exports.getProfile = catchAsync(async(req, res, next) =>{
+exports.getProfile = catchAsync(async(req, res, next) => {
   const profile = await Profile.findById(req.params.id);
- 
+     if(!profile){
+       return next(new AppError('No profile found with that ID', 404))
+     }
      res.status(200).json({
        status: 'success',
        data: {
@@ -58,6 +59,10 @@ exports.updateProfile = catchAsync(async (req, res, next) =>{
     runValidators: true
   });
 
+  if(!profile){
+    return next(new AppError('No profile found with that ID', 404))
+  }
+
   res.status(200).json({
     status:"success",
     data: {
@@ -68,7 +73,12 @@ exports.updateProfile = catchAsync(async (req, res, next) =>{
 
 exports.deletProfile =  catchAsync(async (req, res, next) =>{
    
-  await Profile.findByIdAndDelete(req.params.id);
+  const profile = await Profile.findByIdAndDelete(req.params.id);
+
+  if(!profile){
+    return next(new AppError('No profile found with that ID', 404))
+  }
+
   res.status(200).json({
     status:"success",
     data: 
