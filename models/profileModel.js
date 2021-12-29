@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');//to convert the inputs to lower case
+const validator = require('validator');
+
 const profileSchema = new mongoose.Schema({
     name: {
       type: String,
       required: [true, 'Profile must have a name'],
       unique: true,
       maxlength:[40, 'A name must have less or equal than 40 characters'],
-      minlength:[10 ,'A name must have more or equal thean 40 characters']
+      minlength:[10 ,'A name must have more or equal thean 40 characters'],
+      validate: [validator.isAlpha, 'Name must only contain characters']
    },
    slug: String,
     user: {
