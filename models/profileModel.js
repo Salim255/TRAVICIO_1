@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-
+const slugify = require('slugify');//to convert the inputs to lower case
 const profileSchema = new mongoose.Schema({
     name: {
       type: String,
       required: [true, 'Profile must have a name'],
       unique: true,
    },
+   slug: String,
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'user'
@@ -137,7 +138,12 @@ const profileSchema = new mongoose.Schema({
     },
 
   });
-  
+
+  //DOCUMENT MIDDLEWARE: runs before .save() and create()
+  profileSchema.pre('save', function(next) {
+      this.slug = slugify(this.name, {lower: true});
+      next();
+  })
   const Profile = mongoose.model('Profile', profileSchema);
   
   module.exports = Profile;
