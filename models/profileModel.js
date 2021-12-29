@@ -5,6 +5,8 @@ const profileSchema = new mongoose.Schema({
       type: String,
       required: [true, 'Profile must have a name'],
       unique: true,
+      maxlength:[40, 'A name must have less or equal than 40 characters'],
+      minlength:[10 ,'A name must have more or equal thean 40 characters']
    },
    slug: String,
     user: {
@@ -22,6 +24,10 @@ const profileSchema = new mongoose.Schema({
       type: String,
       required: [true, 'Profile must have a location']
     },
+    citySide:{
+        type: String,
+        enum: ['center','east', 'west', 'north', 'west']
+    },
     jobStatus: {
       type: String,
       required: [true, 'Job status is required']
@@ -36,7 +42,9 @@ const profileSchema = new mongoose.Schema({
     },
     ratingsAverage:{
         type: Number,
-        default: 4.5
+        default: 4.5,
+        min: [1, 'Rating must be above 1.0'],
+        max: [5, 'Rating must be below 5.0']
     },
     ratingsQuantity:{
         type: Number,
