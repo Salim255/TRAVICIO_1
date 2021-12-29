@@ -1,5 +1,5 @@
 const Profile = require('../models/profileModel');
-
+const APIFeatures = require('../utils/apiFeatures')
 //Routes handler
 exports.aliasTopProfiles = (req, res, next) =>{
   req.query.limit = '5',
@@ -8,63 +8,17 @@ exports.aliasTopProfiles = (req, res, next) =>{
 }
 
 
+
 exports.getAllProiles =async (req, res) => {
   try {
-      //Build query
-      //1) Filtring
-      const queryObj = { ...req.query };
       
-      const excludedFields = ['page', 'sort', 'limit', 'field'];
-      excludedFields.forEach(el => delete queryObj[el]);
-      
-      //2) Advanced filtring
-      let queryStr  = JSON.stringify(queryObj);
-      //console.log(queryStr);
-      
-      queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
-      
-  
-
-      let query = Profile.find(JSON.parse(queryStr));
-    
-      //2)Sorting
-      //sort=-ratingsAverage,price&location=madrid
-      
-      if(req.query.sort){
-          const sortBy = req.query.sort.split(',').join(' ');
-          //sort('ratingsAverage price')
-          query = query.sort(sortBy);
-          //sort('ratingsAverage price')
-      }else{
-        query = query.sort('-ratingsAverage');
-      }
-     
-      //3) Field limiting
-       if(req.query.fields){
-        
-          const fields = req.query.fields.split(',').join('');
-          query = query.select(fields);
-          console.log(fields);
-      }else{
-         query = query.select('-__v -education -skills');
-      } 
-
-
-      //4)Pagination
-      const page = req.query.page * 1 || 1;
-      const limit = req.query.limit * 1 || 100;
-      const skip = (page - 1) * limit;
-      //?page=2&limit=5, 1-10 pag1, 11-20 page2 , 21-30 page3
-      query = query.skip(skip).limit(limit);
-
-      if(req.query.page){
-        const numProfiles = await Profile.countDocuments();
-        if(skip >= numProfiles ){
-           throw new Error('This page does not exist');
-        }
-      }
      //Excute query
-     const profiles = await query;
+     const features = new APIFeatures(Profile.find(), req.query)
+     .filter()
+     .sort()
+     .limitFields().paginate();
+     
+     const profiles = await features.query;
 
      //Send response
       res.status(200).json({
