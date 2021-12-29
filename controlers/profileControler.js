@@ -3,7 +3,18 @@ const Profile = require('../models/profileModel');
 //Routes handler
 exports.getAllProiles =async (req, res) => {
   try {
-      const profiles = await Profile.find();
+      //Build query
+      const queryObj = { ...req.query };
+      const excludedFields = ['page', 'sort', 'limit', 'field'];
+      excludedFields.forEach(el => delete queryObj[el]);
+      
+      const query = Profile.find(queryObj);
+     /*  const query = await Profile.find().where('location').equals('madrid').where('jobStatus').equals('developer'); */
+
+     //Excute query
+     const profiles = await query;
+
+     //Send response
       res.status(200).json({
         status: 'success',
         results: profiles.length,

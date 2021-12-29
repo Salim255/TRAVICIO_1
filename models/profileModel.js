@@ -18,11 +18,12 @@ const profileSchema = new mongoose.Schema({
       type: String
     },
     location: {
-      type: String
+      type: String,
+      required: [true, 'Profile must have a location']
     },
     jobStatus: {
       type: String,
-      required: true
+      required: [true, 'Job status is required']
     },
     skills: {
       type: [String],
@@ -133,7 +134,7 @@ const profileSchema = new mongoose.Schema({
       type: Date,
       default: Date.now()
     },
-    
+
   });
   
   const Profile = mongoose.model('Profile', profileSchema);

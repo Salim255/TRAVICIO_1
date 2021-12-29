@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const app = require('./app');
 
 dotenv.config({ path: './config.env' }); //This will read this file and then save the varaiable in the enveroment variable
 
+const app = require('./app');
+
 const DB = process.env.DATASBASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
+
+
 
 mongoose.connect(DB, {
     useNewUrlParser: true,
