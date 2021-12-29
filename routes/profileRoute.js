@@ -4,6 +4,9 @@ const profileControler = require('../controlers/profileControler');
 
 //params middleware
 //router.param('id',profileControler.checkId);
+router
+    .route('/top-5-cheap')
+    .get(profileControler.aliasTopProfiles, profileControler.getAllProiles );
 
 router.route('/')
     .get(profileControler.getAllProiles)

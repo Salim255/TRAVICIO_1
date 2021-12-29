@@ -1,6 +1,13 @@
 const Profile = require('../models/profileModel');
 
 //Routes handler
+exports.aliasTopProfiles = (req, res, next) =>{
+  req.query.limit = '5',
+  req.query.sort = '-ratingsAverage';
+  next();
+}
+
+
 exports.getAllProiles =async (req, res) => {
   try {
       //Build query
@@ -33,14 +40,14 @@ exports.getAllProiles =async (req, res) => {
       }
      
       //3) Field limiting
-      if(req.query.fields){
+       if(req.query.fields){
         
-          const fields = req.query.fields.split(',').join(' ');
+          const fields = req.query.fields.split(',').join('');
           query = query.select(fields);
           console.log(fields);
       }else{
          query = query.select('-__v -education -skills');
-      }
+      } 
 
 
       //4)Pagination
