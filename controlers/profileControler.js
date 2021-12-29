@@ -18,8 +18,19 @@ exports.getAllProiles =async (req, res) => {
       
   
 
-      const query = Profile.find(JSON.parse(queryStr));
+      let query = Profile.find(JSON.parse(queryStr));
     
+      //2)Sorting
+      //sort=-ratingsAverage,price&location=madrid
+      
+      if(req.query.sort){
+          const sortBy = req.query.sort.split(',').join(' ');
+          //sort('ratingsAverage price')
+          query = query.sort(sortBy);
+          //sort('ratingsAverage price')
+      }else{
+        query = query.sort('-ratingsAverage');
+      }
 
      //Excute query
      const profiles = await query;
