@@ -2,10 +2,17 @@ const AppError = require("../utils/appError");
 
 const handleCastErrorDB = (err)=>{
       const message = `Invalid ${err.path}: ${err.value}` 
-      console.log('Hello from here');
+      
       return new AppError(message,400);
 }
 
+const handleDublicateFieldsDB = (err) =>{
+    const value =  err.errmsg.match(/(["'])(.*?[^\\])\1/);
+
+    console.log(value[0]);
+    const message = `Dublicate field value: ${value[0]} ,Please use another value`;
+    return new AppError(message, 400);
+}
 const sendErrorDev = (err, res) =>{
     res.status(err.statusCode).json({
         status: err.status,
@@ -48,7 +55,10 @@ module.exports = (err, req, res, next) =>{
      
      
       if(err.name === 'CastError') {err= handleCastErrorDB(err);}
-
+      
+      if(err.code === 11000){
+          err = handleDublicateFieldsDB(err);
+      }
       sendErrorProd(err, res);
     };
    
