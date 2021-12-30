@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const gravatar = require('gravatar');
 
 const UserSchema = new mongoose.Schema({
     firstName:{
         type: String,
-        required:[true, 'Please tell us your first name!']
+        required:[true, 'First name is required!']
     },
     lastName:{
         type: String,
-        required:[true, 'Please tell us your last name!']
+        required:[true, 'Last name is required!']
     },
     email:{
         type: String,
@@ -35,6 +36,13 @@ const UserSchema = new mongoose.Schema({
         default: Date.now
     }
 })
+
+ //DOCUMENT MIDDLEWARE: runs before .save() and create()
+ UserSchema.pre('save', function(next) {
+    this.avatar = gravatar.url(this.email, {s: '200',r:'pg', d:'mm'});
+    next();
+});
+
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

@@ -1,6 +1,10 @@
 const express = require('express');
+
 const router = express.Router();
-const userControler = require('../controlers/userControler')
+const userControler = require('../controlers/userControler');
+const authControler = require('../controlers/authControler');
+
+router.post('/signup', authControler.signup);
 
 router.route('/')
    .get(userControler.getAllUsers)

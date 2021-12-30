@@ -154,7 +154,9 @@ const profileSchema = new mongoose.Schema({
   profileSchema.pre('save', function(next) {
       this.slug = slugify(this.name, {lower: true});
       next();
-  })
+  });
+
+
   const Profile = mongoose.model('Profile', profileSchema);
   
   module.exports = Profile;
