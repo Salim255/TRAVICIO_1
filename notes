@@ -9,3 +9,6 @@ MVC stand for Model View Controler
 
 
 npm i validator
+npm i bcryptjs
+
+npm i jsonwebtoken
