@@ -18,7 +18,12 @@ const handleValidationErrorDB = (err) =>{
     const errors = Object.values(err.errors).map(el => el.message);//to loop in object we use object.values() in js
     const message = `Invalid input data. ${errors.join('. ')}`;
     return new AppError(message, 400);
-}
+};
+
+const handleJWTError = () => new AppError('Invalid token , Please login again', 401);
+
+const handleJWTExpiredError = () => new AppError('Your token is expired, Please login again', 401);
+
 
 const sendErrorDev = (err, res) =>{
     res.status(err.statusCode).json({
@@ -68,6 +73,12 @@ module.exports = (err, req, res, next) =>{
       }
       if(err.name === 'ValidationError'){
           err = handleValidationErrorDB(err);
+      }
+      if(err.name === "JsonWebTokenError"){
+          err = handleJWTError();
+      }
+      if(err.name === "TokenExpiredError"){
+          err = handleJWTExpiredError()
       }
       sendErrorProd(err, res);
     };

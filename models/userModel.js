@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const { json } = require('express/lib/response');
 
 const UserSchema = new mongoose.Schema({
     firstName:{
@@ -43,7 +44,8 @@ const UserSchema = new mongoose.Schema({
     date:{
         type:Date,
         default: Date.now
-    }
+    },
+    passwordChangedAt: Date
 })
 
  //DOCUMENT MIDDLEWARE: runs before .save() and create()
@@ -69,6 +71,16 @@ const UserSchema = new mongoose.Schema({
 UserSchema.methods.correctPassword = async function(loginPassword, userPassword) {
     return await  bcrypt.compare(loginPassword, userPassword);
 }
+
+UserSchema.methods.changedPasswordAfter =async function(JWTTimestamp){
+    
+    if(this.passwordChangedAt){
+        const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+        
+        return JWTTimestamp < changedTimestamp;
+    }
+    return false;
+} 
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
