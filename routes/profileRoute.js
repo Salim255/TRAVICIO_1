@@ -1,5 +1,8 @@
 const express = require('express');
+
 const router = express.Router();
+
+const authControler = require('../controlers/authControler');
 const profileControler = require('../controlers/profileControler');
 
 //params middleware
@@ -11,7 +14,7 @@ router
 router.route('/profile-stats').get(profileControler.getProfileStats);
 
 router.route('/')
-    .get(profileControler.getAllProiles)
+    .get(authControler.protect,profileControler.getAllProiles)
     .post(profileControler.createProfile);
 
 router.route('/:id')

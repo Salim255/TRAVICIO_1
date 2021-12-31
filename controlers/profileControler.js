@@ -19,7 +19,6 @@ exports.getAllProiles = catchAsync(async (req, res, next) => {
     .limitFields().paginate();
     
     const profiles = await features.query;
-
     //Send response
      res.status(200).json({
        status: 'success',
