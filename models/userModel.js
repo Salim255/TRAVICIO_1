@@ -22,7 +22,8 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please provide a password'],
-        minlength: 8
+        minlength: 8,
+        select: false
     },
     passwordConfirm: {
             type: String,
@@ -64,6 +65,10 @@ const UserSchema = new mongoose.Schema({
     next();
 });
 
+//instance methode will be avalable on all the user document
+UserSchema.methods.correctPassword = async function(loginPassword, userPassword) {
+    return await  bcrypt.compare(loginPassword, userPassword);
+}
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;
