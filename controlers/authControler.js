@@ -16,6 +16,7 @@ exports.signup = catchAsync(async (req, res, next) =>{
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
+        role: req.body.role,
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
         passwordChangedAt: req.body.passwordChangedAt
@@ -91,12 +92,25 @@ exports.protect = catchAsync( async (req, res, next) =>{
     }
     //4)Check if user changed password after the toekn was issued
 
-    if(freshUser.changedPasswordAfter(decoded.iat)){
+   /*  if(freshUser.changedPasswordAfter(decoded.iat)){
          return next(new AppError('User recently changed password! Please log in again', 401));
-    }
+    } */
 
     //GRANT ACCESSS TO Protected Route
     req.user = freshUser;
     next();
 });
 
+exports.restrictTo =(...roles) => {
+       return (req, res, next) => {
+        //roles ['admin'], role='user'
+        if(!roles.includes(req.user.role)){
+            return next(
+                new AppError('You do not have permission to perform this action', 403)
+                );
+        }
+        next();
+    };
+};
+   
+ 

@@ -3,19 +3,21 @@ const slugify = require('slugify');//to convert the inputs to lower case
 const validator = require('validator');
 
 const profileSchema = new mongoose.Schema({
-    name: {
+  /*    name: {
       type: String,
       required: [true, 'Profile must have a name'],
-      unique: true,
-      maxlength:[40, 'A name must have less or equal than 40 characters'],
-      minlength:[10 ,'A name must have more or equal thean 40 characters'],
+      //unique: true,
+     /*  maxlength:[40, 'A name must have less or equal than 40 characters'],
+      minlength:[10 ,'A name must have more or equal thean 40 characters'], 
       validate: [validator.isAlpha, 'Name must only contain characters']
-   },
+   }, 
+   */
+   user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+   }, 
    slug: String,
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'user'
-    }, 
+  
   
     phone:{
         type: Number
@@ -152,7 +154,8 @@ const profileSchema = new mongoose.Schema({
 
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
   profileSchema.pre('save', function(next) {
-      this.slug = slugify(this.name, {lower: true});
+      //this.slug = slugify(this.name, {lower: true});
+      
       next();
   });
 
