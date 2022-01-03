@@ -32,5 +32,15 @@ router.route('/:id')
     .patch(profileControler.updateProfile)
     .delete(authControler.protect, authControler.restrictTo('admin') , profileControler.deletProfile );
 
+router.route('/experience')
+    .put(authControler.protect, profileControler.addExperience);
 
+router.route('/experience/:exp_id')
+    .delete(authControler.protect, profileControler.deleteExperience);
+
+    router.route('/education')
+    .put(authControler.protect, profileControler.addEducation);
+
+router.route('/education/:edu_id')
+    .delete(authControler.protect, profileControler.deleteEducation);
 module.exports = router;

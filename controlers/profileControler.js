@@ -313,4 +313,77 @@ exports.getCurrrentUserProfile = catchAsync(async(req, res, next) =>{
           profile
       }
   }) 
-})
+});
+
+
+//Route api/profile/experience
+//Add profile experience
+//privite
+exports.addExperience = catchAsync( async(req, res, next) => {
+   const profile  = await Profile.findOne({user: req.user.id});
+    profile.experience.unshift(req.body);
+    await profile.save();
+
+   res.status(200).json({
+    status:"success",
+    data: {
+        profile
+    }
+   }) 
+});
+
+
+//Route api/profile/experience/:exp_id
+//delete  profile experience
+//privite
+exports.deleteExperience = catchAsync( async(req, res, next) => {
+  const profile  = await Profile.findOne({user: req.user.id});
+
+  //Get remeove index
+  const removeIndex = profile.experience.map(item =>item.id).indexOf(req.params.exp_id);
+        
+   profile.experience.splice(removeIndex, 1);//reomve the exprice with the index
+
+  res.status(200).json({
+   status:"success",
+   data: {
+       profile
+   }
+  }) 
+});
+
+//Route api/profile/education
+//Add profile experience
+//privite
+exports.addEducation = catchAsync( async(req, res, next) => {
+  const profile  = await Profile.findOne({user: req.user.id});
+   profile.education.unshift(req.body);
+   await profile.save();
+
+  res.status(200).json({
+   status:"success",
+   data: {
+       profile
+   }
+  }) 
+});
+
+
+//Route api/profile/education/:edu_id
+//delete  profile education
+//privite
+exports.deleteEducation = catchAsync( async(req, res, next) => {
+ const profile  = await Profile.findOne({user: req.user.id});
+
+ //Get remeove index
+ const removeIndex = profile.education.map(item =>item.id).indexOf(req.params.exp_id);
+       
+  profile.education.splice(removeIndex, 1);//reomve the exprice with the index
+
+ res.status(200).json({
+  status:"success",
+  data: {
+      profile
+  }
+ }) 
+});
