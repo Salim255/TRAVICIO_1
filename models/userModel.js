@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-const { json } = require('express/lib/response');
+
 
 const UserSchema = new mongoose.Schema({
     firstName:{

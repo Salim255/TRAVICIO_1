@@ -8,7 +8,7 @@ const PostSchema = new mongoose.Schema({
     },
     text:{
         type: String,
-        required: true
+        required: [true, 'Text is required']
     },
     name:{
         type: String

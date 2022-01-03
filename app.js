@@ -8,6 +8,8 @@ const globalErrorHandler =  require('./controlers/errorControler');
 
 const profileRouter = require('./routes/profileRoute');
 const userRouter = require('./routes/userRoute');
+const postRouter = require('./routes/postRoute');
+
 
 //Mddleware
 if (process.env.NODE_ENV === 'development') {
@@ -30,6 +32,9 @@ app.use((req, res, next) => {
 //Mounting new router in the route
 app.use('/api/v1/profiles', profileRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/posts', postRouter);
+
 
 app.all('*', (req, res, next) =>{
    next(new AppError(`Can't find ${req.originalUrl} on this server `, 404));

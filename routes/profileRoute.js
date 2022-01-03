@@ -9,7 +9,8 @@ const profileControler = require('../controlers/profileControler');
 //router.param('id',profileControler.checkId);
 
 router.route('/me')
-    .get(authControler.protect,profileControler.getCurrrentUserProfile);
+    .get(authControler.protect, profileControler.getCurrrentUserProfile)
+    .delete(authControler.protect, profileControler.deletUserProfile);
     
 
 router
@@ -21,7 +22,10 @@ router.route('/profile-stats').get(profileControler.getProfileStats);
 router.route('/')
     .get(authControler.protect,profileControler.getAllProiles)
     .post( authControler.protect, profileControler.createProfile)
-    .patch(authControler.protect, profileControler.updateProfile);
+    .patch(authControler.protect, profileControler.updateProfile)
+    .delete(authControler.protect , profileControler.deletProfile );
+
+    
 
 router.route('/:id')
     .get(profileControler.getProfile)

@@ -2,6 +2,7 @@ const Profile = require('../models/profileModel');
 const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+const User = require('../models/userModel');
 //Routes handler
 exports.aliasTopProfiles = (req, res, next) =>{
   req.query.limit = '5';
@@ -205,7 +206,10 @@ exports.updateProfile = catchAsync(async (req, res, next) =>{
 })    
 });
 
-exports.deletProfile =  catchAsync(async (req, res, next) =>{
+//1route Delete api/profile
+//2description Delet profile, user & posts  
+//3access Private
+exports.deletUserProfile =  catchAsync(async (req, res, next) =>{
    
   const profile = await Profile.findByIdAndDelete(req.params.id);
 
@@ -220,6 +224,41 @@ exports.deletProfile =  catchAsync(async (req, res, next) =>{
     
 })  
 });
+
+//1route Delete api/profile
+//2description Delet profile, user & posts  
+//3access Private
+exports.deletProfile =  catchAsync(async (req, res, next) =>{  
+ //Remove profile 
+ await Profile.findOneAndRemove({ user: req.user.id });
+ //await Profile.findOnedAndRemove({ user: req.user._id });
+
+    //Remove user
+  await User.findOneAndRemove({ _id: req.user._id });
+    
+
+  res.status(200).json({
+    status:"success",
+    data: 
+      null
+    
+})  
+});
+/* exports.deletProfile =  catchAsync(async (req, res, next) =>{
+   
+  const profile = await Profile.findByIdAndDelete(req.params.id);
+
+  if(!profile){
+    return next(new AppError('No profile found with that ID', 404))
+  }
+
+  res.status(200).json({
+    status:"success",
+    data: 
+      null
+    
+})  
+}); */
 
 exports.getProfileStats = catchAsync(async (req, res, next) =>{
   const stats =  await Profile.aggregate([
