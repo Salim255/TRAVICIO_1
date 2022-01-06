@@ -1,0 +1,56 @@
+.navbar {
+  background: rgb(15, 63, 82);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+  padding: 3.5rem 2rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: 1px solid red;
+  //opacity: 0.9;
+  font-size: 2rem;
+  overflow: hidden;
+
+  &__name {
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    &-item {
+      margin-left: 2rem;
+      transition: all 0.3s;
+      &:hover {
+        transform: scale(1.05);
+      }
+      &-register {
+        /*   border-radius: 5rem;
+        padding: 1rem 2rem;
+        
+        margin-right: 1rem; */
+      }
+    }
+  }
+  &-icon {
+    color: var(--light-color);
+    //background-color: red;
+    font-size: 5rem;
+
+    font-weight: 400;
+    transition: all 0.3s;
+    margin-right: 1rem;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+  & a:hover {
+    color: $color-gray-dark;
+  }
+}

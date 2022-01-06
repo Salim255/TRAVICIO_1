@@ -1,0 +1,25 @@
+.login{
+    background: $color-primary;
+    height: 70vh;
+    font-size: 1.5rem;
+    &__container{
+      position: relative;  
+      top: 50%;
+      left: 50%;
+      transform: translate(-10%, 50%);  
+    
+    }
+    &__error{
+        color: red;
+       
+    }
+    &__btn{
+        padding: .5rem 2rem;
+    }
+}
+
+.dash{
+    background: red;
+    height: 100vh;
+    width: 100vw;
+}
