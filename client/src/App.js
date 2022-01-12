@@ -6,6 +6,7 @@ import Navbar from './components/layout/Navbar' ;
 //import Header from './components/layout/Header';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import Alert from './components/layout/Alert';
 
 //Redux
 import { Provider } from 'react-redux';//To connect react and redux
@@ -20,7 +21,9 @@ const App = () =>{
         < Fragment>
           <Navbar/>
           <Route exact  path='/' component={ Landing} />
+          
           <section>
+          <Alert/>
             <Switch>
               <Route exact path='/register' component={ Register }/>
               <Route exact path='/login' component={ Login }/>

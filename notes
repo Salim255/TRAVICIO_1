@@ -12,3 +12,14 @@ npm i validator
 npm i bcryptjs
 
 npm i jsonwebtoken
+
+//client
+npm i axios
+
+npm i axios react-router-dom@5 redux react-redux redux-thunk redux-devtools-extension moment react-moment
+
+rm -rf .git
+
+"proxy": "http://localhost:600"
+
+npm i uuid

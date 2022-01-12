@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 
-const Register = () => {
+import { setAlert } from '../../Actions/alertAction';
+
+const Register = ({ setAlert }) => {
     const [formData, setFormData] = useState({
         name:'',
         email:'',
@@ -16,7 +20,7 @@ const Register = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         if(password !== password2){
-             console.log('Password do not match');
+             setAlert('Password do not match', 'danger');
         }else{
            
             console.log("Success");
@@ -37,8 +41,9 @@ const Register = () => {
                     <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
                     <small className="form__text"
                         >This site uses Gravatar so if you want a profile image, use a
-                        Gravatar email</small
-                    >
+                        Gravatar email
+                    </small>
+                    
                 </div>
                 <div className="form__form-group">
                     <input
@@ -70,9 +75,11 @@ const Register = () => {
            
         </section>
     </Fragment>
-    )
-}
+    );
+};
 
 
-
-export default Register;
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired
+};
+export default connect(null, { setAlert })(Register);
