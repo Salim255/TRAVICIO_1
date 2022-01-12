@@ -5,25 +5,29 @@ import { connect } from 'react-redux';
 
 
 import { setAlert } from '../../Actions/alertAction';
+import { register } from '../../Actions/authAction';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
     const [formData, setFormData] = useState({
-        name:'',
-        email:'',
+        firstName:'',
+        lastName:'',
+        email: '',
         password:'',
-        password2: ''
+        passwordConfirm: ''
     });
 
-    const {name, email, password, password2} = formData;
+    const { firstName, lastName, email, password, passwordConfirm} = formData;
 
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value });
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(password !== password2){
+        if(password !== passwordConfirm){
              setAlert('Password do not match', 'danger');
         }else{
            
-            console.log("Success");
+            register({
+                firstName,lastName, email, password, passwordConfirm
+            })
         }
     }
    
@@ -35,7 +39,10 @@ const Register = ({ setAlert }) => {
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
             <form className="form" action="create-profile.html" onSubmit={e => onSubmit(e)}>
                 <div className="form__form-group">
-                    <input type="text" placeholder="Name" name="name" value={name} onChange={e => onChange(e)} required />
+                    <input type="text" placeholder="First Name" name="firstName" value={firstName} onChange={e => onChange(e)} required />
+                </div>
+                <div className="form__form-group">
+                    <input type="text" placeholder="Last Name" name="lastName" value={lastName} onChange={e => onChange(e)} required />
                 </div>
                 <div className="form__form-group">
                     <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
@@ -59,10 +66,10 @@ const Register = ({ setAlert }) => {
                     <input
                         type="password"
                         placeholder="Confirm Password"
-                        name="password2"
+                        name="passwordConfirm"
                         minLength="6"
 
-                        value={password2} onChange={e => onChange(e)}
+                        value={passwordConfirm} onChange={e => onChange(e)}
                         required
                     />
                 </div>
@@ -80,6 +87,7 @@ const Register = ({ setAlert }) => {
 
 
 Register.propTypes = {
-    setAlert: PropTypes.func.isRequired
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
 };
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
