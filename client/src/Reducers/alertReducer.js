@@ -3,7 +3,7 @@ import { SET_ALERT, REMOVE_ALERT } from '../Actions/actionTypes';
 const initialState =[];
 
 export default function(state = initialState, action) {
-    console.log(state);
+  
     const {type, payload} = action;
   
     switch(type){

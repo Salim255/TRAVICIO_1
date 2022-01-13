@@ -5,17 +5,21 @@ import { setAlert } from './alertAction';
 //Load User
 export const loadUser = () => async dispatch =>{
     if(localStorage.token){
-            setAuthToken(localStorage.token)
+            setAuthToken(localStorage.token);
+            
     }
 
     try {
-        const res = await axios.get('/api/v1/users/login');
-
+       
+        const res = await axios.get('/api/v1/users');
+     
+        
         dispatch({
             type: USER_LOADED,
             payload: res.data
         })
     } catch (error) {
+        console.log(error);
         dispatch({
             type: AUTH_ERROR
         })
@@ -46,7 +50,7 @@ export const register = ({ firstName,lastName, email, password, passwordConfirm}
              withCredentials: true 
         });
         //const res = await axios.post('api/v1/users/signup', body, config, credentials: 'include');
-        console.log(res);
+        
         dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data

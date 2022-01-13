@@ -11,13 +11,14 @@ export default function (state = intialState, action) {
     const {type, payload} = action;
 
     switch (type) {
-
+        
         case USER_LOADED:
+            
             return {
                 ...state,
                 isAuthenticated: true,
                 loading: false,
-                user: payload,
+                user: payload.data.user,
             };
 
         case REGISTER_SUCCESS:
@@ -32,7 +33,9 @@ export default function (state = intialState, action) {
         case AUTH_ERROR:
             localStorage.removeItem('token');
 
-            return {...state, token: null,
+            return {
+                ...state, 
+                token: null,
                 isAuthenticated: false,
                 loading: false
             }
