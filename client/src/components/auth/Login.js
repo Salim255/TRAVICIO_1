@@ -1,8 +1,12 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import {login} from '../../Actions/authAction';
 
 
-const Login = () => {
+const Login = ({ login , isAuthenticated}) => {
     const [formData, setFormData] = useState({
         email:'',
         password:''
@@ -14,10 +18,14 @@ const Login = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log("Success");
+        login(email, password);
         
     }
    
+    //Redirect if dachboard in
+    if(isAuthenticated){
+        return <Redirect to="/dashboard"/>
+    }
     return (
     <Fragment>
         <section className="section">
@@ -32,8 +40,8 @@ const Login = () => {
                 <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
                 <small className="form-text"
                     >This site uses Gravatar so if you want a profile image, use a
-                    Gravatar email</small
-                >
+                    Gravatar email
+                    </small>
                 </div>
                 <div className="form__form-group">
                 <input
@@ -59,6 +67,13 @@ const Login = () => {
     )
 }
 
+Login.prototype = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+    
+}
 
-
-export default Login;
+const mapStateToProps = state => ({
+    isAuthenticated: state.authReducer.isAuthenticated
+})
+export default connect(mapStateToProps , { login })(Login);
