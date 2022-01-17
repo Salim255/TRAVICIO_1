@@ -1,0 +1,11 @@
+.dashBoard {
+  background-color: $color-gray-light;
+
+  height: 100vh;
+  &__title {
+    //background-color: red;
+    position: relative;
+    top: 20%;
+    left: 10%;
+  }
+}
