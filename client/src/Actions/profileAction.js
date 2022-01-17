@@ -8,7 +8,7 @@ import { GET_PROFILE, PROFILE_ERROR } from  "./actionTypes";
 //Get current users profiles
 export const getCurrentProfile = () => async dispatch  => {
     try {
-        const res = await axios.get('/api/v1/profile/me');
+        const res = await axios.get('/api/v1/profiles/me');
          console.log(res.data);
         dispatch({
             type: GET_PROFILE,
@@ -17,7 +17,7 @@ export const getCurrentProfile = () => async dispatch  => {
     } catch (error) {
         dispatch({
             type: PROFILE_ERROR,
-            payload: { masg: error.response.statusText, status: error.response.status}
+            payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 }

@@ -1,11 +1,13 @@
-.dashBoard {
-  background-color: $color-gray-light;
-
+.dashboard {
+  //background-color: $color-gray-light;
+  position: absolute;
+  top: 20%;
+  left: 10%;
   height: 100vh;
-  &__title {
+  /*   &__title {
     //background-color: red;
     position: relative;
     top: 20%;
     left: 10%;
-  }
+  } */
 }
