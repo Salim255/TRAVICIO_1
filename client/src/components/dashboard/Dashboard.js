@@ -1,22 +1,11 @@
-import React from 'react'
-
-export const Dashboard = () => {
-    return (
-        <div className='dashBoard'>
-            <h1 className='dashBoard__title'>Dashbord</h1>
-        </div>
-    )
-}
-
-export default Dashboard;
-
-/* import React, {Fragment, useEffect} from 'react'
+import React, {Fragment, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Spinner from '../layout/Spinner';
-import { getCurrentProfile } from '../../actions/profileAction';
+//import Spinner from "../layout/spinner.gif";
+import { getCurrentProfile } from '../../Actions/profileAction';
 
 import { connect } from 'react-redux';
+
 
 const Dashboard = ({getCurrentProfile, auth: { user}, profile: { profile, loading}}) => {
 
@@ -24,7 +13,7 @@ const Dashboard = ({getCurrentProfile, auth: { user}, profile: { profile, loadin
         getCurrentProfile();
     }, []);
 
-    return loading && profile === null ? <Spinner/> : <Fragment>
+    return loading && profile === null ? <Fragment>Hello</Fragment> : <Fragment>
         <h1 className="large text-primary">Dashboard</h1>
         <p className='lead'> <i className="fas fa-user"></i> Welcome { user && user.name}</p>
 
@@ -48,4 +37,3 @@ const mapStateToProps = state =>({
 });
 
 export default connect(mapStateToProps, {getCurrentProfile})(Dashboard)
- */
