@@ -1,19 +1,20 @@
-import React , { Fragment, useState} from 'react'
+import React , { Fragment, useState} from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import  { connect } from 'react-redux'
 ;
+import { createProfile } from '../../Actions/profileAction';
 
-const CreateProfile = props => {
+const CreateProfile =({ createProfile, history }) => {
     const [formData, setFormData] = useState({
           company:'',
           website:'',
           location:'',
-          status:'',
+          jobStatus:'',
           skills:'',
           bio:'',
           githubusername:'',
-          experience:'',
-          education:'',
+          
           youtube:'',
           twitter:'',
           facebook: '',
@@ -24,12 +25,11 @@ const CreateProfile = props => {
     const { company,
     website,
     location,
-    status,
+    jobStatus,
     skills,
     bio,
     githubusername,
-    experience,
-    education,
+    
     youtube,
     twitter,
     facebook,
@@ -37,7 +37,14 @@ const CreateProfile = props => {
     instagram} = formData;
 
     const [displaySocialInputs, toggleSocialInputs ] = useState(false);
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value }) 
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value }) ;
+
+
+    const onSubmit = e =>{
+        e.preventDefault();
+        console.log(formData);
+        createProfile(formData, history);
+    }
 
     return (
         <Fragment>
@@ -51,9 +58,9 @@ const CreateProfile = props => {
                 profile stand out
             </p>
             <small>* = required field</small>
-            <form className="form">
+            <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form__form-group">
-                <select name="status" value={status} onChange={e => onChange(e)}>
+                <select name="jobStatus" value={jobStatus} onChange={e => onChange(e)}>
                     <option value="0">* Select Professional Status</option>
                     <option value="Developer">Developer</option>
                     <option value="Junior Developer">Junior Developer</option>
@@ -145,7 +152,9 @@ const CreateProfile = props => {
 }
 
 CreateProfile.propTypes = {
+    createProfile: PropTypes.func.isRequired,
+};
 
-}
 
-export default connect()(CreateProfile)
+
+export default connect(null, { createProfile })(withRouter(CreateProfile));
