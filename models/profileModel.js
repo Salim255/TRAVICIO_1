@@ -55,18 +55,13 @@ const profileSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    hourlyWage:[
-      {
-        jobMinimumPay: {
-          type: Number,
-          required: true
-        },
-        negotiable:{
-          type: String
-        }
-    }
-      
-   ],
+    hourlyWage:{
+      type: String,
+    },
+    jobMinimumPay: {
+      type: Number,
+      required: true
+    },
     portfolioImages:[String],
     experience: [
       {

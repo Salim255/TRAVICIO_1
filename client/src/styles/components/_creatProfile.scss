@@ -4,3 +4,36 @@
 .createProfile {
   padding: 20rem;
 }
+
+.form {
+  & textarea,
+  & select {
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    border: none;
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    &::-webkit-input-placeholder {
+      color: $color-gray-dark-2;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: 0.5);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid rgb(255, 94, 0);
+    }
+  }
+
+  &__form-text {
+    display: block;
+    margin-top: 0.3rem;
+    color: #888;
+  }
+}

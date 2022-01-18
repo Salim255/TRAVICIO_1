@@ -9,10 +9,10 @@ import { GET_PROFILE, PROFILE_ERROR } from  "./actionTypes";
 export const getCurrentProfile = () => async dispatch  => {
     try {
         const res = await axios.get('/api/v1/profiles/me');
-
+       
         dispatch({
             type: GET_PROFILE,
-            payload: res.data
+            payload: res.data.data.profile
         })
     } catch (error) {
         dispatch({
