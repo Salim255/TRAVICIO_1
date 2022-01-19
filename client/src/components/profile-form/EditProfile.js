@@ -51,7 +51,7 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
            <div className='Container'>
               <section className='createProfile'>
               <h1 className="large text-primary">
-                Create Your Profile
+                Edit Your Profile
             </h1>
             <p className="lead">
                 <i className="fas fa-user"></i> Let's get some information to make your
