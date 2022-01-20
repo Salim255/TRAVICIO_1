@@ -13,6 +13,7 @@ import CreateProfile from './components/profile-form/CreateProfile';
 import EditProfile from './components/profile-form/EditProfile';
 import AddExperience from './components/profile-form/AddExperience';
 
+import Shape from './components/layout/Shape';
 //Redux
 import { Provider } from 'react-redux';//To connect react and redux
 import store from './store';
@@ -37,6 +38,7 @@ const App = () => {
       <Router>
         < Fragment>
           <Navbar/>
+          <Shape/>
           <Route exact  path='/' component={ Landing} />
           
           <section>
