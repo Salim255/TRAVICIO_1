@@ -3,6 +3,7 @@ const APIFeatures = require('../utils/apiFeatures');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const User = require('../models/userModel');
+const Post = require('../models/postModel');
 //Routes handler
 exports.aliasTopProfiles = (req, res, next) =>{
   req.query.limit = '5';
@@ -229,6 +230,9 @@ exports.deletUserProfile =  catchAsync(async (req, res, next) =>{
 //2description Delet profile, user & posts  
 //3access Private
 exports.deletProfile =  catchAsync(async (req, res, next) =>{  
+
+  //Remove user posts
+  await Post.deleteMany({ user: req.user.id });
  //Remove profile 
  await Profile.findOneAndRemove({ user: req.user.id });
  //await Profile.findOnedAndRemove({ user: req.user._id });
@@ -343,7 +347,7 @@ exports.deleteExperience = catchAsync( async(req, res, next) => {
   const removeIndex = profile.experience.map(item =>item.id).indexOf(req.params.exp_id);
         
    profile.experience.splice(removeIndex, 1);//reomve the exprice with the index
-
+    await profile.save();
   res.status(200).json({
    status:"success",
    data: {
@@ -379,7 +383,7 @@ exports.deleteEducation = catchAsync( async(req, res, next) => {
  const removeIndex = profile.education.map(item =>item.id).indexOf(req.params.exp_id);
        
   profile.education.splice(removeIndex, 1);//reomve the exprice with the index
-
+  await profile.save();
  res.status(200).json({
   status:"success",
   data: {

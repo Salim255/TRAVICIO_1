@@ -148,3 +148,17 @@ img {
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
+.table th,
+.table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.table th {
+  background: var(--light-color);
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: #fff;
+}

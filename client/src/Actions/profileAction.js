@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setAlert } from "./alertAction";
 
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from  "./actionTypes";
+import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE, CLEAR_PROFILE, ACCOUNT_DELETED } from  "./actionTypes";
 
 
 
@@ -42,6 +42,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
              withCredentials: true 
         });
         
+        
         dispatch({
             type: GET_PROFILE,
             payload: res.data
@@ -54,6 +55,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
         }
     } catch (error) {
        //const errors = error.response.data.errors;
+       console.log("🌓🌓🌓 create profile",error);
        const errors = error.response.data;
        let list = [];
        
@@ -86,12 +88,12 @@ export const addExperience = (formData, history) => async dispatch =>{
             }
         }
        
-        console.log('🌓🌓formData', formData);
+      
         const res = await axios.put('/api/v1/profiles/experience', formData, config);
-
+        console.log('🌓🌓formData', res.data.data.profile);
         dispatch({
             type: UPDATE_PROFILE,
-            payload: res.data
+            payload: res.data.data.profile
         });
 
         dispatch(setAlert('Experience Added', 'success'));
@@ -102,6 +104,7 @@ export const addExperience = (formData, history) => async dispatch =>{
     } catch (error) {
        //const errors = error.response.data.errors;
           //const errors = error.response.data.errors;
+          console.log("🌓🌓err", error);
           const errors = error.response.data;
           let list = [];
           Object.keys(errors).forEach(key => {
@@ -122,3 +125,142 @@ export const addExperience = (formData, history) => async dispatch =>{
        })
     }
  };
+
+ //Delete experience
+ export const deleteExperience = id => async dispatch =>{
+    try {
+        const res = await axios.delete(`/api/v1/profiles/experience/${id}`);
+        
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data.data.profile
+        });
+        dispatch(setAlert('Experience Removed', 'success'));
+    } catch (error) {
+        const errors = error.response.data;
+        let list = [];
+        Object.keys(errors).forEach(key => {
+            if(key==='message'){
+                list.push({'message': errors[key]})
+            }
+         } );
+ 
+        if(list){
+            
+            list.forEach(error => dispatch(
+                setAlert(error.message, 'danger')
+            ))
+        }
+       dispatch({
+           type: PROFILE_ERROR,
+           payload: { message: error.response.statusText, status: error.response.status}
+       })
+    }
+};
+
+//Add Education
+export const addEducation = (formData, history) => async dispatch =>{
+    try {
+        const config = {
+            headers: {
+               'Content-Type': 'application/json'
+            }
+        }
+       
+      
+        const res = await axios.put('/api/v1/profiles/education', formData, config);
+        console.log("🌍🌍🌍education", res)
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data.data.profile
+        });
+
+        dispatch(setAlert('Education Added', 'success'));
+
+        
+        history.push('/dashboard');
+        
+    } catch (error) {
+       //const errors = error.response.data.errors;
+          //const errors = error.response.data.errors;
+          
+          const errors = error.response.data;
+          let list = [];
+          Object.keys(errors).forEach(key => {
+              if(key==='message'){
+                  list.push({'message': errors[key]})
+              }
+           } );
+   
+          if(list){
+              
+              list.forEach(error => dispatch(
+                  setAlert(error.message, 'danger')
+              ))
+          }
+       dispatch({
+           type: PROFILE_ERROR,
+           payload: { message: error.response.statusText, status: error.response.status}
+       })
+    }
+ };
+
+//Delete Education
+export const deleteEducation = id => async dispatch =>{
+   try {
+       console.log("DELETE EDU🌍🌍🌍");
+       const res = await axios.delete(`/api/v1/profiles/education/${id}`);
+       console.log("DELETE EDU🌍🌍🌍", res);
+       dispatch({
+           type: UPDATE_PROFILE,
+           payload: res.data.data.profile
+       });
+       dispatch(setAlert('Education Removed', 'success'));
+   } catch (error) {
+    const errors = error.response.data;
+    let list = [];
+    Object.keys(errors).forEach(key => {
+        if(key==='message'){
+            list.push({'message': errors[key]})
+        }
+     } );
+
+    if(list){
+        
+        list.forEach(error => dispatch(
+            setAlert(error.message, 'danger')
+        ))
+    }
+   dispatch({
+       type: PROFILE_ERROR,
+       payload: { message: error.response.statusText, status: error.response.status}
+   })
+   }
+}; 
+
+
+//Delete Account and Profile 
+export const deleteAccount = () => async dispatch =>{
+   if(window.confirm('Are you sure ? This can NOT be undone!')){
+       try {
+           const res = await axios.delete(`/api/v1/profiles`);
+   
+           dispatch({
+               type: CLEAR_PROFILE,
+               
+           });
+           dispatch({
+               type: ACCOUNT_DELETED,
+               
+           });
+           
+           dispatch(setAlert('Your account has been permanantly deleted'));
+       } catch (error) {
+          dispatch({
+              type: PROFILE_ERROR,
+              payload: { msg: error.response.statusText, status: error.response.status}
+          })
+       }
+   }
+   
+};

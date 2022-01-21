@@ -2,22 +2,29 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';//to form our date
+import { deleteEducation } from '../../Actions/profileAction';
 
-const Education = ({ education }) => {
-    const educations =  education.map(edu => (
-        <tr key={edu._id}>
-            <td>{edu.school}</td> 
-            <td className='hide-sm'>{edu.degree}</td>
-            <td>
-                <Moment format='YYY/MM/DD'>{edu.from}</Moment> - {''}
-                {edu.to === null ? (' Now'): ( <Moment format='YYY/MM/DD'>{edu.to}</Moment>)
-                }
-            </td>
-            <td>
-                <button className='btn btn-danger'>Delete</button>
-            </td>
-        </tr>
-    ));
+const Education = ({ education, deleteEducation }) => {
+ 
+    
+        let educations;
+        if(education){
+            educations =  education.map(edu => (
+                <tr key={edu._id}>
+                    <td>{edu.school}</td> 
+                    <td className='hide-sm'>{edu.degree}</td>
+                    <td>
+                        <Moment format='YYY/MM/DD'>{edu.from}</Moment> - {''}
+                        {edu.to === null ? (' Now'): ( <Moment format='YYY/MM/DD'>{edu.to}</Moment>)
+                        }
+                    </td>
+                    <td>
+                        <button className='btn btn-danger' onClick={()=> deleteEducation(edu._id)}>Delete</button>
+                    </td>
+                </tr>
+            ));
+        }
+    
 
   return <Fragment>
       <h2 className='my-2'>Education Credentials</h2>
@@ -37,8 +44,10 @@ const Education = ({ education }) => {
 };
 
 Education.propTypes = {
-    education: PropTypes.array.isRequired
+    education: PropTypes.array.isRequired,
+    deleteEducation: PropTypes.func.isRequired
+    
     
 };
 
-export default Education;
+export default connect(null, { deleteEducation}) (Education);
