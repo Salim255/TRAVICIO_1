@@ -20,7 +20,7 @@ router
 router.route('/profile-stats').get(profileControler.getProfileStats);
 
 router.route('/')
-    .get(authControler.protect,profileControler.getAllProiles)
+    .get(profileControler.getAllProiles)
     .post( authControler.protect, profileControler.createProfile)
     .patch(authControler.protect, profileControler.updateProfile)
     .delete(authControler.protect , profileControler.deletProfile );
