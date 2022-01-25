@@ -103,8 +103,10 @@
   background-color: rgb(173, 117, 33);
   height: 7rem;
   width: 100%;
+  margin-top: -6rem;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
+  overflow: hidden;
   align-items: center;
   clip-path: polygon(50% 0%, 0% 100%, 0% 90%);
 

@@ -6,22 +6,22 @@ import ProfileItem from './ProfileItem';
 import  { getProfiles } from '../../Actions/profileAction';
 
 const Profiles = ({ getProfiles, profile:{ profiles, loading}}) => {
-  console.log('profiles',profiles);
+  
   useEffect(() => {
    
     getProfiles();
     
     
-  },[] );
+  },[getProfiles] );
   
   return <Fragment>
   <div className='profiles'>
   { loading ? <Spinner/> : <Fragment>
-    <h className="large text-primary">Devlopers</h>
+    <h1 className="large text-primary">Workers</h1>
     <p className="lead">
       <i className="fab fa-connectdevelop"></i>
       Browse and connect with develpers</p>
-      <div className="profiles">
+      <div className="">
        {profiles.length > 0 ? (
          profiles.map(profile => (
            

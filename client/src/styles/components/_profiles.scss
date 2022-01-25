@@ -1,5 +1,5 @@
 .profiles {
-  padding: 10rem;
+  padding: 10rem 20rem;
 }
 
 .viewWorker {
@@ -22,7 +22,7 @@
   justify-content: center;
   min-height: 30vh;
   background-color: $color-gray-light;
-  margin-bottom: 4rem;
+  // margin-bottom: 4rem;
 
   //padding-bottom: 2rem;
   //margin-top: 2rem;
@@ -31,14 +31,14 @@
 
 .profile-container {
   width: 100%;
-  //max-width: 730px;
+  //max-width: 1000px;
   background: var(--clr-white);
   margin: 0 auto;
   border-radius: var(--radius);
   position: relative;
   text-align: center;
-  //margin-top: 2rem;
-  padding-bottom: 3rem;
+  ////margin-top: 2rem;
+  //padding-bottom: 5rem;
   box-shadow: var(--dark-shadow);
   &__img {
     border-radius: 50rem;

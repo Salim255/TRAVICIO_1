@@ -8,7 +8,18 @@ const ProfileItem = ({ profile: { user: {_id, firstName, avatar},
     location,
     }}) => {
     
-  return <div className='block'>
+  return <div className='profile bg-light'>
+  <img src={avatar} alt="" className="round-img" />
+ <div>
+ <h2>{firstName}</h2>
+  <p>{jobStatus} { company && <span> at {company}</span>}</p>
+  <p className="my-1">{location && <span>{location}</span>}</p>
+  <Link to={`/profiles/${_id}`} className='btn btn-primary'>
+      View Profile
+  </Link>
+ </div>
+  
+</div>; {/* <div className='block'>
       <div className='profile-container'>
         <img src={avatar} alt='rando worker' className='profile-container__img' />
         <h2>{firstName}</h2>
@@ -20,7 +31,7 @@ const ProfileItem = ({ profile: { user: {_id, firstName, avatar},
         </div>
         
   </div>
-              
+               */}
  
 };
 
