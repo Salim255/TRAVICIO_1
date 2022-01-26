@@ -94,10 +94,10 @@ export const addPost = FormData => async dispatch =>{
     try {
         
         const res = await axios.post(`/api/v1/posts`, FormData, config);
-       
+     
         dispatch({
             type: ADD_POST,
-            payload: res.data
+            payload: res.data.data.post
         })
 
        dispatch(setAlert('Post Created', 'success'));
@@ -105,7 +105,7 @@ export const addPost = FormData => async dispatch =>{
        
         dispatch({
             type: POST_ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status}
+            payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 };

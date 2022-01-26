@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect} from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../Actions/postAction';
-const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name, avatar, user, likes, comments, date},showActions }) =>  {
+const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, firstNname, avatar, user, likes, comments, date},showActions }) =>  {
  
   return <div className="post bg-white p-1 my-1">
   <div>
@@ -14,7 +14,7 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,
         src={avatar}
         alt=""
       />
-      <h4>{name}</h4>
+      <h4>{firstNname}</h4>
     </Link>
   </div>
   <div>
