@@ -36,11 +36,11 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,
     {/* <Link to={`/post/${_id}`} className="btn btn-primary">
       Discussion {comments.length > 0 && (<span className='comment-count'>{comments.length}</span>)}
     </Link> */}
-   {/*  {!auth.loading && user === auth.user._id && (<button  onClick={e => deletePost(_id)}     
+   {!auth.loading && user === auth.user._id && (<button  onClick={e => deletePost(_id)}     
     type="button"
     className="btn btn-danger"
   >  <i className="fas fa-times"></i>
-    </button>)} */} 
+    </button>)} 
     </Fragment> }
   
   </div>
@@ -56,7 +56,7 @@ PostItem.propTypes = {
     auth: PropTypes.object.isRequired,
     addLike: PropTypes.func.isRequired,
     removeLike: PropTypes.func.isRequired,
-    //deletePost: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state =>({
