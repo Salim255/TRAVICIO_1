@@ -114,8 +114,10 @@ export const addPost = FormData => async dispatch =>{
 export const getPost = (id) => async dispatch =>{
     try {
         
-        const res = await axios.get(`/api/posts/${id}`);
-       
+        const res = await axios.get(`/api/v1/posts/${id}`);
+        console.log('====================================');
+        console.log(res.data);
+        console.log('====================================');
         dispatch({
             type: GET_POST,
             payload: res.data
@@ -123,7 +125,7 @@ export const getPost = (id) => async dispatch =>{
     } catch (error) {
         dispatch({
             type: POST_ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status}
+            payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 };
