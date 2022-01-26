@@ -14,9 +14,10 @@ export const getPosts = () => async dispatch =>{
             payload: res.data.data.posts
         })
     } catch (error) {
+       
         dispatch({
             type: POST_ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status}
+            payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 };
@@ -24,18 +25,18 @@ export const getPosts = () => async dispatch =>{
 export const addLike = (id) => async dispatch =>{
     try {
         
-        const res = await axios.put(`/api/posts/like/${id}`);
-        
+        const res = await axios.put(`/api/v1/posts/like/${id}`);
+       
         dispatch({
             type: UPDATE_LIKES,
-            payload: { id, likes: res.data}
+            payload: { id, likes: res.data.data.data}
         })
         
     } catch (error) {
-        
+      
         dispatch({
             type: POST_ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status}
+            payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 };
@@ -44,11 +45,11 @@ export const addLike = (id) => async dispatch =>{
 export const removeLike = (id) => async dispatch =>{
     try {
         
-        const res = await axios.put(`/api/posts/unlike/${id}`);
-       console.log('🌎',res);
+        const res = await axios.put(`/api/v1/posts/unlike/${id}`);
+       
         dispatch({
             type: UPDATE_LIKES,
-            payload: { id, likes:res.data}
+            payload: { id, likes:res.data._id}
         })
 
        
@@ -56,7 +57,7 @@ export const removeLike = (id) => async dispatch =>{
        
         dispatch({
             type: POST_ERROR,
-            payload: { msg: error.response.statusText, status: error.response.status}
+            payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 };

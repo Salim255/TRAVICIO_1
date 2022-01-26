@@ -7,7 +7,7 @@ import { getPosts } from '../../Actions/postAction';
 //import PostForm from './PostForm';
 
 const Posts = ({getPosts, post:{ posts, loading}}) => {
-  
+   
     useEffect(() =>{
         getPosts();
     }, [getPosts]);
