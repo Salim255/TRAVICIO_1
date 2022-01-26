@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
-import { deleteComment } from '../../actions/postAction';
+import { deleteComment } from '../../Actions/postAction';
 
 
-const CommentItem = ({postId, comment:{_id, text, name, avatar, user, date}, auth, deleteComment}) => {
+const CommentItem = ({postId, comment:{_id, text, firstName, avatar, user, date}, auth, deleteComment}) => {
 
    
     return <div className="post bg-white p-1 my-1">
@@ -17,7 +17,7 @@ const CommentItem = ({postId, comment:{_id, text, name, avatar, user, date}, aut
           src={avatar}
           alt=""
         />
-        <h4>{name}</h4>
+        <h4>{firstName}</h4>
       </Link>
     </div>
     <div>

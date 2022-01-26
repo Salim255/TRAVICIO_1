@@ -115,12 +115,10 @@ export const getPost = (id) => async dispatch =>{
     try {
         
         const res = await axios.get(`/api/v1/posts/${id}`);
-        console.log('====================================');
-        console.log(res.data);
-        console.log('====================================');
+      
         dispatch({
             type: GET_POST,
-            payload: res.data
+            payload: res.data.data.post
         })
     } catch (error) {
         dispatch({
@@ -139,8 +137,8 @@ export const addComment =(postId, FormData) => async dispatch =>{
     };
 
     try {
-        
-        const res = await axios.post(`/api/posts/comment/${postId}`, FormData, config);
+     
+        const res = await axios.put(`/api/v1/posts/comment/${postId}`, FormData, config);
        
         dispatch({
             type: ADD_COMMENT,
@@ -163,7 +161,7 @@ export const deleteComment =(postId,commentId) => async dispatch =>{
 
     try {
         
-        await axios.delete(`/api/posts/comment/${postId}/${commentId}`);
+        await axios.delete(`/api/v1/posts/comment/${postId}/${commentId}`);
        
         dispatch({
             type: REMOVE_COMMENT,

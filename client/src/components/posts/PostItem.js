@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect} from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../Actions/postAction';
-const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, firstNname, avatar, user, likes, comments, date},showActions }) =>  {
+
+const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, firstName, avatar, user, likes, comments, date},showActions }) =>  {
  
   return <div className="post bg-white p-1 my-1">
   <div>
-    <Link to={`/profile/${user}`}>
+    <Link to={`/profiles/${user}`}>
       <img
         className="round-img"
         src={avatar}
         alt=""
       />
-      <h4>{firstNname}</h4>
+      <h4>{firstName}</h4>
     </Link>
   </div>
   <div>
@@ -33,9 +34,9 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, first
     <button onClick={e => removeLike(_id)} type="button" className="btn btn-light">
       <i className="fas fa-thumbs-down"></i>
     </button>
-    {/* <Link to={`/post/${_id}`} className="btn btn-primary">
+    <Link to={`/posts/${_id}`} className="btn btn-primary">
       Discussion {comments.length > 0 && (<span className='comment-count'>{comments.length}</span>)}
-    </Link> */}
+    </Link> 
    {!auth.loading && user === auth.user._id && (<button  onClick={e => deletePost(_id)}     
     type="button"
     className="btn btn-danger"
