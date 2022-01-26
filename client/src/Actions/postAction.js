@@ -8,10 +8,10 @@ export const getPosts = () => async dispatch =>{
     try {
         
         const res = await axios.get('/api/v1/posts');
-       
+      
         dispatch({
             type: GET_POSTS,
-            payload: res.data
+            payload: res.data.data.posts
         })
     } catch (error) {
         dispatch({
