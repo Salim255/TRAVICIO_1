@@ -110,6 +110,9 @@
   align-items: center;
   clip-path: polygon(50% 0%, 0% 100%, 0% 90%);
 
+  @include respond(tab-port) {
+    margin-top: -8rem;
+  }
   /*  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);  */
 }
 

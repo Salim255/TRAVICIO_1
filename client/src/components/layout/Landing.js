@@ -23,9 +23,11 @@ const Landing = ({isAuthenticated}) => {
             <div className="search-section">
             
                 <div className="search-section__searchBox">
-                < AiIcons.AiOutlineSearch className="search-section__icon" />
-                <input type="text" name="search" id="search" placeholder="The City you searhing worker in"  className="search-section__input"/>  
-                <input type="text" name="search" id="search" placeholder="The work type you are looking for"  className="search-section__input"/> 
+                <Link to='/search'>
+                    < AiIcons.AiOutlineSearch className="search-section__icon" />
+                </Link>
+                <input type="text" name="search" id="search" placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
+                {/* <input type="text" name="search" id="search" placeholder="The work type you are looking for"  className="search-section__input"/>  */}
                </div>
               {/*  <button type="submit" className="search-section__btn">
                     search

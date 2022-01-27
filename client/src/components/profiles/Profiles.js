@@ -24,7 +24,9 @@ const Profiles = ({ getProfiles, profile:{ profiles, loading}}) => {
       <div className="">
        {profiles.length > 0 ? (
          profiles.map(profile => (
+          
            
+         
            <ProfileItem key={profile._id} profile={profile}/>
          ))
        ) : <h4> No proiles found... </h4> } </div></Fragment>}
@@ -42,3 +44,5 @@ const mapStateToProps = state => ({
   profile: state.profileReducer
 })
 export default connect(mapStateToProps, { getProfiles})(Profiles);
+
+

@@ -26,10 +26,11 @@ export const getCurrentProfile = () => async dispatch  => {
 export const getProfiles = () => async dispatch  => {
    
     dispatch({ type: CLEAR_PROFILE});
+    
+ 
     try {
-       
-        const res = await axios.get('/api/v1/profiles');
-        
+      
+        const res = await axios.get(`/api/v1/profiles/`);
         dispatch({
             type: GET_PROFILES,
             payload: res.data.data.profiles
@@ -42,6 +43,46 @@ export const getProfiles = () => async dispatch  => {
         })
     }
 }; 
+
+//Filter profiles by location and jobStatus
+export const getFilteredProfiles = option => async dispatch  => {
+   
+    dispatch({ type: CLEAR_PROFILE});
+    //const {location, jobStatus} = option;
+    console.log('====================================');
+    console.log('Hello from so far', option);
+    console.log('====================================');
+    try {
+        
+        let res
+        if(option){
+            if(option.location && option.jobStatus){
+               res = await axios.get(`/api/v1/profiles/?location=${option.location}&&jobStatus=${option.jobStatus}`);
+            }
+            else if(option.location){
+                res = await axios.get(`/api/v1/profiles/?location=${option.location}`);
+            }
+            else if(option.jobStatus){
+               res = await axios.get(`/api/v1/profiles/?jobStatus=${option.jobStatus}`);
+            }
+        }else{
+           res = await axios.get(`/api/v1/profiles/`);
+        };
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+        dispatch({
+            type: GET_PROFILES,
+            payload: res.data.data.profiles
+        })
+    } catch (error) {
+        console.log(error);
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { message: error.response, status: error.response}
+        })
+    }
+};
 
 
 //Get profile by Id

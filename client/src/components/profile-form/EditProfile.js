@@ -48,7 +48,7 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
 
     return (
         <Fragment>
-           <div className='Container'>
+           <div className=''>
               <section className='createProfile'>
               <h1 className="large text-primary">
                 Edit Your Profile

@@ -25,7 +25,7 @@ const AddExperience = ({ addExperience, history}) => {
 
     return (
         <Fragment>
-            <div className='Container'>
+            <div className=''>
             <section className='addExperience'>
             <h1 className="large text-primary">
             Add An Experience
