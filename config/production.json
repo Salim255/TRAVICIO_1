@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://doshkka:Salim1993@travicio.m1mcy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret":"mysecrettoken",
+    "githubClientId": "041a6a6aa746829a7c8c",
+    "githubSecret":"54c06808a9c21b930218943228582260ebc5d440"
+}
+
