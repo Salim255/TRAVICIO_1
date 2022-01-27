@@ -3,19 +3,24 @@ import PropTypes from 'prop-types';
 
 const ProfileTop = ({profile: { jobStatus, company, location, website, social, user: {firstName, avatar}}}) => {
    
-  return <div className='block'>
-      <div className='profile-container'>
-      <div className="profile-top bg-primary ">
+  return <div className='block '>
+      <div className='profile-container '>
+      <div className=" bg-primary ">
         <img
-            className="round-img my-1 profile-container__img"
+            className="round-img my-1 profile-container__img "
             src={avatar}
             alt="" 
         />
         
         <h1 className="large">{firstName}</h1>
         <p className="lead">{jobStatus} {company && <span> at {company} </span>}</p>
-        <p>{location && <span>{location}</span>}</p>
-        <div className="icons my-1">
+        <p className="lead">{location && <span>{location}</span>}</p>
+        <div className="icons paddingicon ">
+        <i className="fab fa-twitter fa-2x"></i>
+        <i className="fab fa-twitter fa-2x"></i>
+        <i className="fab fa-twitter fa-2x"></i>
+        <i className="fab fa-twitter fa-2x"></i>
+            
             {
                 website && (
                     <a href={website} target="_blank" rel="noopener noreferrer">

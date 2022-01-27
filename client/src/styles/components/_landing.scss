@@ -1,8 +1,10 @@
 .landing {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: url('../../img/show3.jpeg') no-repeat center center/cover;
   height: 100vh;
-
   &__inner {
     color: var(--light-color);
     height: 100%;

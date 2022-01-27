@@ -8,10 +8,10 @@ const PostForm = ({addPost}) => {
     const [text, setText] = useState('');
   return (
   <div className="post-form">
-        <div className="bg-primary p">
-            <h3>Say Something...</h3>
+        <div className="bg-primary p-1 borderRad">
+            <h2>Say Something...</h2>
         </div>
-        <form className="form my-1" onSubmit={e => {e.preventDefault() ;
+        <form className="form  my-1" onSubmit={e => {e.preventDefault() ;
         addPost({ text });
         setText('')
     }}>
@@ -21,8 +21,8 @@ const PostForm = ({addPost}) => {
             rows="5"
             value={text}
             onChange={e => setText(e.target.value)}
-            placeholder="Create a post"
-            required
+            placeholder="Create a post "
+            required 
             ></textarea>
             <input type="submit" className="btn btn-dark my-1" value="Submit" />
         </form>

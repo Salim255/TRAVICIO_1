@@ -20,7 +20,7 @@
 .block {
   display: flex;
   justify-content: center;
-  min-height: 30vh;
+  min-height: 35vh;
   background-color: $color-gray-light;
   // margin-bottom: 4rem;
 
@@ -34,7 +34,7 @@
   //max-width: 1000px;
   background: var(--clr-white);
   margin: 0 auto;
-  border-radius: var(--radius);
+  border-bottom-left-radius: 2rem;
   position: relative;
   text-align: center;
   ////margin-top: 2rem;
@@ -116,4 +116,31 @@
 
 .figureCaption {
   background-color: red;
+}
+
+/* Profiles Page */
+.profile {
+  border-radius: 2rem;
+  display: grid;
+  grid-template-columns: 2fr 4fr 2fr;
+  align-items: center;
+  grid-gap: 2.5rem;
+  padding: 1.5rem;
+  line-height: 1.8;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.profile-top {
+  grid-area: top;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //text-align: center;
+}
+
+.paddingicon {
+  padding-bottom: 5rem;
 }

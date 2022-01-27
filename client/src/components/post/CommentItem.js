@@ -6,18 +6,18 @@ import Moment from 'react-moment';
 import { deleteComment } from '../../Actions/postAction';
 
 
-const CommentItem = ({postId, comment:{_id, text, firstName, avatar, user, date}, auth, deleteComment}) => {
+const CommentItem = ({postId, comment:{_id, text, name, avatar, user, date}, auth, deleteComment}) => {
 
    
     return <div className="post bg-white p-1 my-1">
     <div>
-      <Link to={`/profile/${user}`}>
+      <Link to={`/profiles/${user}`}>
         <img
           className="round-img"
           src={avatar}
           alt=""
         />
-        <h4>{firstName}</h4>
+        <h4>{name}</h4>
       </Link>
     </div>
     <div>

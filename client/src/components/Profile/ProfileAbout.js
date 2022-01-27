@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ProfileAbout = ({profile: {bio, skills, user: {firstName} }}) => {
   return <Fragment>
     
-    <div className="profile-about bg-light p-2">
+    <div className="profile-about bg-light p-2  fontSize">
     {bio && (<Fragment>
     <h2 className="text-primary">{firstName}'s Bio</h2>
     <p>

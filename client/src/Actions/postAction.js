@@ -46,10 +46,10 @@ export const removeLike = (id) => async dispatch =>{
     try {
         
         const res = await axios.put(`/api/v1/posts/unlike/${id}`);
-       
+  
         dispatch({
             type: UPDATE_LIKES,
-            payload: { id, likes:res.data._id}
+            payload: { id, likes:res.data}
         })
 
        
@@ -139,10 +139,10 @@ export const addComment =(postId, FormData) => async dispatch =>{
     try {
      
         const res = await axios.put(`/api/v1/posts/comment/${postId}`, FormData, config);
-       
+      
         dispatch({
             type: ADD_COMMENT,
-            payload: res.data
+            payload: res.data.data.data
         })
 
        dispatch(setAlert('Comment Added', 'success'));
