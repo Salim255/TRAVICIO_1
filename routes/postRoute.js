@@ -25,4 +25,8 @@ router.route('/comment/:id')
 router.route('/comment/:id/:comment_id')
     .delete(authControler.protect, postControler.deleteCommentOnPostById );
 
+router.route('/:id')
+    .delete(authControler.protect, postControler.deletePostById )
+    .get(authControler.protect, postControler.getPostById);
+
 module.exports = router;

@@ -12,10 +12,10 @@ const router = require('../routes/postRoute');
 //Privite
 exports.creatpost = catchAsync(async (req, res, next) =>{
      const user = await User.findById(req.user.id);
-
+   
      const newPost = new Post({
           text: req.body.text,
-          name: user.name,
+          name: user.firstName,
           avatar: user.avatar,
           user: req.user.id
      });
@@ -66,6 +66,7 @@ exports.getPostById = catchAsync( async(req, res, next) => {
 //delete post by Id
 //Privite
 exports.deletePostById  = catchAsync(async(req, res, next) =>{
+     
      const post = await Post.findById(req.params.id);
      if(!post){
           return next( new AppError('Post not found', 404));
@@ -73,7 +74,7 @@ exports.deletePostById  = catchAsync(async(req, res, next) =>{
 
       //Check user
       if(post.user.toString() !== req.user.id){
-          return res.status(401).json({ 
+          return res.status(400).json({ 
                status: 'fail',
                message: 'User not authorized'
            });
@@ -129,13 +130,13 @@ exports.unlikePostById = catchAsync( async(req, res, next) =>{
 //2description Comment on  a post 
 //3access Private
 exports.addCommentOnPost = catchAsync( async(req, res, next) => {
-   
+    
      const user = await User.findById(req.user.id);
      const post = await Post.findById(req.params.id);
-
+     
      const newComment = new Post({
           text: req.body.text,
-          name: user.name,
+          name: user.firstName,
           avatar: user.avatar,
           user: req.user.id
      }) ;

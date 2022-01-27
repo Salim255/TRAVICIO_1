@@ -26,6 +26,8 @@ router.route('/')
     .delete(authControler.protect , profileControler.deletProfile );
 
     
+router.route('/user/:user_id')
+        .get(profileControler.getProfileById);
 
 router.route('/:id')
     .get(profileControler.getProfile)

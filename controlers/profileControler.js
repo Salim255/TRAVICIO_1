@@ -165,6 +165,7 @@ exports.createProfile = catchAsync(async (req, res, next) => {
 });  */
 
 exports.getProfile = catchAsync(async(req, res, next) => {
+ 
   const profile = await Profile.findById(req.params.id);
      if(!profile){
        return next(new AppError('No profile found with that ID', 404))
@@ -176,6 +177,22 @@ exports.getProfile = catchAsync(async(req, res, next) => {
        },
      }); 
  });
+
+ //Get profiel by user id
+ exports.getProfileById = catchAsync(async(req, res, next) => {
+  
+  const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['firstName', 'avatar']);
+     if(!profile){
+       return next(new AppError('No profile found with that ID', 404))
+     }
+     res.status(200).json({
+       status: 'success',
+       data: {
+         profile,
+       },
+     }); 
+ });
+
 /* exports.getProfile = catchAsync(async(req, res, next) => {
   const profile = await Profile.findById(req.params.id);
      if(!profile){
