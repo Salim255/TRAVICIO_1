@@ -14,14 +14,14 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
              Workers
                </Link></li>
              <li className="navbar__list-item">
-                 <Link to="/posts"><i className="fas fa-user"></i>Posts
+                 <Link to="/posts"><i className="fas fa-user hide-sm"></i>{' '}Post
                  </Link>
                 </li>
-             <li className="navbar__list-item"><Link to="/dashboard"><i className="fas fa-user"></i>{' '}Dashboard</Link></li>
+             <li className="navbar__list-item"><Link to="/dashboard"><i className="fas fa-user hide-sm"></i>{' '}Dashboard</Link></li>
             
             <li className="navbar__list-item">
                 <a onClick={logout} href="#!">
-                    <i className="fas fa-sign-out-alt"></i>{' '}
+                    <i className="fas fa-sign-out-alt hide-sm"></i>{' '}
                    <span> Logout</span>
                 </a>
             </li>
@@ -45,7 +45,6 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
             <div className="navbar__icon">
            < FaHandshake className="navbar-icon"/>
             <h1 className="navabr__name">
-          
                <Link to="/"> Travicio</Link>
             </h1>
            </div>

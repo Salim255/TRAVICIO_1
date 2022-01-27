@@ -14,7 +14,7 @@ const Landing = ({isAuthenticated}) => {
         <div className="dark-overlay">
           <div className="landing__inner">
             <h1 className="x-large worker">Work Connector</h1>
-            <p className="lead">
+            <p className="lead textSearch">
               Searching for workers in your area right now. No account needed.<br/>
               Want to advertise your skills or post a job offer? Then easy, just register above
             </p>

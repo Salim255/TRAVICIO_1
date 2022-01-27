@@ -38,11 +38,11 @@ const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
   </form>
   <button type="submit" className="btn filterBtn"  onClick={e =>handlChange(e) } >Search</button>
    <div className='searchItemMargin'>
-   { loading ? ' ': <Fragment>
+   { loading ? <Fragment></Fragment>: <Fragment>
    
-    <p className="lead">
+    <h2 className="lead">
       <i className="fab fa-connectdevelop"></i>
-      Workers available in your town</p>
+      Workers available in your area</h2>
       <div className="">
        {profiles.length > 0 ? (
          profiles.map(profile => (

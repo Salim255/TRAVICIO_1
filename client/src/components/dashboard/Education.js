@@ -10,19 +10,19 @@ const Education = ({ education, deleteEducation }) => {
         let educations;
         if(education){
             educations =  education.map(edu => (
-                <tr key={edu._id}>
-                    <td>{edu.school}</td> 
-                    <td className='hide-sm'>{edu.degree}</td>
-                    <td>
-                        <Moment format='YYY/MM/DD'>{edu.from}</Moment> - {''}
-                        {edu.to === null ? (' Now'): ( <Moment format='YYY/MM/DD'>{edu.to}</Moment>)
-                        }
-                    </td>
-                    <td>
-                        <button className='btn btn-danger' onClick={()=> deleteEducation(edu._id)}>Delete</button>
-                    </td>
-                </tr>
-            ));
+            <tr key={edu._id}>
+                <td>{edu.school}</td> 
+                <td className='hide-sm'>{edu.degree}</td>
+                <td>
+                    <Moment format='YYY/MM/DD'>{edu.from}</Moment> - {''}
+                    {edu.to === null ? (' Now'): ( <Moment format='YYY/MM/DD'>{edu.to}</Moment>)
+                    }
+                </td>
+                <td>
+                    <button className='btn btn-danger' onClick={()=> deleteEducation(edu._id)}>Delete</button>
+                </td>
+            </tr>
+        ));
         }
     
 

@@ -3,9 +3,15 @@
 }
 .createProfile {
   padding: 20rem;
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
 }
 .addExperience {
   padding: 20rem;
+  @include respond(tab-port) {
+    padding: 2rem;
+  }
 }
 
 .form {

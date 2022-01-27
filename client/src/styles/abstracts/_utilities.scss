@@ -16,6 +16,20 @@
   margin-bottom: 2rem;
 }
 
+/* Utilities */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  padding-top: 14rem;
+  margin-bottom: 3rem;
+  @include respond(tab-port) {
+    padding: 0 3rem;
+    padding-top: 5rem;
+    margin-bottom: 3rem;
+  }
+}
 .fontSize {
   font-size: 2rem;
 }
@@ -58,15 +72,6 @@
   color: #fff;
 }
 
-.container {
-  max-width: 1100px;
-  margin: auto;
-  overflow: hidden;
-  padding: 8rem 2rem 2rem 8rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
-}
-
 .text-primary {
   color: var(--primary-color);
 }
@@ -94,20 +99,44 @@ span {
   align-items: center;
   border-radius: 2rem;
   font-size: 2rem;
+  @include respond(tab-port) {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-gap: 3rem;
+
+    border-radius: 1rem;
+    font-size: 1.5rem;
+  }
 }
 
 .filterSerch {
   position: relative;
   top: 10%;
   left: 0%;
+  //margin-top: 10rem;
+  @include respond(tab-port) {
+    margin-top: 5rem;
+  }
 }
 
 .filterBtn {
   position: absolute;
   top: 22%;
   left: 45%;
+  //transform: translate(-20%, 20%);
+  margin-top: 5rem;
   background-color: black;
+  @include respond(tab-port) {
+    position: absolute;
+    top: 22%;
+    left: 42%;
+    margin-bottom: 1rem;
+    margin-top: 5rem;
+  }
 }
 .searchItemMargin {
-  margin-top: 10rem;
+  margin-top: 15rem;
+  @include respond(tab-port) {
+    margin-top: 20rem;
+  }
 }
