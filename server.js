@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const express = require('express');
-
 
 process.on('uncaughtException', err =>{
   console.log('UNCAUGHT EXCEPTION 💥 Shutting down...');
@@ -23,7 +21,7 @@ mongoose.connect(DB, {
     useFindAndModify: false,
     useUnifiedTopology: true
 }).then(() =>{
-    /* console.log('BD connection successful'); */
+    console.log('BD connection successful');
 });//The option for the decraptionss
 
 
@@ -32,7 +30,7 @@ mongoose.connect(DB, {
 //We start the server
 const port = process.env.PORT || 8000;
 const server = app.listen(port, () => {
-  /* console.log(`App runing on port ${port}...`); */
+  console.log(`App runing on port ${port}...`);
 });
 
 

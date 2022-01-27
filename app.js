@@ -1,8 +1,8 @@
 const express = require('express');
-const path = require('path');
 
 const app = express();
 const morgan = require('morgan');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler =  require('./controlers/errorControler');
@@ -22,9 +22,11 @@ app.use(express.json()); //will put the data coming from body in req object(pars
 app.use(express.static(`${__dirname}/public`));
 
 
+app.use(compression());//will compress all the files send to th eclient
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
- 
+  console.log(req.headers);
   
   next();
 });
@@ -41,16 +43,6 @@ app.all('*', (req, res, next) =>{
    next(new AppError(`Can't find ${req.originalUrl} on this server `, 404));
 });//for all http method, for unndefined routes
 
-//Serv static asset in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build')); //3de middle were
- 
-  app.get('*', (req, res) =>{
-      res.sendFile(path.resolve(__dirname, 'static', 'build', 'index.html'));
-  })
-}
 
 app.use(globalErrorHandler);
-
-
 module.exports = app;
