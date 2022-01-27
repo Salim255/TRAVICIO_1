@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 const morgan = require('morgan');
@@ -40,6 +41,14 @@ app.all('*', (req, res, next) =>{
    next(new AppError(`Can't find ${req.originalUrl} on this server `, 404));
 });//for all http method, for unndefined routes
 
+//Serv static asset in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build')); //3de middle were
+ 
+  app.get('*', (req, res) =>{
+      res.sendFile(path.resolve(__dirname, 'static', 'build', 'index.html'));
+  })
+}
 
 app.use(globalErrorHandler);
 

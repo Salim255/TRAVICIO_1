@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const express = require('express');
-const path = require('path');
+
 
 process.on('uncaughtException', err =>{
   console.log('UNCAUGHT EXCEPTION 💥 Shutting down...');
@@ -26,14 +26,7 @@ mongoose.connect(DB, {
     /* console.log('BD connection successful'); */
 });//The option for the decraptionss
 
-//Serv static asset in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build')); //3de middle were
- 
-  app.get('*', (req, res) =>{
-      res.sendFile(path.resolve(__dirname, 'static', 'build', 'index.html'));
-  })
-}
+
 
 //console.log(app.get('env'));
 //We start the server
