@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 const morgan = require('morgan');
-//const compression = require('compression');
+const compression = require('compression');
 const globalErrorHandler =  require('./controlers/errorControler');
 const AppError = require('./utils/appError');
 
@@ -31,7 +31,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 
-//app.use(compression());//will compress all the files send to th eclient
+app.use(compression());//will compress all the files send to th eclient
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
