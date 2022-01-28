@@ -13,7 +13,13 @@ const ProfileItem = ({ profile: { user: {_id, firstName, avatar},
  <div>
  <h2>{firstName}</h2>
   <p>{jobStatus} { company && <span> at {company}</span>}</p>
-  <p className="my-1">{location && <span>{location}</span>}</p>
+  <p className="my-1">{location && <span>{location}</span>}<br/>
+  <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+    <i class="far fa-star"></i>
+  </p>
+  
   <Link to={`/profiles/${_id}`} className='btn btn-primary'>
       View Profile
   </Link>

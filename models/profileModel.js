@@ -16,6 +16,11 @@ const profileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
    }, 
+   rating:{
+        type: Number,
+        min:1,
+        max: 5
+   },
    slug: String,
   
   
@@ -147,10 +152,32 @@ const profileSchema = new mongoose.Schema({
 
   });
 
+
+  profileSchema.statics.calcAverageRating = async function(profileId){
+    const stats = await this.aggregate([
+      {
+        $match:{
+          profile: profileId
+        } 
+       },
+       {   
+         $group:{
+          _id: '$profile',
+          nRating:{$sum: 1},
+          avgRating:{$avg:'$rating'}
+        }
+      }
+   
+    ]);
+    console.log('====================================');
+    console.log(stats);
+    console.log('====================================');
+  }
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
   profileSchema.pre('save', function(next) {
       //this.slug = slugify(this.name, {lower: true});
-      
+      this.constructor. profileSchema.calcAverageRating(this.profile);
+     
       next();
   });
 
