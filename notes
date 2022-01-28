@@ -23,3 +23,5 @@ rm -rf .git
 "proxy": "http://localhost:600"
 
 npm i uuid
+
+  /*"start:prod": "NODE_ENV=production node server.js", */
