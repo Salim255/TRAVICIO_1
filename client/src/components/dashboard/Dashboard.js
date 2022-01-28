@@ -14,7 +14,7 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
 
     useEffect(() =>{
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
 
     return loading && profile === null ? <Spinner/>: <Fragment>
         <div className='dashboard'>
@@ -28,8 +28,8 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
                </div>
 
                 {profile !== null ? <Fragment><DashboardAction/>
-                <Experience experience={profile.experience}/>
-                <Education education={profile.education}/>
+               {profile.experience && <Experience experience={profile.experience}/>}
+                {profile.education&&<Education education={profile.education}/>}
                 </Fragment> : <Fragment><p>You have not yet setup a profile, please add some info</p>
                 <Link to='/create-profile' className="btn btn-primary my-1">
                     Create Profile

@@ -37,7 +37,7 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
             jobMinimumPay: loading || !profile.jobMinimumPay ? '': profile.jobMinimumPay,
            
         })
-    }, [getCurrentProfile()])
+    }, [])
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value }) 
     
