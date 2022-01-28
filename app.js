@@ -4,9 +4,9 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const compression = require('compression');
-
-const AppError = require('./utils/appError');
 const globalErrorHandler =  require('./controlers/errorControler');
+const AppError = require('./utils/appError');
+
 
 const profileRouter = require('./routes/profileRoute');
 const userRouter = require('./routes/userRoute');
