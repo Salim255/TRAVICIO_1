@@ -20,7 +20,7 @@ exports.getAllProiles = catchAsync(async (req, res, next) => {
     .sort()
     .limitFields().paginate();
     
-    const profiles = await features.query.populate('user', ['firstName', 'avatar']);
+    const profiles = await features.query.populate('user', ['firstName','lastName' ,'avatar', 'email']);
     //Send response
      res.status(200).json({
        status: 'success',
@@ -181,7 +181,7 @@ exports.getProfile = catchAsync(async(req, res, next) => {
  //Get profiel by user id
  exports.getProfileById = catchAsync(async(req, res, next) => {
   
-  const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['firstName', 'avatar']);
+  const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['firstName','lastName' ,'avatar', 'email']);
      if(!profile){
        return next(new AppError('No profile found with that ID', 404))
      }

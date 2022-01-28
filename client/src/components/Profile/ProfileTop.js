@@ -1,9 +1,14 @@
-import React from 'react';
+import React , {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const ProfileTop = ({profile: { jobStatus, company, location, website, social, user: {firstName, avatar}}}) => {
-   
-  return <div className='block '>
+const ProfileTop = ({profile: { jobStatus, company, location, website, social,phone, user: {firstName,lastName, avatar, email}}}) => {
+    
+    const [popUp, setPopUp] = useState(false);
+
+    const onClick =() =>{
+        setPopUp(!popUp);
+    }
+  return <><div className='block '>
       <div className='profile-container '>
       <div className=" bg-primary ">
         <img
@@ -14,7 +19,12 @@ const ProfileTop = ({profile: { jobStatus, company, location, website, social, u
         
         <h1 className="large">{firstName}</h1>
         <p className="lead">{jobStatus} {company && <span> at {company} </span>}</p>
-        <p className="lead">{location && <span>{location}</span>}</p>
+       
+       <p className="lead">{location && <span>{location}</span>}</p>
+       <p className='contactifo' onClick={()=> onClick()}>Contact info
+            
+       </p>
+      
         <div className="icons paddingicon ">
         <i className="fab fa-twitter fa-2x"></i>
         <i className="fab fa-twitter fa-2x"></i>
@@ -65,9 +75,24 @@ const ProfileTop = ({profile: { jobStatus, company, location, website, social, u
             }
             
         </div>
-</div>
-      </div>
+     </div>
+    </div>
+    {popUp&&(<div className='popUpInfo'>
+    <div className='divName'> 
+        <p className="large divName__name">{firstName}{' '}{lastName}</p>
+        <i class="fas fa-times divName__icon" onClick={() => onClick()}></i>
+    </div>
+    <div className='contacs'>
+        <p className='contacs__text'>Contact Info</p>
+         <div className='contacs__info'>
+           <p className=""> <i class="fas fa-phone-volume"></i> {' '}Phone: {' '} {phone}</p>
+          <p className=""><i class="far fa-envelope"></i> {' '}Email: {' '}{email}</p>
+         </div>
+    </div>
+</div>)}
   </div>
+  
+</>
 };
 
 ProfileTop.propTypes = {

@@ -176,7 +176,7 @@ const profileSchema = new mongoose.Schema({
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
   profileSchema.pre('save', function(next) {
       //this.slug = slugify(this.name, {lower: true});
-      this.constructor. profileSchema.calcAverageRating(this.profile);
+      /* this.constructor. profileSchema.calcAverageRating(this.profile); */
      
       next();
   });

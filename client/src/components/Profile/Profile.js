@@ -28,6 +28,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
           <div className="profile-gride my-1">
               <ProfileTop profile={profile}/>
               <ProfileAbout profile={profile}/>
+             
               <div className="profile-exp bg-white p-2">
                   <h2 className="text-primary fontSize">Experience</h2>
                   {profile.experience&&profile.experience.length > 0 ? (<Fragment>

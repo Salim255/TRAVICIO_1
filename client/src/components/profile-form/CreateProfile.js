@@ -80,7 +80,7 @@ const CreateProfile =({ createProfile, history }) => {
                 <small className="form__form-text">Tell us a little about yourself</small>
                 </div>
                 <div className="form__form-group">
-                <textarea placeholder="A short bio of yourself" name="jobMinimumPay" value={jobMinimumPay} onChange={e => onChange(e)}></textarea>
+                <textarea placeholder="Job minimum Pay" name="jobMinimumPay" value={jobMinimumPay} onChange={e => onChange(e)}></textarea>
                 <small className="form__form-text">Minimum Pay /h</small>
                 </div>
                 <div className="form__form-group">
