@@ -32,7 +32,7 @@ const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
                     < AiIcons.AiOutlineSearch className="search-section__icon" />
                 </Link>
       <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
-      <input type="text" name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/> 
+      {/* <input type="text" name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  */}
      </div>
      
   </form>

@@ -32,6 +32,9 @@
 
   @include respond(tab-port) {
     font-size: 1.5rem;
+    &__buttons {
+      margin-top: -1rem;
+    }
   }
 }
 .landing-inner {
@@ -60,4 +63,10 @@
   @include respond(tab-port) {
     font-size: 1.2rem;
   }
+}
+
+.travicio {
+  font-size: 5rem;
+  font-weight: 700;
+  color: rgb(173, 117, 33);
 }

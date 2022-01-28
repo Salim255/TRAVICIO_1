@@ -10,7 +10,7 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
   
     const authLinks = ( 
         <ul className="navbar__list">
-             <li className="navbar__list-item"><Link to="/profiles">  
+             <li className="navbar__list-item hide-sm"><Link to="/profiles">  
              Workers
                </Link></li>
              <li className="navbar__list-item">
@@ -31,7 +31,7 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
     
         const guestLinks = (  
         <ul className="navbar__list">
-             <li className="navbar__list-item"><Link to="/profiles">  
+             <li className="navbar__list-item hide-sm"><Link to="/profiles">  
              Workers
                </Link></li>
             
@@ -43,8 +43,9 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
     return (
         <nav className="navbar bg-dark">
             <div className="navbar__icon">
-           < FaHandshake className="navbar-icon"/>
-            <h1 className="navabr__name">
+            <Link to="/">  < FaHandshake className="navbar-icon"/> </Link>
+            <h1 className="navabr__name hide-sm">
+            
                <Link to="/"> Travicio</Link>
             </h1>
            </div>

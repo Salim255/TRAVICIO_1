@@ -24,7 +24,9 @@
       box-shadow: 0 1rem 2rem rgba($color: #3b3939, $alpha: 1);
       width: 80.5%;
     }
-    @include respond(tab-land) {
+    @include respond(tab-port) {
+      font-size: 1.2rem;
+      padding: 1rem;
       width: 90%;
       &:hover {
         box-shadow: 0 1rem 2rem rgba($color: #998e8e, $alpha: 1);
@@ -62,14 +64,15 @@
     background-color: rgba($color: $color-gray-light, $alpha: 1);
     color: $color-black;
     &::-webkit-input-placeholder {
-      font-weight: 100;
+      font-weight: 200;
       color: $color-gray-dark-2;
       font-size: 2rem;
     }
     @include respond(phone) {
-      font-size: 1.3rem;
+      font-size: 1.8rem;
       padding-left: 0.5rem;
       margin-right: 0.5rem;
+      //padding-top: 0.8rem;
     }
   }
   &__btn {
