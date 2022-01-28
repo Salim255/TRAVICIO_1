@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const express = require('express');
+const path = require('path');
 
 process.on('uncaughtException', err =>{
   console.log('UNCAUGHT EXCEPTION 💥 Shutting down...');
@@ -21,16 +23,27 @@ mongoose.connect(DB, {
     useFindAndModify: false,
     useUnifiedTopology: true
 }).then(() =>{
-    console.log('BD connection successful');
+   /*  console.log('BD connection successful'); */
 });//The option for the decraptionss
+
 
 
 
 //console.log(app.get('env'));
 //We start the server
 const port = process.env.PORT || 8000;
+
+if(process.env.NODE_ENV === 'production'){
+  //Set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  })
+}
+
 const server = app.listen(port, () => {
-  console.log(`App runing on port ${port}...`);
+  /* console.log(`App runing on port ${port}...`); */
 });
 
 
@@ -43,8 +56,6 @@ process.on('unhandledRejection', err =>{
   });
   
 });
-console.log('====================================');
-console.log('nu1');
-console.log('====================================');
+
 
 

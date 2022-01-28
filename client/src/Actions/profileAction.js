@@ -36,7 +36,7 @@ export const getProfiles = () => async dispatch  => {
             payload: res.data.data.profiles
         })
     } catch (error) {
-        console.log(error);
+        
         dispatch({
             type: PROFILE_ERROR,
             payload: { message: error.response, status: error.response}
@@ -49,9 +49,7 @@ export const getFilteredProfiles = option => async dispatch  => {
    
     dispatch({ type: CLEAR_PROFILE});
     //const {location, jobStatus} = option;
-    console.log('====================================');
-    console.log('Hello from so far', option);
-    console.log('====================================');
+ 
     try {
         
         let res
@@ -68,15 +66,13 @@ export const getFilteredProfiles = option => async dispatch  => {
         }else{
            res = await axios.get(`/api/v1/profiles/`);
         };
-        console.log('====================================');
-        console.log(res);
-        console.log('====================================');
+     
         dispatch({
             type: GET_PROFILES,
             payload: res.data.data.profiles
         })
     } catch (error) {
-        console.log(error);
+      
         dispatch({
             type: PROFILE_ERROR,
             payload: { message: error.response, status: error.response}
@@ -89,7 +85,7 @@ export const getFilteredProfiles = option => async dispatch  => {
 export const getProfileById = userId => async dispatch  => {
     try {
         const res = await axios.get(`/api/v1/profiles/user/${userId}`);
-        console.log(res.data.data.profile);
+       
         dispatch({
             type: GET_PROFILE,
             payload: res.data.data.profile
@@ -114,8 +110,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
                'Content-Type': 'application/json'
             }
         }
-       /*  console.log(formData);
-        const res = await axios.post('/api/v1/profiles', formData, config); */
+      
 
         const res = await axios({
             method:'POST',
@@ -139,7 +134,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
         }
     } catch (error) {
        //const errors = error.response.data.errors;
-       console.log("🌓🌓🌓 create profile",error);
+      
        const errors = error.response.data;
        let list = [];
        
@@ -174,7 +169,7 @@ export const addExperience = (formData, history) => async dispatch =>{
        
       
         const res = await axios.put('/api/v1/profiles/experience', formData, config);
-        console.log('🌓🌓formData', res.data.data.profile);
+      
         dispatch({
             type: UPDATE_PROFILE,
             payload: res.data.data.profile
@@ -188,7 +183,7 @@ export const addExperience = (formData, history) => async dispatch =>{
     } catch (error) {
        //const errors = error.response.data.errors;
           //const errors = error.response.data.errors;
-          console.log("🌓🌓err", error);
+         
           const errors = error.response.data;
           let list = [];
           Object.keys(errors).forEach(key => {
@@ -253,7 +248,7 @@ export const addEducation = (formData, history) => async dispatch =>{
        
       
         const res = await axios.put('/api/v1/profiles/education', formData, config);
-        console.log("🌍🌍🌍education", res)
+       
         dispatch({
             type: UPDATE_PROFILE,
             payload: res.data.data.profile
@@ -292,9 +287,9 @@ export const addEducation = (formData, history) => async dispatch =>{
 //Delete Education
 export const deleteEducation = id => async dispatch =>{
    try {
-       console.log("DELETE EDU🌍🌍🌍");
+    
        const res = await axios.delete(`/api/v1/profiles/education/${id}`);
-       console.log("DELETE EDU🌍🌍🌍", res);
+     
        dispatch({
            type: UPDATE_PROFILE,
            payload: res.data.data.profile
