@@ -30,7 +30,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
               <ProfileAbout profile={profile}/>
               <div className="profile-exp bg-white p-2">
                   <h2 className="text-primary fontSize">Experience</h2>
-                  {profile.experience.length > 0 ? (<Fragment>
+                  {profile.experience&&profile.experience.length > 0 ? (<Fragment>
                       {profile.experience.map(exp => (
                           <ProfileExperience key={exp._id} experience={exp} />
                       ))}
@@ -38,7 +38,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
               </div>
               <div className="profile-edu borderRadb bg-white p-2">
                   <h2 className="text-primary fontSize">Education</h2>
-                  {profile.education.length > 0 ? (<Fragment>
+                  {profile.education && profile.education.length > 0 ? (<Fragment>
                       {profile.education.map(edu => (
                           <ProfileEducation key={edu._id} education={edu} />
                       ))}
