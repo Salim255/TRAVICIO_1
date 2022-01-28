@@ -36,7 +36,7 @@ const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
      </div>
      
   </form>
-  <button type="submit" className="btn filterBtn"  onClick={e =>handlChange(e) } >Search</button>
+{/*   <button type="submit" className="btn filterBtn"  onClick={e =>handlChange(e) } >Search</button> */}
    <div className='searchItemMargin'>
    { loading ? <Fragment></Fragment>: <Fragment>
    
