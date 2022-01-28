@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const express = require('express');
-const path = require('path');
+
 
 process.on('uncaughtException', err =>{
   console.log('UNCAUGHT EXCEPTION 💥 Shutting down...');
@@ -33,14 +33,7 @@ mongoose.connect(DB, {
 //We start the server
 const port = process.env.PORT || 8000;
 
-if(process.env.NODE_ENV === 'production'){
-  //Set static folder
-  app.use(express.static('client/build'));
 
-  app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
-}
 
 const server = app.listen(port, () => {
   /* console.log(`App runing on port ${port}...`); */
