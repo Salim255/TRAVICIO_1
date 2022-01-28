@@ -40,14 +40,6 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/posts', postRouter);
 
-
-
-app.all('*', (req, res, next) =>{
-   next(new AppError(`Can't find ${req.originalUrl} on this server `, 404));
-});//for all http method, for unndefined routes
-
-
-app.use(globalErrorHandler);
 if(process.env.NODE_ENV === 'production'){
   //Set static folder
   app.use(express.static('client/build'));
@@ -56,4 +48,13 @@ if(process.env.NODE_ENV === 'production'){
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
   })
 };
+
+app.all('*', (req, res, next) =>{
+   next(new AppError(`Can't find ${req.originalUrl} on this server `, 404));
+});//for all http method, for unndefined routes
+
+
+app.use(globalErrorHandler);
+
+
 module.exports = app;
