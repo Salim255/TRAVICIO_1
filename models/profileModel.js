@@ -149,8 +149,13 @@ const profileSchema = new mongoose.Schema({
       default: Date.now(),
       select:false,
     },
-
-  });
+    
+  },
+  {
+    toJSON:{virtuals: true},
+    toObject:{virtuals: true}
+  }
+  );
 
 
   profileSchema.statics.calcAverageRating = async function(profileId){
