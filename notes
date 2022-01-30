@@ -25,3 +25,14 @@ rm -rf .git
 npm i uuid
 
   /*"start:prod": "NODE_ENV=production node server.js", */
+
+
+
+  ///////deply moment
+
+   "start": "node server.js",
+    "devv": "nodemon server.js",
+     
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run start\" \"npm run client \"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"

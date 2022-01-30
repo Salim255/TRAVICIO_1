@@ -11,6 +11,7 @@ const AppError = require('./utils/appError');
 const profileRouter = require('./routes/profileRoute');
 const userRouter = require('./routes/userRoute');
 const postRouter = require('./routes/postRoute');
+const reviewRouter = require('./routes/reviewRoute');
 
 
 //Mddleware
@@ -39,6 +40,7 @@ app.use('/api/v1/profiles', profileRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/posts', postRouter);
+app.use('/api/v1/reviews', reviewRouter);
 
 if(process.env.NODE_ENV === 'production'){
   //Set static folder

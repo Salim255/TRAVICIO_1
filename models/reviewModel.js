@@ -36,6 +36,18 @@ const reviewSchema =new mongoose.Schema(
   }
 );
 
+reviewSchema.pre(/^find/, function(next){
+    this.populate({
+        path: 'profile',
+        select: 'jobStatus'
+    }).populate({
+        path: 'user',
+        select: 'firstName lastName avatar'
+
+    });
+    next();
+});
+
 const Review  = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
