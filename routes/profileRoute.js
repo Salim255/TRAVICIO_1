@@ -4,6 +4,7 @@ const router = express.Router();
 
 const authControler = require('../controlers/authControler');
 const profileControler = require('../controlers/profileControler');
+const reviewControler =require('../controlers/reviewControler');
 
 //params middleware
 //router.param('id',profileControler.checkId);
@@ -45,4 +46,11 @@ router.route('/experience/:exp_id')
 
 router.route('/education/:edu_id')
     .delete(authControler.protect, profileControler.deleteEducation);
+
+//POST /profile/profilId/reviews
+//GET/profile/profileId/rewiews
+//GET/profile/profileId/rewiews/reviewId
+router.route('/:profileId/reviews')
+   .post(authControler.protect, authControler.restrictTo('user'), reviewControler.createReview);
+   
 module.exports = router;

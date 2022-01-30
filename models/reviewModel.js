@@ -56,3 +56,8 @@ reviewSchema.pre(/^find/, function(next){
 const Review  = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
+
+
+//POST /profile/profilId/reviews
+//GET/profile/profileId/rewiews
+//GET/profile/profileId/rewiews/reviewId
