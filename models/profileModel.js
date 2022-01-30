@@ -157,17 +157,24 @@ const profileSchema = new mongoose.Schema({
   }
   );
 
+//Virtual populate middleware
+profileSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'profile',//The filed in the other model"in the reviewmodle
+  localField: '_id'
+} );
 
-  profileSchema.statics.calcAverageRating = async function(profileId){
+
+  profileSchema.statics.calcAverageRating = async function(reviewId){
     const stats = await this.aggregate([
       {
         $match:{
-          profile: profileId
+          review: reviewId
         } 
        },
        {   
          $group:{
-          _id: '$profile',
+          _id: '$rating',
           nRating:{$sum: 1},
           avgRating:{$avg:'$rating'}
         }
@@ -181,7 +188,7 @@ const profileSchema = new mongoose.Schema({
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
   profileSchema.pre('save', function(next) {
       //this.slug = slugify(this.name, {lower: true});
-      /* this.constructor. profileSchema.calcAverageRating(this.profile); */
+      /* his.constructor. profileSchema.calcAverageRating(this.profile); */ 
      
       next();
   });

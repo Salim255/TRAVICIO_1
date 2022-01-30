@@ -166,7 +166,7 @@ exports.createProfile = catchAsync(async (req, res, next) => {
 
 exports.getProfile = catchAsync(async(req, res, next) => {
  
-  const profile = await Profile.findById(req.params.id);
+  const profile = await Profile.findById(req.params.id).populate('reviews');
      if(!profile){
        return next(new AppError('No profile found with that ID', 404))
      }
