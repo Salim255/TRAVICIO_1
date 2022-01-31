@@ -158,6 +158,9 @@ const profileSchema = new mongoose.Schema({
   }
   );
 
+profileSchema.index({jobMinimumPay: 1, ratingsAverage: -1});
+profileSchema.index({slug: 1});
+
 //Virtual populate middleware
 profileSchema.virtual('reviews', {
   ref: 'Review',
@@ -167,8 +170,7 @@ profileSchema.virtual('reviews', {
 
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
   profileSchema.pre('save', function(next) {
-      //this.slug = slugify(this.name, {lower: true});
-      /* his.constructor. profileSchema.calcAverageRating(this.profile); */ 
+      this.slug = slugify(this.name, {lower: true});
      
       next();
   });
