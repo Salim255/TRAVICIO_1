@@ -1,6 +1,7 @@
 //review /rating/ created at /ref to profile and user
 
 const mongoose = require('mongoose');
+const Profile = require('./profileModel');
 
 const reviewSchema =new mongoose.Schema(
     {
@@ -53,6 +54,44 @@ reviewSchema.pre(/^find/, function(next){
     next();
 }); 
 
+//Static methodes
+reviewSchema.statics.calcAverageRatings = async function(profileId){
+   
+    const stats = await this.aggregate([
+        {
+          $match:{
+            profile: profileId
+          } 
+         },
+         {   
+           $group:{
+            _id: '$profile',
+            nRating:{$sum: 1},
+            avgRating:{$avg:'$rating'}
+          }
+        } 
+     
+      ]);
+      console.log(stats);
+     
+      await Profile.findByIdAndUpdate(profileId,{
+        ratingsQuantity:stats[0].nRating,
+        ratingsAverage:stats[0].avgRating
+
+      } )
+}
+
+  //DOCUMENT MIDDLEWARE: runs before .save() and create()
+  reviewSchema.post('save', function(){//post dont use next()
+      //this.slug = slugify(this.name, {lower: true});
+      this.constructor.calcAverageRatings(this.profile);
+      
+  })
+ 
+
+
+
+  
 const Review  = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;
