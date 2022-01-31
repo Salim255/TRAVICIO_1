@@ -51,8 +51,7 @@ export const getProfiles = () => async dispatch  => {
 export const getFilteredProfiles = option => async dispatch  => {
    
     dispatch({ type: CLEAR_PROFILE});
-    //const {location, jobStatus} = option;
- 
+   
     try {
         
         let res
@@ -69,7 +68,8 @@ export const getFilteredProfiles = option => async dispatch  => {
         }else{
            res = await axios.get(`/api/v1/profiles/`);
         };
-     
+        //const {location, jobStatus} = option;
+   
         dispatch({
             type: GET_PROFILES,
             payload: res.data.data.profiles

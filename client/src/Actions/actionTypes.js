@@ -34,3 +34,9 @@ export const GET_POST = "GET_POST"
 
 export const ADD_COMMENT = "ADD_COMMENT"
 export const REMOVE_COMMENT = "REMOVE_COMMENT"
+
+export const GET_REVIEW = "GET_REVIEW"
+export const GET_REVIEWS = "GET_REVIEWS"
+export const ADD_REVIEW = "ADD_REVIEW"
+export const REMOVE_REVIEW = "REMOVE_REVIEW"
+export const REVIEW_ERROR = "REVIEW_ERROR"

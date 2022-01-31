@@ -1,7 +1,9 @@
 import React , {useState} from 'react';
 import PropTypes from 'prop-types';
+import Rating from '../layout/Rating';
+import { Link } from 'react-router-dom';
 
-const ProfileTop = ({profile: { jobStatus, company, location, website, social,phone, user: {firstName,lastName, avatar, email}}}) => {
+const ProfileTop = ({profile: { _id,jobStatus, company, location, website, social,phone, user: {firstName,lastName, avatar, email}}}) => {
     
     const [popUp, setPopUp] = useState(false);
 
@@ -21,6 +23,11 @@ const ProfileTop = ({profile: { jobStatus, company, location, website, social,ph
         <p className="lead">{jobStatus} {company && <span> at {company} </span>}</p>
        
        <p className="lead">{location && <span>{location}</span>}</p>
+
+       <Link to={`/add-feedback/${_id}/reviews`} className='feedback' >
+           Leave a Feedback      
+       </Link>
+
        <p className='contactifo' onClick={()=> onClick()}>Contact info
             
        </p>

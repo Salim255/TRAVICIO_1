@@ -20,7 +20,7 @@ exports.getAllProiles = catchAsync(async (req, res, next) => {
     .sort()
     .limitFields().paginate();
     
-    const profiles = await features.query.populate('user', ['firstName','lastName' ,'avatar', 'email']).explain();
+    const profiles = await features.query.populate('user', ['firstName','lastName' ,'avatar', 'email']);
     //Send response
      res.status(200).json({
        status: 'success',

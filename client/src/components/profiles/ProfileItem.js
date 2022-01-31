@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {FaStar} from 'react-icons/fa'
 
-const ProfileItem = ({ profile: { user: {_id, firstName, avatar},
+const ProfileItem = ({ profile: { ratingsAverage,user: {_id, firstName, avatar},
     jobStatus,
     company,
     location,
     }}) => {
-    
+
+  const rating =Math.round( ratingsAverage);
+
+  console.log(rating);
   return <div className='profile bg-light'>
   <img src={avatar} alt="" className="round-img" />
  <div>
  <h2>{firstName}</h2>
   <p>{jobStatus} { company && <span> at {company}</span>}</p>
   <p className="my-1">{location && <span>{location}</span>}<br/>
-  <i class="far fa-star"></i>
-    <i class="far fa-star"></i>
-    <i class="far fa-star"></i>
-    <i class="far fa-star"></i>
+
+  {[...Array(5)].map((star, index) =>{
+    return <FaStar size={20}  color={rating<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
+  })}
+   
+ 
   </p>
   
   <Link to={`/profiles/${_id}`} className='btn btn-primary'>

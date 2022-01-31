@@ -8,10 +8,8 @@ import  { getProfiles } from '../../Actions/profileAction';
 const Profiles = ({ getProfiles, profile:{ profiles, loading}}) => {
   
   useEffect(() => {
-   
+    
     getProfiles();
-    
-    
   },[getProfiles] );
   
   return <Fragment>
@@ -25,7 +23,6 @@ const Profiles = ({ getProfiles, profile:{ profiles, loading}}) => {
        {profiles.length > 0 ? (
          profiles.map(profile => (
           
-           
          
            <ProfileItem key={profile._id} profile={profile}/>
          ))

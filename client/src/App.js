@@ -20,6 +20,7 @@ import Shape from './components/layout/Shape';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 import PrivateRoute from './components/routing/PrivateRoute';
+import Rating from './components/layout/Rating';
 
 //Redux
 import { Provider } from 'react-redux';//To connect react and redux
@@ -56,6 +57,7 @@ const App = () => {
               
               <Route exact path='/login' component={ Login }/>
               <Route exact path='/profiles' component={ Profiles }/>
+      
               <Route exact path='/profiles/:id' component={ Profile }/>
               <Route exact path='/search' component={ Search }/>
               <PrivateRoute exact path='/dashboard' component={ Dashboard }/>
@@ -65,6 +67,7 @@ const App = () => {
               <PrivateRoute exact path='/create-profile' component={ CreateProfile }/>
               <PrivateRoute exact path='/posts' component={ Posts }/>
               <PrivateRoute exact path='/posts/:id' component={ Post }/>
+              <PrivateRoute exact path='/add-feedback/:id/reviews' component={ Rating }/>
             </Switch>
           </section>
         </Fragment>
