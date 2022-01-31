@@ -73,12 +73,19 @@ reviewSchema.statics.calcAverageRatings = async function(profileId){
      
       ]);
       console.log(stats);
-     
-      await Profile.findByIdAndUpdate(profileId,{
-        ratingsQuantity:stats[0].nRating,
-        ratingsAverage:stats[0].avgRating
-
-      } )
+      if(stats.length > 0){
+        await Profile.findByIdAndUpdate(profileId,{
+          ratingsQuantity:stats[0].nRating,
+          ratingsAverage:stats[0].avgRating
+  
+        } );
+      }else{
+        await Profile.findByIdAndUpdate(profileId,{
+          ratingsQuantity:0,
+        ratingsAverage: 4.5
+      });
+      }
+      
 }
 
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
@@ -90,8 +97,22 @@ reviewSchema.statics.calcAverageRatings = async function(profileId){
  
 
 
-
+//findByIdAndUpdate
+//findByIdAndDelete
+reviewSchema.pre(/^findOneAnd/, async function(next){
   
+    if(this.r){
+      this.r = await this.findOne();
+    }
+  next();
+})
+  
+reviewSchema.post(/^findOneAnd/, async function(){
+ 
+  if(this.r){await this.r.constructor.calcAverageRatings(this.r.profile);}
+});
+
+
 const Review  = mongoose.model('Review', reviewSchema);
 
 module.exports = Review;

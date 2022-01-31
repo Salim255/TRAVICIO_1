@@ -164,27 +164,6 @@ profileSchema.virtual('reviews', {
   localField: '_id'
 } );
 
-
-  profileSchema.statics.calcAverageRating = async function(reviewId){
-    const stats = await this.aggregate([
-      {
-        $match:{
-          review: reviewId
-        } 
-       },
-       {   
-         $group:{
-          _id: '$rating',
-          nRating:{$sum: 1},
-          avgRating:{$avg:'$rating'}
-        }
-      }
-   
-    ]);
-    console.log('====================================');
-    console.log(stats);
-    console.log('====================================');
-  }
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
   profileSchema.pre('save', function(next) {
       //this.slug = slugify(this.name, {lower: true});
