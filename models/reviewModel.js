@@ -37,6 +37,8 @@ const reviewSchema =new mongoose.Schema(
   }
 );
 
+reviewSchema.index({profile: 1, user: 1}, {unique: true});
+
 reviewSchema.pre(/^find/, function(next){
    /*  this.populate({
         path: 'profile',
@@ -72,7 +74,7 @@ reviewSchema.statics.calcAverageRatings = async function(profileId){
         } 
      
       ]);
-      console.log(stats);
+      
       if(stats.length > 0){
         await Profile.findByIdAndUpdate(profileId,{
           ratingsQuantity:stats[0].nRating,
