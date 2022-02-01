@@ -22,10 +22,7 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,
     <p className="my-1">
      {text}
     </p>
-    <i class="far fa-star"></i>
-    <i class="far fa-star"></i>
-    <i class="far fa-star"></i>
-    <i class="far fa-star"></i>
+   
      <p className="post-date">
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
     </p>

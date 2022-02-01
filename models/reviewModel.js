@@ -57,6 +57,17 @@ reviewSchema.pre(/^find/, function(next){
     next();
 }); 
 
+reviewSchema.pre('save', function(next) {  
+
+      this.populate({
+        path: 'user',
+        select: 'firstName lastName avatar'
+      
+    });
+    next();
+  }
+);
+
 //Static methodes
 reviewSchema.statics.calcAverageRatings = async function(profileId){
    

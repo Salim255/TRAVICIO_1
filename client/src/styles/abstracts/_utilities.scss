@@ -98,25 +98,34 @@ span {
   grid-gap: 2rem;
   align-items: center;
   border-radius: 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   @include respond(tab-port) {
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-gap: 3rem;
-
     border-radius: 1rem;
     font-size: 1.5rem;
   }
 }
 
 .filterSerch {
+  display: grid;
+  //grid-template-columns: 2fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2rem;
   position: relative;
   top: 10%;
   left: 0%;
-  //margin-top: 10rem;
+  margin-top: 10rem;
   @include respond(tab-port) {
     margin-top: 5rem;
   }
+  @include respond(phone) {
+    margin-top: 10rem;
+  }
+}
+.marginInput {
+  margin-top: 4rem;
 }
 
 .filterBtn {

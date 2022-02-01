@@ -15,9 +15,7 @@ export const getCurrentProfile = () => async dispatch  => {
             payload: res.data.data.profile
         })
     } catch (error) {
-        console.log('====================================');
-        console.log(error);
-        console.log('====================================');
+     
         dispatch({
             type: PROFILE_ERROR,
             payload: { message: error.response.statusText, status: error.response.status}

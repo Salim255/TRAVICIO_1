@@ -11,7 +11,8 @@ export const getAllReviews = () => async dispatch  => {
         dispatch({
             type: GET_REVIEWS,
             payload: res.data.data.reviews
-        })
+        });
+       
     } catch (error) {
        
         dispatch({
@@ -25,7 +26,7 @@ export const getAllReviews = () => async dispatch  => {
  export const getProileReviews = profileId => async dispatch  => {
     try {
         const res = await axios.get(`/api/v1/profiles/${profileId}/reviews`);
-       console.log(res);
+      
         dispatch({
             type: GET_REVIEWS,
             payload: res.data.data.reviews
@@ -41,7 +42,7 @@ export const getAllReviews = () => async dispatch  => {
 
 
 export const leaveFeedBack = (profileId,FormData) => async dispatch  => {
-    console.log("Hello from leave", FormData);
+   
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -50,17 +51,38 @@ export const leaveFeedBack = (profileId,FormData) => async dispatch  => {
 
     try {
         const res = await axios.post(`/api/v1/profiles/${profileId}/reviews`, FormData, config);
-       console.log(res);
+      
         dispatch({
             type: ADD_REVIEW,
-            payload: res.data.data.reviews
-        })
+            payload: res.data.data.review
+        });
+        dispatch(setAlert('Review Created', 'success'));
     } catch (error) {
         console.log(error);
+        dispatch({
+            type: REVIEW_ERROR,
+            payload: { message: error.response, status: error.response}
+        })
+    }
+}; 
+
+export const deleteFeedBack = (reviewId) => async dispatch  => {
+    try {
+        await axios.delete(`/api/v1/reviews/${reviewId}`);
+      
+        dispatch({
+            type: REMOVE_REVIEW,
+            payload: reviewId
+        });
+    
+    } catch (error) {
+        
         dispatch({
             type: REVIEW_ERROR,
             payload: { message: error.response.statusText, status: error.response.status}
         })
     }
 }; 
+
+
 

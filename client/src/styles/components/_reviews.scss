@@ -3,3 +3,33 @@
   width: 100%;
   background-color: red;
 }
+
+.review {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 3rem;
+  align-items: center;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  @include respond(tab-port) {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 3rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+  }
+  &__delete {
+    margin-top: 10rem;
+    position: relative;
+    top: 20%;
+    left: 90%;
+    font-size: 1rem;
+    @include respond(tab-port) {
+      margin-top: 5rem;
+      position: relative;
+      top: 20%;
+      left: 80%;
+      font-size: 1rem;
+    }
+  }
+}

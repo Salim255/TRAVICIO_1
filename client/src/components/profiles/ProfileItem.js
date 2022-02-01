@@ -11,7 +11,6 @@ const ProfileItem = ({ profile: { ratingsAverage,user: {_id, firstName, avatar},
 
   const rating =Math.round( ratingsAverage);
 
-  console.log(rating);
   return <div className='profile bg-light'>
   <img src={avatar} alt="" className="round-img" />
  <div>

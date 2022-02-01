@@ -20,6 +20,7 @@ const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews}}) => {
       
        <div className="post-form" onSubmit={e => {e.preventDefault() ;
         leaveFeedBack(match.params.id, {review, rating});
+        
          setText('');
          setRating(null)}}>  
                       
