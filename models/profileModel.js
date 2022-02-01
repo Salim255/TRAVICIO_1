@@ -169,11 +169,11 @@ profileSchema.virtual('reviews', {
 } );
 
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
-  profileSchema.pre('save', function(next) {
+ /*  profileSchema.pre('save', function(next) {
       this.slug = slugify(this.name, {lower: true});
      
       next();
-  });
+  }); */
 
 
   const Profile = mongoose.model('Profile', profileSchema);

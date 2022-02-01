@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ReviewItem from '../reviews/ReviewItem';
 import {FaStar} from 'react-icons/fa'
 
-const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews}}) => {
+const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews, loading}}) => {
     console.log(match.params.id);
     const [review, setText] = useState('');
     const [rating, setRating] = useState(null);
@@ -54,6 +54,9 @@ const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews}}) => {
                     <input type="submit" className="btn btn-dark my-1" value="Submit" />
          </form>
          
+</div>
+<div className="bg-primary p-1 borderRad reviewsheader">
+                    <h2>All Reviews </h2>
 </div>
 {reviews.length > 0 ? (
          reviews.map(review => (

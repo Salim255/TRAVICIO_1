@@ -10,7 +10,7 @@ import ProfileItem from '../profiles/ProfileItem';
 import Test from './Test.js'
 
 
-const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
+const Search = ({ getFilteredProfiles,getProfiles,profile:{ profiles, loading}}) => {
     const [location, setLocation] = useState('');
     const [jobStatus, setJobStatus] = useState('');
   
@@ -21,7 +21,10 @@ const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
         
    }
   
-   
+   useEffect(() =>{
+     
+     getProfiles();
+   }, [])
   return <Fragment>
   <form  onSubmit={e => {e.preventDefault() ;
         setLocation('');
@@ -63,13 +66,13 @@ const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
                 </Link>
 {/*   <button type="submit" className="btn filterBtn"  onClick={e =>handlChange(e) } >Search</button> */}
    <div className='searchItemMargin'>
-   { loading ? <Fragment></Fragment>: <Fragment>
+   { loading ? <Spinner/>: <Fragment>
    
     <h2 className="lead">
       <i className="fab fa-connectdevelop"></i>
       Workers available in your area</h2>
       <div className="">
-       {profiles.length > 0 ? (
+       {!loading&&profiles.length > 0 ? (
          profiles.map(profile => (
           
            <ProfileItem key={profile._id} profile={profile}/>
@@ -81,6 +84,7 @@ const Search = ({ getFilteredProfiles,profile:{ profiles, loading}}) => {
 
 Search.propTypes = {
   getFilteredProfiles: PropTypes.func.isRequired,
+  getProfiles: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -88,4 +92,4 @@ const mapStateToProps = state => ({
     profile: state.profileReducer
   })
 
-export default connect(mapStateToProps, { getFilteredProfiles})(Search);
+export default connect(mapStateToProps, { getFilteredProfiles, getProfiles})(Search);

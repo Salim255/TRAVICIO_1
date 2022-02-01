@@ -25,7 +25,7 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
        <p className="lead">{location && <span>{location}</span>}</p>
 
        <Link to={`/add-feedback/${_id}/reviews`} className='feedback' >
-           Leave a Feedback      
+          Profile Reviews     
        </Link>
 
        <p className='contactifo' onClick={()=> onClick()}>Contact info
