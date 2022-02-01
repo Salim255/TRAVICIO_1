@@ -173,6 +173,9 @@
     color: $color-primary;
     transform: scale(1.2);
   }
+  @include respond(tab-port) {
+    left: 15%;
+  }
 }
 
 .popUpInfo {

@@ -1,6 +1,6 @@
 .search-sm {
   background-color: $color-gray-light;
-  width: 80%;
+  width: 100%;
 
   text-align: center;
   border-radius: 5rem;
@@ -14,7 +14,6 @@
 
   &:hover {
     box-shadow: 0 1rem 2rem rgba($color: #3b3939, $alpha: 1);
-    width: 80.5%;
   }
   & input {
     border: none;
@@ -37,12 +36,13 @@
   padding: 1rem 2rem;
   border-radius: 5rem;
   position: relative;
+
   //margin-bottom: -5rem;
   margin-top: 2rem;
   font-size: 2rem;
-  top: 10%;
-  left: 43%;
+  text-align: center;
   color: white;
+
   transition: all 0.2s;
   &:hover {
     box-shadow: 0rem 1rem 1rem rgba($color: #998e8e, $alpha: 1);
@@ -52,10 +52,8 @@
 
 .hide-bg {
   margin-bottom: 4rem;
-  position: relative;
-  top: 10%;
-  left: 10%;
-  //transform: translate(13%, -50%);
+  text-align: center;
+  width: 100%;
 }
 @include respond(tab-port) {
 }

@@ -59,11 +59,17 @@ const Search = ({ getFilteredProfiles,getProfiles,profile:{ profiles, loading}})
                         
                         
                     />
+                    
                 </div>
-            </form>
-            <Link to='/search' onClick={e =>handlChange(e) } className='searchBtn'>
+             
+             <br/>
+             <br/>
+             <br/>
+             <Link to='/search' onClick={e =>handlChange(e) } className='searchBtn'>
                     Search
-                </Link>
+            </Link>
+            </form>
+            
 {/*   <button type="submit" className="btn filterBtn"  onClick={e =>handlChange(e) } >Search</button> */}
    <div className='searchItemMargin'>
    { loading ? <Spinner/>: <Fragment>
