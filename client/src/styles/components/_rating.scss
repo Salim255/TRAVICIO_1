@@ -41,4 +41,17 @@ input[type='radio'] {
 }
 .starMargin {
   margin: 0.5rem;
+  @include respond(tab-port) {
+    margin: 1px;
+  }
+}
+
+.backProfile {
+  background-color: $color-gray-dark;
+  padding: 1rem 1rem;
+  border-radius: 5rem;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  color: white;
 }

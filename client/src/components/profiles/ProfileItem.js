@@ -19,7 +19,7 @@ const ProfileItem = ({ profile: { ratingsAverage,user: {_id, firstName, avatar},
   <p className="my-1">{location && <span>{location}</span>}<br/>
 
   {[...Array(5)].map((star, index) =>{
-    return <FaStar size={20}  color={rating<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
+    return <FaStar   color={rating<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
   })}
    
  

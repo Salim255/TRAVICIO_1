@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment} from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { leaveFeedBack, getProileReviews } from '../../Actions/reviewAction';
 import { connect } from 'react-redux';
@@ -17,7 +18,9 @@ const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews, loading}
 
   return<Fragment>
       
-      
+  {/*     <Link to={`/profiles/${match.params.id}`} className='backProfile '>
+              Back To Profile
+          </Link> */}
        <div className="post-form" onSubmit={e => {e.preventDefault() ;
         leaveFeedBack(match.params.id, {review, rating});
         
