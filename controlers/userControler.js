@@ -57,14 +57,16 @@ exports.getAllUsers = catchAsync(
 
 exports.updateMe = catchAsync(async (req, res, next) =>{
 
-    console.log(req.file);
-    console.log(req.body);
+    
     //1) Create error if user post password
     if(req.body.password || req.body.passwordConfirm){
         return next(new AppError('This route is not for password update. Please use /updateMyPassword.', 400))
     }
     //Filterout unwanted fields name.
-    const filteredBody = filterObj(req.body, 'firstName','lastName','photo', 'email', 'photo');
+    const filteredBody = filterObj(req.body, 'firstName','lastName', 'email');
+
+    //Save the image name in our user data base
+    if(req.file) filteredBody .photo = req.file.filename;
 
     //3)Update the user document
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {new: true, runValidators: true });
