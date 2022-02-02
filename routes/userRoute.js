@@ -11,7 +11,7 @@ const authControler = require('../controlers/authControler');
 router.post('/signup', authControler.signup);
 router.post('/login', authControler.login)
          ;
-router.patch('/updateMe', authControler.protect, userControler.updateMe);
+router.patch('/updateMe', authControler.protect, upload.single('photo'), userControler.updateMe);
 
 router.route('/')
    .get(authControler.protect, userControler.getUser)

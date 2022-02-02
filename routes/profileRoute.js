@@ -30,7 +30,7 @@ router.route('/profile-stats').get(profileControler.getProfileStats);
 router.route('/')
     .get(profileControler.getAllProiles)
     .post( authControler.protect, profileControler.createProfile)
-    .patch(authControler.protect, upload.single('photo'), profileControler.updateProfile)
+    .patch(authControler.protect, profileControler.updateProfile)
     .delete(authControler.protect , profileControler.deletProfile );
 
     

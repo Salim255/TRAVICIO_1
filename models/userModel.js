@@ -45,7 +45,9 @@ const UserSchema = new mongoose.Schema({
     avatar:{//Its allow  to attach a profile image to your email
         type:String,//
     },
-    photo: String,
+    photo:{
+        type: String
+    } ,
     date:{
         type:Date,
         default: Date.now
