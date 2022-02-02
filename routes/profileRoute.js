@@ -1,5 +1,7 @@
 const express = require('express');
+const multer  = require('multer');//we use it to pload files
 
+const upload = multer({ dest: 'public/img/users'});
 const router = express.Router();
 
 const authControler = require('../controlers/authControler');
@@ -28,7 +30,7 @@ router.route('/profile-stats').get(profileControler.getProfileStats);
 router.route('/')
     .get(profileControler.getAllProiles)
     .post( authControler.protect, profileControler.createProfile)
-    .patch(authControler.protect, profileControler.updateProfile)
+    .patch(authControler.protect, upload.single('photo'), profileControler.updateProfile)
     .delete(authControler.protect , profileControler.deletProfile );
 
     
