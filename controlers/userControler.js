@@ -1,11 +1,12 @@
 const multer  = require('multer');//we use it to pload files
+const sharp = require('sharp');//to images proccessing libary
 
 const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 //const { updateReview } = require('./reviewControler');
 
-const multerStorage = multer.diskStorage({
+/* const multerStorage = multer.diskStorage({
     destination: (req, file, cb) =>{
         cb(null, 'public/img/users')
     },
@@ -14,8 +15,8 @@ const multerStorage = multer.diskStorage({
         const ext = file.mimetype.split('/')[1];
         cb(null, `user-${req.user.id}-${Date.now()}.${ext}`);
     }
-});
-
+}); */
+const multerStorage = multer.memoryStorage();//the image will be saved as a buffer
 
 //To chech if the uploaded file is an image
 const multerFilter = (req, file, cb) =>{
@@ -32,6 +33,22 @@ const upload = multer({
 });
 
 exports.uploadUserPhoto = upload.single('photo');
+
+
+exports.resizeUserPhoto = (req, res, next) =>{
+    if(!req.file) return next();
+
+    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+
+    sharp(req.file.buffer)
+        .resize(500, 500)
+        .toFormat('jpeg')
+        .jpeg({quality: 90}).toFile(`public/img/users/${req.file.filename}`);
+
+
+        next();
+}
+
 
 const filterObj = (obj, ...allowedFields) =>{
     const newObj = {};
@@ -57,8 +74,6 @@ exports.getAllUsers = catchAsync(
 
 exports.updateMe = catchAsync(async (req, res, next) =>{
 
-    console.log('Hello from there');
-    console.log(req);
     //1) Create error if user post password
     if(req.body.password || req.body.passwordConfirm){
         return next(new AppError('This route is not for password update. Please use /updateMyPassword.', 400))

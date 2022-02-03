@@ -9,7 +9,7 @@ const authControler = require('../controlers/authControler');
 router.post('/signup', authControler.signup);
 router.post('/login', authControler.login)
          ;
-router.patch('/updateMe', authControler.protect, userControler.uploadUserPhoto, userControler.updateMe);
+router.patch('/updateMe', authControler.protect, userControler.uploadUserPhoto,userControler.resizeUserPhoto, userControler.updateMe);
 
 router.route('/')
    .get(authControler.protect, userControler.getUser)

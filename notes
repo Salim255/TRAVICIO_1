@@ -41,3 +41,7 @@ npm i uuid
     //Upload photo
 
     npm i multer
+
+    //To resize the image
+
+    npm i sharp
