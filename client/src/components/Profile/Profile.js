@@ -12,7 +12,7 @@ import ProfileEducation from './ProfileEducation';
 
 const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) => {
     useEffect(( ) => {
-        
+        console.log(auth);
         getProfileById(match.params.id);
     }, [ getProfileById, match.params.id]);
   
@@ -26,7 +26,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
                 Edit Profile
           </Link>) }
           <div className="profile-gride my-1">
-              <ProfileTop profile={profile}/>
+              <ProfileTop profile={profile} user={auth} />
               <ProfileAbout profile={profile}/>
              
               <div className="profile-exp bg-white p-2">

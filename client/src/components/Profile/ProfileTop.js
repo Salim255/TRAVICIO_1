@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Rating from '../layout/Rating';
 import { Link } from 'react-router-dom';
 
+
 const ProfileTop = ({profile: { _id,jobStatus, company, location, website, social,phone, user: {firstName,lastName, avatar, email}}}) => {
     
     const [popUp, setPopUp] = useState(false);
-
+    
     const onClick =() =>{
         setPopUp(!popUp);
     }
@@ -22,14 +23,16 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
         <h1 className="large">{firstName}</h1>
         <p className="lead">{jobStatus} {company && <span> at {company} </span>}</p>
        
-       <p className="lead">{location && <span>{location}</span>}</p>
-
+       <p className="lead">{location && <span>{location}</span>}
+      
+       </p>
+      
        <Link to={`/add-feedback/${_id}/reviews`} className='feedback' >
           Profile Reviews     
        </Link>
 
        <p className='contactifo' onClick={()=> onClick()}>Contact info
-            
+             
        </p>
       
         <div className="icons paddingicon ">
@@ -104,6 +107,7 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
 
 ProfileTop.propTypes = {
     profile: PropTypes.object.isRequired,
+    //user: PropTypes.object.isRequired
 };
 
 export default ProfileTop;

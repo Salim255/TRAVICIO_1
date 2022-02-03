@@ -6,7 +6,9 @@ import reviewReducer from './reviewReducer';
 
 import postReducer from './postReducer';
 
+import updateUserReducer from './updateUserReducer';
+
 
 export default combineReducers({
-    alertReducer, authReducer, profileReducer, postReducer, reviewReducer
+    alertReducer, authReducer, profileReducer, postReducer, reviewReducer, updateUserReducer
 });

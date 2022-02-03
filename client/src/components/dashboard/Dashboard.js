@@ -14,19 +14,25 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
 
     useEffect(() =>{
         getCurrentProfile();
-    }, []);
+    }, [getCurrentProfile]);
 
     return loading && profile === null ? <Spinner/>: <Fragment>
         <div className='dashboard'>
-                <h1 className="large text-primary">Dashboard</h1>
+                <h1 className="large text-primary">  
+                   Dashboard
+               </h1>
                 <p className='lead'> <i className="fas fa-user"></i> Welcome { user && user.firstName}</p>
+              
 
                 <div className="my-2">
+                    <Link to="/settings" className='btn btn-primary' >
+                    <i class="fas fa-cog">Account Settings</i> 
+                    </Link>
                     <button className='btn btn-danger' onClick={() => deleteAccount()}>
                         <i className="fas fa-user-minus" >Delete My Account</i>
                     </button>
                </div>
-
+           
                 {profile !== null ? <Fragment><DashboardAction/>
                {profile.experience && <Experience experience={profile.experience}/>}
                 {profile.education&&<Education education={profile.education}/>}

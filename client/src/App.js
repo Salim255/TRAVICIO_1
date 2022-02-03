@@ -19,6 +19,7 @@ import Profile from './components/Profile/Profile';
 import Shape from './components/layout/Shape';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
+import UserSetting from './components/auth/UserSetting';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Rating from './components/layout/Rating';
 
@@ -66,6 +67,7 @@ const App = () => {
               <PrivateRoute exact path='/add-education' component={ AddEducation }/>
               <PrivateRoute exact path='/create-profile' component={ CreateProfile }/>
               <PrivateRoute exact path='/posts' component={ Posts }/>
+              <PrivateRoute exact path='/settings' component={ UserSetting }/>
               <PrivateRoute exact path='/posts/:id' component={ Post }/>
               <PrivateRoute exact path='/add-feedback/:id/reviews' component={ Rating }/>
             </Switch>

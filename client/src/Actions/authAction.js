@@ -133,6 +133,7 @@ export const login = (email, password) => async dispatch => {
     }
 };
 
+
 //LOGOUT /CLEAR Profile
 export const logout = () => dispatch =>{
     dispatch({type: CLEAR_PROFILE});    

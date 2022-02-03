@@ -43,7 +43,7 @@ const Register = ({ setAlert, register , isAuthenticated}) => {
             <div className='container'>
             <h1 className="large text-primary">Sign Up</h1>
             <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
-            <form className="form" action="create-profile.html" onSubmit={e => onSubmit(e)}>
+            <form className="form"  onSubmit={e => onSubmit(e)}>
                 <div className="form__form-group">
                     <input type="text" placeholder="First Name" name="firstName" value={firstName} onChange={e => onChange(e)} required />
                 </div>
