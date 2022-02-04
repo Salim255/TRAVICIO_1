@@ -5,16 +5,12 @@ import Moment from 'react-moment';
 import { connect} from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../Actions/postAction';
 
-const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name, avatar, user, likes, comments, date},showActions }) =>  {
+const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name, avatar,photo, user, likes, comments, date},showActions }) =>  {
  
   return <div className="post bg-white p-1 my-1">
   <div>
     <Link to={`/profiles/${user}`}>
-      <img
-        className="round-img"
-        src={avatar}
-        alt=""
-      />
+    {photo? (<img src={`/img/users/${photo}`} alt="" className="round-img" />) :(<img src={`${avatar}`} alt="" className="round-img" />) }
       <h4>{name}</h4>
     </Link>
   </div>

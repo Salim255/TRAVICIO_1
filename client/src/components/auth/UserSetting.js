@@ -2,8 +2,9 @@ import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import{ updateUserSetting } from '../../Actions/userSettingAction';
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom';
 
-const UserSetting = ({updateUserSetting}) => {
+const UserSetting = ({updateUserSetting,auth:{user}, history}) => {
     const [form, setFormData] = useState({
         firstName:'',
         lastName:'',
@@ -27,35 +28,35 @@ const UserSetting = ({updateUserSetting}) => {
    formData.append('firstName', form.firstName);
    formData.append('lastName', form.lastName);
    formData.append('photo', hoto);
-    updateUserSetting(formData);
-    
+    updateUserSetting(formData);///
+    window.location.reload();
     };
 
   return <Fragment>
-     
+      <Link className="btn btn-light my-1" to="/dashboard">Back To Profile</Link>
       <form className='form setting' onSubmit={e => onSubmit(e)}>
+     
             <div className="form__group">
                     <label htmlFor="firstName" className="form__label">FirstName</label>
-                    <input type="text" className="form__input" name="firstName" id="firstName" value={firstName} onChange={e => onChange(e)} />
+                    <input type="text" className="form__input" name="firstName" value={firstName} onChange={e => onChange(e)} />
             </div>
             <div className="form__group">
-                    <label htmlFor="lastName" className="form__label">FirstName</label>
-                    <input type="text" className="form__input" name="lastName" value={lastName} onChange={e => onChange(e)} id="lastName" />
+                    <label htmlFor="lastName" className="form__label">LastName</label>
+                    <input type="text" className="form__input" name="lastName" value={lastName} onChange={e => onChange(e)}  />
             </div>
             <div className="form__group">
                     <label htmlFor="email" className="form__label">Email adress</label>
                     <input type="text" className="form__input" name="email" value={email} onChange={e => onChange(e)} />
             </div>
             <div className="form__group">
-                <img src="" alt="" className="form__user-photo" />
-                <input type="file" accept='image/*' id="photo" name="photo" className='form__photo-upload'  onChange={e =>chanangH(e)} />
-             
-                <label htmlFor="photo">Choose new photo </label>
+                {user && <img src={`/img/users/${user.photo}`} alt="" className="round-img my-1 profile-container__img " />}
+                
+                     <input type="file" accept='image/*' id="file" name="file"   onChange={e =>chanangH(e)} />
+                     <label htmlFor="file" className='form__fileLadel'>Choose new photo </label>
             </div>
             <div className="form__group right">
                 <input type="submit" className="btn btn-primary" value="Save settings" />
-                
-                
+              
             </div>
 
       </form>
@@ -64,6 +65,11 @@ const UserSetting = ({updateUserSetting}) => {
 
 UserSetting.propTypes = {
     updateUserSetting: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
 };
 
-export default connect(null, {updateUserSetting})(UserSetting);
+const mapStateToProps = state =>({
+    auth: state.authReducer
+})
+
+export default connect(mapStateToProps, {updateUserSetting})(UserSetting);

@@ -10,18 +10,23 @@ import Education from './Education';
 import { connect } from 'react-redux';
 
 
+
 const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { profile, loading}}) => {
 
     useEffect(() =>{
         getCurrentProfile();
     }, [getCurrentProfile]);
-
+ 
     return loading && profile === null ? <Spinner/>: <Fragment>
         <div className='dashboard'>
                 <h1 className="large text-primary">  
-                   Dashboard
+                   <img
+            className="round-img my-1 profile-container__img "
+            src={`/img/users/${user.photo}`}
+            alt="" 
+        />
                </h1>
-                <p className='lead'> <i className="fas fa-user"></i> Welcome { user && user.firstName}</p>
+                <p className='lead'> <i className="fas fa-user"></i>  { user && user.firstName}</p>
               
 
                 <div className="my-2">

@@ -6,7 +6,7 @@ const initialState = {
     error: {}
 }
 export default  function(state = initialState , action){
-    console.log(action);
+    
      switch (action.type) {
          case UPDATE_SETTING :
              return {

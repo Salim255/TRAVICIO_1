@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {FaStar} from 'react-icons/fa'
 
-const ProfileItem = ({ profile: { ratingsAverage,user: {_id, firstName, avatar},
+const ProfileItem = ({ profile: { ratingsAverage,user: {_id, firstName, avatar, photo},
     jobStatus,
     company,
     location,
@@ -12,7 +12,7 @@ const ProfileItem = ({ profile: { ratingsAverage,user: {_id, firstName, avatar},
   const rating =Math.round( ratingsAverage);
 
   return <div className='profile bg-light'>
-  <img src={avatar} alt="" className="round-img" />
+    {photo? (<img src={`/img/users/${photo}`} alt="" className="round-img" />) :(<img src={`${avatar}`} alt="" className="round-img" />) }
  <div>
  <h2>{firstName}</h2>
   <p>{jobStatus} { company && <span> at {company}</span>}</p>

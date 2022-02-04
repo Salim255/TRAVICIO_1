@@ -10,7 +10,7 @@ export const updateUserSetting = (formData) => async dispatch =>
                'Content-Type': 'application/json'
             }
         }
-        console.log("🌎🌍",formData);
+       
         const res = await axios({
             method: 'PATCH',
             url: '/api/v1/users/updateMe',
@@ -18,16 +18,17 @@ export const updateUserSetting = (formData) => async dispatch =>
             config,
             withCredentials: true 
         });
-         console.log(res);
+         console.log(res.data);
         dispatch({
             type: UPDATE_SETTING ,
             payload: res.data
-        })
+        });
+    
     } catch (error) {
         console.log(error);
          dispatch({
              type: SETTING_ERROR,
-             payload: "Salim"
+             payload: error.response.data.error.message
          })
     }
 }

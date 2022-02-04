@@ -51,9 +51,13 @@ if(process.env.NODE_ENV === 'production'){
   })
 };
 
+//app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`public`));
+
 app.all('*', (req, res, next) =>{
    next(new AppError(`Can't find ${req.originalUrl} on this server `, 404));
 });//for all http method, for unndefined routes
+
 
 
 app.use(globalErrorHandler);

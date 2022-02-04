@@ -20,7 +20,7 @@ exports.getAllProiles = catchAsync(async (req, res, next) => {
     .sort()
     .limitFields().paginate();
     
-    const profiles = await features.query.populate('user', ['firstName','lastName' ,'avatar', 'email']);
+    const profiles = await features.query.populate('user', ['firstName','lastName' ,'avatar', 'email', 'photo']);
     //Send response
      res.status(200).json({
        status: 'success',
@@ -181,7 +181,7 @@ exports.getProfile = catchAsync(async(req, res, next) => {
  //Get profiel by user id
  exports.getProfileById = catchAsync(async(req, res, next) => {
   
-  const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['firstName','lastName' ,'avatar', 'email']);
+  const profile = await Profile.findOne({user: req.params.user_id}).populate('user', ['firstName','lastName' ,'avatar', 'email', 'photo']);
      if(!profile){
        return next(new AppError('No profile found with that ID', 404))
      }
@@ -322,7 +322,7 @@ exports.getProfileStats = catchAsync(async (req, res, next) =>{
 //3access Public
 exports.getCurrrentUserProfile = catchAsync(async(req, res, next) =>{
   
-    const profile = await Profile.findOne({ user: req.user._id }).populate('user',['firstName', 'avatar']);
+    const profile = await Profile.findOne({ user: req.user._id }).populate('user',['firstName', 'lastName', 'avatar', 'photo']);
     
     if(!profile){
       return next(new AppError('There is no profile for this user', 400));
