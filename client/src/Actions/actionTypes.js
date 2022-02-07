@@ -41,3 +41,5 @@ export const GET_REVIEWS = "GET_REVIEWS"
 export const ADD_REVIEW = "ADD_REVIEW"
 export const REMOVE_REVIEW = "REMOVE_REVIEW"
 export const REVIEW_ERROR = "REVIEW_ERROR"
+
+export const GET_LOCATION = "GET_LOCATION"

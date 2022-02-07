@@ -51,7 +51,7 @@ reviewSchema.pre(/^find/, function(next){
     }); */
     this.populate({
         path: 'user',
-        select: 'firstName lastName avatar'
+        select: 'firstName lastName avatar photo'
 
     });
     next();

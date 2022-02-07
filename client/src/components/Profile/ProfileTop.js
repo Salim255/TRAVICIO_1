@@ -4,7 +4,7 @@ import Rating from '../layout/Rating';
 import { Link } from 'react-router-dom';
 
 
-const ProfileTop = ({profile: { _id,jobStatus, company, location, website, social,phone, user: {firstName,lastName, avatar, email}}}) => {
+const ProfileTop = ({profile: { _id,jobStatus, company, location, website, social,phone, user: {firstName,lastName, photo,avatar, email}}}) => {
     
     const [popUp, setPopUp] = useState(false);
     
@@ -14,11 +14,15 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
   return <><div className='block '>
       <div className='profile-container '>
       <div className=" bg-primary ">
-        <img
+        {photo? (  <img
+            className="round-img my-1 profile-container__img "
+            src={`/img/users/${photo}`}
+            alt="" 
+        />): (  <img
             className="round-img my-1 profile-container__img "
             src={avatar}
             alt="" 
-        />
+        />)}
         
         <h1 className="large">{firstName}</h1>
         <p className="lead">{jobStatus} {company && <span> at {company} </span>}</p>

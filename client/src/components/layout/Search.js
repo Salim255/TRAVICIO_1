@@ -6,14 +6,15 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getFilteredProfiles,getProfiles } from '../../Actions/profileAction';
+
 import ProfileItem from '../profiles/ProfileItem';
 import Test from './Test.js'
 
 
-const Search = ({ getFilteredProfiles,getProfiles,profile:{ profiles, loading}}) => {
+const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles, loading}}) => {
     const [location, setLocation] = useState('');
     const [jobStatus, setJobStatus] = useState('');
-  
+   
    const handlChange =(e) =>{
         e.preventDefault() ;
         
@@ -22,9 +23,10 @@ const Search = ({ getFilteredProfiles,getProfiles,profile:{ profiles, loading}})
    }
   
    useEffect(() =>{
-     
+   
+    setLocation(locationn.location);
      getProfiles();
-   }, [])
+   }, [setLocation,   getProfiles, locationn.location])
   return <Fragment>
   <form  onSubmit={e => {e.preventDefault() ;
         setLocation('');
@@ -91,11 +93,13 @@ const Search = ({ getFilteredProfiles,getProfiles,profile:{ profiles, loading}})
 Search.propTypes = {
   getFilteredProfiles: PropTypes.func.isRequired,
   getProfiles: PropTypes.func.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  locationn:  PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
-    profile: state.profileReducer
+    profile: state.profileReducer,
+    locationn: state.locationReducer
   })
 
 export default connect(mapStateToProps, { getFilteredProfiles, getProfiles})(Search);

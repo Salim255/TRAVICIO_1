@@ -1,11 +1,11 @@
-const Profile = require('../models/profileModel');
+
 const User = require('../models/userModel');
 const Post  =  require('../models/postModel');
 
-const APIFeatures = require('../utils/apiFeatures');
+
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
-const router = require('../routes/postRoute');
+
 
 //POST api/v1/posts
 //Creat a userPost
@@ -17,6 +17,7 @@ exports.creatpost = catchAsync(async (req, res, next) =>{
           text: req.body.text,
           name: user.firstName,
           avatar: user.avatar,
+          photo: user.photo,
           user: req.user.id
      });
 
@@ -138,6 +139,7 @@ exports.addCommentOnPost = catchAsync( async(req, res, next) => {
           text: req.body.text,
           name: user.firstName,
           avatar: user.avatar,
+          photo:user.photo,
           user: req.user.id
      }) ;
      post.comments.unshift(newComment);

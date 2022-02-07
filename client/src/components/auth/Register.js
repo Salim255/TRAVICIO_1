@@ -19,6 +19,7 @@ const Register = ({ setAlert, register , isAuthenticated}) => {
     const { firstName, lastName, email, password, passwordConfirm} = formData;
 
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value });
+    
     const onSubmit = async (e) => {
         e.preventDefault();
         if(password !== passwordConfirm){

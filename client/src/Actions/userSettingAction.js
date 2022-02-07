@@ -23,7 +23,7 @@ export const updateUserSetting = (formData) => async dispatch =>
             type: UPDATE_SETTING ,
             payload: res.data
         });
-    
+    //history.push('/settings');
     } catch (error) {
         console.log(error);
          dispatch({

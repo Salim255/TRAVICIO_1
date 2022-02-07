@@ -4,14 +4,24 @@ import{ updateUserSetting } from '../../Actions/userSettingAction';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
 
-const UserSetting = ({updateUserSetting,auth:{user}, history}) => {
+const UserSetting = ({updateUserSetting,auth:{user, loading}, history}) => {
     const [form, setFormData] = useState({
         firstName:'',
         lastName:'',
-        email: '',
-       
+        email: ''
+      
     });
     const { firstName, lastName, email}= form;
+
+    useEffect(() =>{
+        setFormData({
+        firstName: loading || !user.firstName ? '' : user.firstName ,
+        lastName:loading || !user.lastName ? '' : user.lastName ,
+        email: loading || !user.email ? '' : user.email ,
+  
+       })
+    } ,[loading]);
+
     const onChange = e => setFormData({...form, [e.target.name]: e.target.value });
     const  [hoto, setPhoto] = useState(null);
   
@@ -49,7 +59,10 @@ const UserSetting = ({updateUserSetting,auth:{user}, history}) => {
                     <input type="text" className="form__input" name="email" value={email} onChange={e => onChange(e)} />
             </div>
             <div className="form__group">
-                {user && <img src={`/img/users/${user.photo}`} alt="" className="round-img my-1 profile-container__img " />}
+                {
+                   user&&(user.photo ? (<img src={`/img/users/${user.photo}`} alt="" className="round-img my-1 profile-container__img " />) :( <img src={user.avatar} alt="" className="round-img my-1 profile-container__img " /> ) )
+                  
+                }
                 
                      <input type="file" accept='image/*' id="file" name="file"   onChange={e =>chanangH(e)} />
                      <label htmlFor="file" className='form__fileLadel'>Choose new photo </label>

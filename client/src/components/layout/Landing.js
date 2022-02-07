@@ -1,14 +1,23 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {saveLocation} from '../../Actions/locationAction'
 import PropTypes from 'prop-types';
 import * as AiIcons  from 'react-icons/ai'
 
-const Landing = ({isAuthenticated}) => {
+const Landing = ({isAuthenticated, saveLocation}) => {
 
     /* if(isAuthenticated){
       return <Redirect to='/dashboard'/>
     }  */
+
+    const [location, setLocation] = useState("");
+    const onChange =(e) =>{
+    
+      setLocation(e.target.value);
+      console.log(location);
+    }
+
     return (
     <section className="landing">
         <div className="dark-overlay">
@@ -23,10 +32,14 @@ const Landing = ({isAuthenticated}) => {
             <div className="search-section">
             
                 <div className="search-section__searchBox">
-                <Link to='/search'>
-                    < AiIcons.AiOutlineSearch className="search-section__icon" />
-                </Link>
-                <input type="text" name="search" id="search" placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
+                {!location&& <Link to='#!'  >
+                    < AiIcons.AiOutlineSearch className="search-section__icon" onClick={()=> saveLocation(location)}/>
+                </Link>}
+                  {location&& <Link to='/search'  >
+                    < AiIcons.AiOutlineSearch className="search-section__icon" onClick={()=> saveLocation(location)}/>
+                </Link>}
+                
+                <input type="text" name="search" id="search" placeholder="The City you are  for searching worker in"  className="search-section__input" onChange={(e) => onChange(e)}  required/>  
                 {/* <input type="text" name="search" id="search" placeholder="The work type you are looking for"  className="search-section__input"/>  */}
                </div>
               {/*  <button type="submit" className="search-section__btn">
@@ -54,4 +67,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.authReducer.isAuthenticated
 })
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps, {saveLocation})(Landing);
