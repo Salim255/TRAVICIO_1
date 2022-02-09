@@ -32,12 +32,11 @@ const Landing = ({isAuthenticated, saveLocation}) => {
             <div className="search-section">
             
                 <div className="search-section__searchBox">
-                {!location&& <Link to='#!'  >
+                  {!location ? (<Link to='#!'  >
+                    < AiIcons.AiOutlineSearch className="search-section__icon"/>
+                </Link>): (<Link to='/search'  >
                     < AiIcons.AiOutlineSearch className="search-section__icon" onClick={()=> saveLocation(location)}/>
-                </Link>}
-                  {location&& <Link to='/search'  >
-                    < AiIcons.AiOutlineSearch className="search-section__icon" onClick={()=> saveLocation(location)}/>
-                </Link>}
+                </Link>)}
                 
                 <input type="text" name="search" id="search" placeholder="The City you are  for searching worker in"  className="search-section__input" onChange={(e) => onChange(e)}  required/>  
                 {/* <input type="text" name="search" id="search" placeholder="The work type you are looking for"  className="search-section__input"/>  */}

@@ -22,6 +22,7 @@ import Post from './components/post/Post';
 import UserSetting from './components/auth/UserSetting';
 import PrivateRoute from './components/routing/PrivateRoute';
 import Rating from './components/layout/Rating';
+import NotFound from './components/layout/NotFound';
 
 //Redux
 import { Provider } from 'react-redux';//To connect react and redux
@@ -70,6 +71,7 @@ const App = () => {
               <PrivateRoute exact path='/settings' component={ UserSetting }/>
               <PrivateRoute exact path='/posts/:id' component={ Post }/>
               <PrivateRoute exact path='/add-feedback/:id/reviews' component={ Rating }/>
+              <Route component={NotFound}/>
             </Switch>
           </section>
         </Fragment>
