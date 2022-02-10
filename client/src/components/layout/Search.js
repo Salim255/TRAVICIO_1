@@ -14,7 +14,7 @@ import Test from './Test.js'
 const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles, loading}}) => {
     const [location, setLocation] = useState('');
     const [jobStatus, setJobStatus] = useState('');
-    const [jobsList, setJobsList] = useState([]);
+    //const [jobsList, setJobsList] = useState([]);
 
 
    const handlChange =(e) =>{
@@ -24,21 +24,21 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
         
    };
 
-   const getJobstatus = () =>{
+ /*   const getJobstatus = () =>{
      for(const job in profiles){
        console.log(job);
      }
-   }
+   } */
   
    useEffect(() =>{
    
     setLocation(locationn.location);
     getProfiles();
-    for(const job in profiles){
+    /* for(const job in profiles){
       console.log(profiles[job].jobStatus);
       setJobStatus(oldArray=> [...oldArray, profiles[job].jobStatus ])
     }
-    console.log(jobsList[0]);
+    console.log(jobsList[0]); */
    }, [setLocation,   getProfiles, locationn.location])
   return <Fragment>
   <form  onSubmit={e => {e.preventDefault() ;
@@ -50,8 +50,8 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                     < AiIcons.AiOutlineSearch className="search-section__icon" />
                 </Link>
       <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
-   {/*   <input type="text" name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  */}
-     <div > 
+   <input type="text" name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  
+  {/*    <div > 
                <select name="jobStatus" value={jobStatus} className='selectList' onChange={(e) => setJobStatus(e.target.value) } >
                  {jobsList.map(job =>(<option value="Developer">Developer</option>))}
                    {/* <option value="0"> Work type you are looking for</option>
@@ -62,10 +62,10 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                     <option value="Student or Learning">Student or Learning</option>
                     <option value="Instructor">Instructor or Teacher</option>
                     <option value="Intern">Intern</option>
-                    <option value="Other">Other</option> */}
+                    <option value="Other">Other</option> 
                 </select>
                 
-     </div>
+     </div> */} 
 
      </div>
    

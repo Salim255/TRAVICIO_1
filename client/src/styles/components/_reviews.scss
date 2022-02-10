@@ -6,29 +6,29 @@
 
 .review {
   display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-gap: 3rem;
-  align-items: center;
+  grid-template-columns: 1fr 10fr;
+  grid-gap: 1rem;
+  //align-items: center;
   border-radius: 2rem;
   font-size: 1.5rem;
   @include respond(tab-port) {
     display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 3rem;
+    grid-template-columns: 1fr 12fr;
+    grid-gap: 1rem;
     border-radius: 1rem;
     font-size: 1.5rem;
   }
   &__delete {
-    margin-top: 10rem;
+    margin-top: 1.5rem;
     position: relative;
-    top: 20%;
+    top: 0%;
     left: 90%;
     font-size: 1rem;
     @include respond(tab-port) {
-      margin-top: 5rem;
+      margin-top: 1rem;
       position: relative;
-      top: 20%;
-      left: 76%;
+      top: 0%;
+      left: 86%;
       font-size: 1rem;
     }
   }

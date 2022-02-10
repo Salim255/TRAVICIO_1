@@ -31,11 +31,11 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
       
        </p>
       
-       <Link to={`/add-feedback/${_id}/reviews`} className='feedback' >
-          Profile Reviews     
+       <Link to={`/add-feedback/${_id}/reviews`} className='feedback padingLR' >
+          Reviews     
        </Link>
 
-       <p className='contactifo' onClick={()=> onClick()}>Contact info
+       <p className='contactifo padingLR' onClick={()=> onClick()}>Contact info
              
        </p>
       

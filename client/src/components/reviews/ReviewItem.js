@@ -8,22 +8,23 @@ import {deleteFeedBack} from '../../Actions/reviewAction'
 
 const ReviewItem = ({deleteFeedBack,auth,review:{user:{_id,firstName, lastName, avatar, loading, photo},review, id, profile}}) => {
  
-  return <div className='review bg-white p-1 my-1'>
+  return <div className='review p-1 my-1'>
  {/* <Link to={`/profiles/${profile}`}>
  <img src={avatar} alt="" className="round-img" />
  <h6>{firstName} {lastName}</h6>
  </Link>  */}
  <Link to={`/profiles/${profile}`}>
     {photo? (<img src={`/img/users/${photo}`} alt="" className="round-img" />) :(<img src={avatar} alt="" className="round-img" />) }
-    <h6>{firstName} {lastName}</h6>
+   
     </Link>
-  <div>
- <p>{review}</p>
- {!auth.loading && _id === auth.user._id &&( <button onClick={e => deleteFeedBack(id)}     
-    type="button"
-    className="btn review__delete btn-danger"
-  >  Delete 
-    </button>)}
+  <div className='bgWhite'>
+  <h6>{firstName} {lastName}</h6>
+    <p>{review}</p>
+    {!auth.loading && _id === auth.user._id &&( <button onClick={e => deleteFeedBack(id)}     
+        type="button"
+        className="btn review__delete btn-danger"
+      >  Delete 
+        </button>)}
   </div> 
 
  

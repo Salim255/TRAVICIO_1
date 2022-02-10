@@ -14,7 +14,7 @@ export const getAllReviews = () => async dispatch  => {
         });
        
     } catch (error) {
-       
+     
         dispatch({
             type: REVIEW_ERROR,
             payload: { message: error.response.statusText, status: error.response.status}
@@ -58,10 +58,11 @@ export const leaveFeedBack = (profileId,FormData) => async dispatch  => {
         });
         dispatch(setAlert('Review Created', 'success'));
     } catch (error) {
-        console.log(error);
+        dispatch(setAlert(error.response.data.message, 'danger'));
+        console.log(error.response.data.message);
         dispatch({
             type: REVIEW_ERROR,
-            payload: { message: error.response, status: error.response}
+            payload: { message: error.response.message, status: error.response}
         })
     }
 }; 

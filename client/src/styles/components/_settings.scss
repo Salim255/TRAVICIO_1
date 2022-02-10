@@ -1,15 +1,14 @@
 .setting {
   height: 100vh;
-  background-color: rgb(241, 243, 243);
+  background-color: $color-gray-light;
+  font-size: 2rem;
+  font-weight: 400;
+  padding: 10rem;
 }
 
 .fileLadel {
 }
 .form {
-  font-size: 2rem;
-  font-weight: 400;
-  padding: 10rem;
-
   &__label {
     color: $color-gray-dark-2;
   }

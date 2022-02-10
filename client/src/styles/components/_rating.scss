@@ -40,9 +40,11 @@ input[type='radio'] {
   display: none;
 }
 .starMargin {
-  margin: 0.5rem;
+  //margin: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.9rem;
   @include respond(tab-port) {
-    margin: 1px;
+    //margin: 1px;
   }
 }
 
@@ -54,4 +56,8 @@ input[type='radio'] {
   font-size: 2rem;
   text-align: center;
   color: white;
+}
+
+.padingLR {
+  padding: 0.5rem 2rem;
 }

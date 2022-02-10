@@ -80,14 +80,14 @@ const CreateProfile =({ createProfile, history }) => {
                 <small className="form__form-text">Tell us a little about yourself</small>
                 </div>
                 <div className="form__form-group">
-                <textarea placeholder="Job minimum Pay" name="jobMinimumPay" value={jobMinimumPay} onChange={e => onChange(e)}></textarea>
+                <input  type="number" placeholder="Job minimum Pay" name="jobMinimumPay" value={jobMinimumPay} onChange={e => onChange(e)}/>
                 <small className="form__form-text">Minimum Pay /h</small>
                 </div>
                 <div className="form__form-group">
                 <select name="hourlyWage" value={hourlyWage} onChange={e => onChange(e)}>
                     <option value="0"> Select  hourly wage type</option>
-                    <option value="Developer">Negotiable</option>
-                    <option value="Junior Developer">No Negotiable</option>
+                    <option value="Negotiable">Negotiable</option>
+                    <option value="No Negotiable">No Negotiable</option>
                 </select>
                 <small className="form__form-text"
                     >Give us an idea of where you are at in your career</small>

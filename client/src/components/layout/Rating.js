@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { leaveFeedBack, getProileReviews } from '../../Actions/reviewAction';
 import { connect } from 'react-redux';
 import ReviewItem from '../reviews/ReviewItem';
-import {FaStar} from 'react-icons/fa'
+import {RiStarLine} from 'react-icons/ri';
+import { MdStar} from 'react-icons/md';
 
 const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews, loading}}) => {
     console.log(match.params.id);
@@ -33,13 +34,14 @@ const Rating = ({leaveFeedBack,match,getProileReviews, review:{reviews, loading}
                 
                 <form className="form  my-1"  >
                 <div className='starRating'>
+                    <p>Rate The Profile</p>
                     {[...Array(5)].map((star,index) =>{
                         const ratingValue = index+1;
                         return (
                         <label key={index}>
                             <input type="radio" name="rating" value={ratingValue} onClick={() => setRating(ratingValue)}
                             />
-                            <FaStar size={20} color={ratingValue <=(hover || rating)  ? "#ffcc10": "#e4e5e9" } onMouseEnter={() => setHover(ratingValue)}
+                            <MdStar size={25} color={ratingValue <=(hover || rating)  ? "#ffcc10": "#e4e5e9" } onMouseEnter={() => setHover(ratingValue)}
                             onMouseLeave={() => setHover(null)} className='starMargin'/>
                         </label>
                         )

@@ -17,6 +17,10 @@
   }
 }
 
+.hourlyWage {
+  color: $color-gray-dark;
+}
+
 .block {
   display: flex;
   justify-content: center;
@@ -122,12 +126,12 @@
 .profile {
   border-radius: 2rem;
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 6fr;
   align-items: center;
   grid-gap: 2.5rem;
   padding: 1.5rem;
   line-height: 1.8;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
   @include respond(tab-port) {
@@ -136,7 +140,7 @@
     grid-gap: 1rem;
     padding: 1rem;
     line-height: 1.4;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 300;
     margin-bottom: 1.5rem;
   }

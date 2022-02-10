@@ -20,22 +20,22 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
     return loading && profile === null ? <Spinner/>: <Fragment>
         <div className='dashboard'>
                 <h1 className="large text-primary">  
-              {user.photo? (<img
-            className="round-img my-1 profile-container__img "
-            src={`/img/users/${user.photo}`}
-            alt="" 
-        />):(<img
+              {!user.photo? (<img
             className="round-img my-1 profile-container__img "
             src={user.avatar}
             alt="" 
+        />):(<img
+            className="round-img my-1 profile-container__img "
+            src={`/img/users/${user.photo}`}
+            alt="" 
         />)}
                </h1>
-                <p className='lead'> <i className="fas fa-user"></i>  { user && user.firstName}</p>
+                <p className='lead'> <i className="fas fa-user"></i>  { user && (user.firstName +' '+ user.lastName )}</p>
               
 
                 <div className="my-2">
                     <Link to="/settings" className='btn btn-primary' >
-                    <i class="fas fa-cog">Account Settings</i> 
+                    <i className="fas fa-cog">Account Settings</i> 
                     </Link>
                     <button className='btn btn-danger' onClick={() => deleteAccount()}>
                         <i className="fas fa-user-minus" >Delete My Account</i>

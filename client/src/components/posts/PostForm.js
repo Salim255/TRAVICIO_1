@@ -13,7 +13,8 @@ const PostForm = ({addPost}) => {
         </div>
         <form className="form  my-1" onSubmit={e => {e.preventDefault() ;
         addPost({ text });
-        setText('')
+        setText('');
+        window.location.reload();
     }}>
             <textarea
             name="text"

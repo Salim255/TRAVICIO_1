@@ -1,6 +1,7 @@
 const Review = require('../models/reviewModel');
 const catchAsync = require('../utils/catchAsync');
-const factory = require('../controlers/handlerFactory');
+const factory = require('./handlerFactory');
+const AppError = require('../utils/appError');
 
 exports.getAllReviews = catchAsync(async (req, res, next) =>{
     let filter
@@ -17,7 +18,10 @@ exports.getAllReviews = catchAsync(async (req, res, next) =>{
 });
 
 exports. createReview = catchAsync(async(req, res, next) =>{
-
+    
+    if(!req.body.rating || !req.body.review ){
+        return next(new AppError('Feedback must have rating and review', 404))
+      }
     //Nested routes
     if(!req.body.profile) req.body.profile = req.params.profileId;
     if(!req.body.user) req.body.user = req.user.id;

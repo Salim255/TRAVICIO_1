@@ -19,7 +19,7 @@ exports.creatpost = catchAsync(async (req, res, next) =>{
           avatar: user.avatar,
           photo: user.photo,
           user: req.user.id
-     });
+     }).populate('user' , ['lastName', 'firstName']);
 
 
      const post = await newPost.save();

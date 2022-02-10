@@ -1,0 +1,28 @@
+.postStyle {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  grid-gap: 1rem;
+  //align-items: center;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+
+  @include respond(tab-port) {
+    display: grid;
+    grid-template-columns: 1fr 12fr;
+    grid-gap: 1rem;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+.bgWhite {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+  padding: 1rem 4rem;
+  border-radius: 2rem;
+}
+
+.post-date {
+  color: $color-gray-dark;
+}

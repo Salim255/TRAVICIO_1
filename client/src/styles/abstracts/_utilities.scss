@@ -99,6 +99,7 @@ span {
   align-items: center;
   border-radius: 2rem;
   font-size: 1.5rem;
+
   @include respond(tab-port) {
     display: grid;
     grid-template-columns: 1fr 3fr;
