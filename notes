@@ -45,3 +45,15 @@ npm i uuid
     //To resize the image
 
     npm i sharp
+
+
+
+    ///////deploy
+     "scripts": {
+    "start": "node server.js",
+    "devv": "nodemon server.js",
+    "start:prod": "NODE_ENV=production node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run start\" \"npm run client \"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
