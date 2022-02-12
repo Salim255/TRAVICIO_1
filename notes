@@ -60,3 +60,53 @@ npm i uuid
 
 
   "node": ">=9.0.0"
+
+
+
+
+  {
+  "name": "travicio",
+  "version": "1.0.0",
+  "description": "Travicio ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "devv": "nodemon server.js",
+    "start:prod": "NODE_ENV=production node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run start\" \"npm run client \"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Salim",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "gravatar": "^1.8.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.14",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "sharp": "^0.30.0",
+    "slugify": "^1.6.4",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  },
+  "engines": {
+    "node": ">=9.0.0"
+  }
+}
