@@ -4,7 +4,7 @@
   "description": "Travicio ",
   "main": "app.js",
   "scripts": {
-    "start": "node server",
+    "start": "node server.js",
     "devv": "nodemon server.js",
     "start:prod": "NODE_ENV=production node server.js",
     "client": "npm start --prefix client",
