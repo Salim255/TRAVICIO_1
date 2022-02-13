@@ -1,9 +1,13 @@
 .setting {
-  height: 100vh;
   background-color: $color-gray-light;
   font-size: 2rem;
   font-weight: 400;
   padding: 10rem;
+  @include respond(tab-port) {
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 1rem;
+  }
 }
 
 .fileLadel {
@@ -57,4 +61,19 @@
       }
     }
   }
+}
+
+.btnSetting {
+  display: inline-block;
+  border: none;
+  border-radius: 50px;
+  padding: 0.4rem 1.3rem;
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  font-size: 2rem;
+  color: white;
+  outline: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in;
 }

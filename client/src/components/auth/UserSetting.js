@@ -68,7 +68,7 @@ const UserSetting = ({updateUserSetting,auth:{user, loading}, history}) => {
                      <label htmlFor="file" className='form__fileLadel'>Choose new photo </label>
             </div>
             <div className="form__group right">
-                <input type="submit" className="btn btn-primary" value="Save settings" />
+                <input type="submit" className="btnSetting btn-primary" value="Save settings" />
               
             </div>
 
