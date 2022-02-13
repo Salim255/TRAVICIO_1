@@ -81,24 +81,14 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                     />
                 </div>
                 <div className="search-sm form__form-group">
-                <input type="text" name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>
-                    {/* <input
+               
+                    <input
                         type="text"
                         placeholder="The work Type you are searshing for "
                         name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)}
                         
-                    /> */}
-                 {/*    <select name="jobStatus" value={jobStatus}  >
-                    <option value="0">* Select Professional Status</option>
-                    <option value="Developer">Developer</option>
-                    <option value="Junior Developer">Junior Developer</option>
-                    <option value="Senior Developer">Senior Developer</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Student or Learning">Student or Learning</option>
-                    <option value="Instructor">Instructor or Teacher</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Other">Other</option>
-                </select> */}
+                    /> 
+                
                     
                     
                 </div>
