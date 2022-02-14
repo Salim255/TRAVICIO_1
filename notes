@@ -48,6 +48,10 @@ npm i uuid
 
 
 
+
+    //npm i nodemailer
+
+    
     ///////deploy
      "scripts": {
     "start": "node server.js",
