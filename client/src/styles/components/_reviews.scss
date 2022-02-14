@@ -13,7 +13,7 @@
   font-size: 1.5rem;
   @include respond(tab-port) {
     display: grid;
-    grid-template-columns: 1fr 12fr;
+    grid-template-columns: 1fr 7fr;
     grid-gap: 1rem;
     border-radius: 1rem;
     font-size: 1.5rem;

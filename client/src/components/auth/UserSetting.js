@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import{ updateUserSetting } from '../../Actions/userSettingAction';
 import {connect} from 'react-redux'
 import { Link } from 'react-router-dom';
+import Spinner from '../layout/Spinner';
 
 const UserSetting = ({updateUserSetting,auth:{user, loading}, history}) => {
     const [form, setFormData] = useState({
@@ -20,7 +21,7 @@ const UserSetting = ({updateUserSetting,auth:{user, loading}, history}) => {
         email: loading || !user.email ? '' : user.email ,
   
        })
-    } ,[loading]);
+    } ,[]);
 
     const onChange = e => setFormData({...form, [e.target.name]: e.target.value });
     const  [hoto, setPhoto] = useState(null);
@@ -42,7 +43,7 @@ const UserSetting = ({updateUserSetting,auth:{user, loading}, history}) => {
     window.location.reload();
     };
 
-  return <Fragment>
+  return loading === null? <Spinner/> :<Fragment>
       <Link className="btn btn-light my-1" to="/dashboard">Back To Profile</Link>
       <form className='form setting' onSubmit={e => onSubmit(e)}>
      

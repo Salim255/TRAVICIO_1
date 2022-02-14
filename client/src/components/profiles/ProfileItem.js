@@ -14,7 +14,7 @@ const ProfileItem = ({ profile: { ratingsAverage,jobMinimumPay,hourlyWage,user: 
 
   return <div className='profile bg-light'>
    
-    {photo? (<img src={`/img/users/${photo}`} alt="" className="round-img" />) :(<img src={`${avatar}`} alt="" className="round-img" />) }
+    {!photo? (<img src={`${avatar}`} alt="" className="round-img" />) :(<img src={`/img/users/${photo}`} alt="" className="round-img" />) }
  <div>
  <h2>{firstName}&nbsp;{lastName}</h2>
   <p>{jobStatus} { company && <span> at {company}</span>}</p>

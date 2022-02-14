@@ -16,11 +16,12 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
     useEffect(() =>{
         getCurrentProfile();
     }, [getCurrentProfile]);
- 
+    
+    console.log(user);
     return loading && profile === null ? <Spinner/>: <Fragment>
         <div className='dashboard'>
                 <h1 className="large text-primary">  
-              {!user.photo? (<img
+              {!user.photo ? (<img
             className="round-img my-1 profile-container__img "
             src={user.avatar}
             alt="" 
