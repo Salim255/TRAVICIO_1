@@ -38,6 +38,7 @@ const UserSchema = new mongoose.Schema({
             validate: {
                 //This only work on creat on save!!!
                 validator: function (el) {
+                    console.log("🌒🌎");
                     return el === this.password;
                 },
                 message: 'Passwords are not the same'
@@ -68,12 +69,23 @@ const UserSchema = new mongoose.Schema({
     if(!this.isModified('password')){
         return next();
     }
+    this.passwordChangedAt = Date.now() - 1000;
+
     /* const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(password, salt); */
     //Encrypt the password
     this.password = await bcrypt.hash(this.password, 12);
     //Delete the password confirm
     this.passwordConfirm = undefined;
+    next();
+});
+
+UserSchema.pre('save', async function(next){
+     //Only run this fucntion if the passwword is modified
+     if(!this.isModified('password') || this.isNew){
+        return next();
+    }
+    this.passwordChangedAt = Date.now() - 1000;
     next();
 });
 
@@ -98,7 +110,7 @@ UserSchema.methods.createPasswordResetToken = function(){
     this. passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
      
     console.log({resetToken}, this. passwordResetToken);
-    
+
     this.passwordRestExpires = Date.now() + 10 * 60 * 1000;
     return resetToken;
 }
