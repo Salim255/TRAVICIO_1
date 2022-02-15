@@ -1,15 +1,27 @@
 const { promisify } = require('util');//to promisify method, its async fun
 const crypto = require("crypto");
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 const sendEmail = require('../utils/email');
 
+
 const signToken = (payload ) => {
 return  jwt.sign(payload, process.env.JWT_SECRET,{expiresIn: process.env.JWT_EXPIRES_IN });
 }
 
+const createSendToken = (user, statusCode, res ) =>{
+    const payload = {
+        id: user._id
+        };
+       const token = signToken(payload);
+       res.status(statusCode).json({
+           statsu: 'success',
+           token,
+       });
+}
 
 exports.signup = catchAsync(async (req, res, next) =>{
     
@@ -23,8 +35,8 @@ exports.signup = catchAsync(async (req, res, next) =>{
         passwordChangedAt: req.body.passwordChangedAt,
         photo: req.body.photo
     });
-
-    const payload = {
+    //createSendToken(newUser, 201, res);
+   const payload = {
             id: newUser._id
     };
     const token = signToken(payload);
@@ -34,7 +46,7 @@ exports.signup = catchAsync(async (req, res, next) =>{
         data: {
             user: newUser
         }
-    });
+    }); 
     
 });
 
@@ -185,4 +197,30 @@ exports.resetPassword = catchAsync(async(req, res, next) => {
        
 
    });
+});
+
+exports.updatePassword = catchAsync(async(req, res, next) =>{
+    //1)Get the user from collection
+    const user = User.findById(req.user.id);
+
+    //2)Check if the POSTed current password is correct
+   
+    if(!(await user.correctPassword(req.body.passwordCurrent, user.password))){
+        return next(new AppError('Your current password is wrong.', 401));
+    }
+    //3)If so, update password
+    user.password = req.body.password;
+    user.passwordConfirm= req.body.passwordConfirm;
+    await user.save();
+    //4)Log the user in, send JWT
+    const payload = {
+        id: user._id
+        };
+       const token = signToken(payload);
+       res.status(200).json({
+           statsu: 'success',
+           token,
+           
+    
+       });
 });

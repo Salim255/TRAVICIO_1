@@ -9,7 +9,9 @@ const authControler = require('../controlers/authControler');
 router.post('/signup', authControler.signup);
 router.post('/login', authControler.login) ;
 router.post('/forgotPassword', authControler.forgetPassword)
-router.patch('/resetPassword/:token', authControler.resetPassword)
+router.patch('/resetPassword/:token', authControler.resetPassword);
+
+router.patch('/updateMyPassword',authControler.protect, authControler.updatePassword )
 
 
 

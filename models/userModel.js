@@ -90,11 +90,11 @@ UserSchema.pre('save', async function(next){
 });
 
 //instance methode will be avalable on all the user document
-UserSchema.methods.correctPassword = async function(loginPassword, userPassword) {
+UserSchema.methods.correctPassword  = async function(loginPassword, userPassword) {
     return await  bcrypt.compare(loginPassword, userPassword);
 }
 
-UserSchema.methods.changedPasswordAfter =async function(JWTTimestamp){
+UserSchema.methods.changedPasswordAfter = async function(JWTTimestamp){
     
     if(this.passwordChangedAt){
         const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
