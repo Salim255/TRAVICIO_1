@@ -143,9 +143,9 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
     await user.save({ validateBeforeSave: false });
     
     //Send it to user's email
-    const resetURL = `${req.protocol}://${req.get('host')}//api/v1/users/resetPassword/${resetToken}`;
+ 
    
-    const message = `Forget your password? Submit a PATCH request with new password and passwordConfirm to: ${resetURL}.\nIf you didn't forgot your password, please ignore this email! `;
+   /*  const message = `Forget your password? Submit a PATCH request with new password and passwordConfirm to: ${resetURL}.\nIf you didn't forgot your password, please ignore this email! `; */
    
     try{
         
@@ -154,6 +154,9 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
             subject: 'Your password reset token (valide for 10min)',
             message
         }); */
+        const resetURL = `${req.protocol}://${req.get('host')}//api/v1/users/resetPassword/${resetToken}`;
+
+        await new Email(user, resetURL).sendPasswordReset();
     
         res.status(200).json({
             status: 'success',

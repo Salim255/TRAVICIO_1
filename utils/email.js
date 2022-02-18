@@ -35,15 +35,30 @@ module.exports = class Email {
     async send(template, subject){
        
         //1)Render HTML based on a pug template
-        const html = `<div className="email" style="border: 1px solid black; padding: 20px; font-family: sans-serif; line-height: 2; font-size: 20px;">
+        let html='';
+        console.log("👅",template);
+        if(template==="welcome"){
+            html = `<div className="email" style="border: 1px solid black; padding: 20px; font-family: sans-serif; line-height: 2; font-size: 20px;">
        
-        <p>Hi ${this.firstName}</p>
-        <p>Welcome to Travicio, we're glad to have you 🙏🏼</p>
-        <p>We're all a big family here, so make sure to create your profile so we get to know you a bit better! </p>
-        <a href=${this.url} style=" text-decoration:none; padding: 1rem;margin:1rem 3rem; background-color:rgb(9, 94, 116); color: white;" 
-        onmouseover="this.style.cursor=pointer;this.style.background-color=rgb(63, 154, 177);">Create your profile</a>
-        <p>All the best, Salim</p>
-        </div>`
+            <p>Hi ${this.firstName}</p>
+            <p>Welcome to Travicio, we're glad to have you 🙏🏼</p>
+            <p>We're all a big family here, so make sure to create your profile so we get to know you a bit better! </p>
+            <a href=${this.url} style=" text-decoration:none; padding: 1rem;margin:1rem 3rem; background-color:rgb(9, 94, 116); color: white;" 
+            onmouseover="this.style.cursor=pointer;this.style.background-color=rgb(63, 154, 177);">Create your profile</a>
+            <p>All the best, Salim</p>
+            </div>`
+        }
+        else if(template==="passwordReset"){
+            html = `<div className="email" style="border: 1px solid black; padding: 20px; font-family: sans-serif; line-height: 2; font-size: 20px;">
+       
+            <p>Hi ${this.firstName}</p>
+            <p>Forget your password? Submit a PATCH request with new password and passwordConfirm to:${this.url} </p>
+
+            <a href=${this.url} style=" text-decoration:none; padding: 1rem;margin:1rem 3rem; background-color:rgb(9, 94, 116); color: white;" 
+            onmouseover="this.style.cursor=pointer;this.style.background-color=rgb(63, 154, 177);">Reset your password</a>
+            <p>If you didn't forgot your password, please ignore this email!</p>
+            </div>`
+        }
         //2)Define email options
         const mailOptions = {
             from: this.from,
@@ -62,6 +77,10 @@ module.exports = class Email {
 
     async sendWelcome() {
        await this.send('welcome', 'welcome to the Travicio Family');
+    }
+
+    async sendPasswordReset(){
+        await this.send('passwordReset', 'Your password reset token (valide only 10 minutes');
     }
 };
 
