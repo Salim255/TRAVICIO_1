@@ -91,7 +91,7 @@ UserSchema.pre('save', async function(next){
 
 //instance methode will be avalable on all the user document
 UserSchema.methods.correctPassword = async function(candidatePassword, userPassword){
-  
+
     return  await bcrypt.compare(candidatePassword, userPassword);
 }
 
@@ -109,9 +109,6 @@ UserSchema.methods.createPasswordResetToken = function(){
     const resetToken = crypto.randomBytes(32).toString('hex');
 
     this. passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-     
-   
-
     this.passwordRestExpires = Date.now() + 10 * 60 * 1000;
     return resetToken;
 }

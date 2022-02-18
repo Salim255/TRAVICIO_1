@@ -50,8 +50,8 @@ npm i uuid
 
 
     //npm i nodemailer
+    npm i html-to-text
 
-    
     ///////deploy
      "scripts": {
     "start": "node server.js",
