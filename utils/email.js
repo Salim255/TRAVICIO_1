@@ -16,7 +16,14 @@ module.exports = class Email {
     newTransport(){
         if(process.env.NODE_ENV === 'production'){
             //Sendgrid
-            return 1;
+             console.log("Hello from gride");
+            return nodemailer.createTransport({
+                service:"Sendgrid",
+                auth:{
+                    user: process.env.SENDGRID_USERNAME,
+                    pass: process.env.SENDGRID_PASSWORD
+                }
+            });
         }
 
         //1)Create a transporter
@@ -36,7 +43,6 @@ module.exports = class Email {
        
         //1)Render HTML based on a pug template
         let html='';
-        console.log("👅",template);
         if(template==="welcome"){
             html = `<div className="email" style="border: 1px solid black; padding: 20px; font-family: sans-serif; line-height: 2; font-size: 20px;">
        
