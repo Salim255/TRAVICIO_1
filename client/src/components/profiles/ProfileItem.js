@@ -9,17 +9,17 @@ const ProfileItem = ({ profile: { ratingsAverage,jobMinimumPay,hourlyWage,user: 
     company,
     location,
     }}) => {
-
+  
   const rating =Math.round( ratingsAverage);
 
   return <div className='profile bg-light'>
    
-    {!photo? (<img src={`${avatar}`} alt="" className="round-img" />) :(<img src={`/img/users/${photo}`} alt="" className="round-img" />) }
+    {!photo? (<img src={`${avatar}`} alt="user-img" className="round-img" />) :(<img src={`/img/users/${photo}`} alt="user-img" className="round-img" />) }
  <div>
  <h2>{firstName}&nbsp;{lastName}</h2>
-  <p>{jobStatus} { company && <span> at {company}</span>}</p>
-  <p className="my-1">{location && <span>{location}</span>}<br/>
-  <p>Pay : {jobMinimumPay}&euro;/h &nbsp;<span className='hourlyWage'>{hourlyWage}</span></p>
+  <div>{jobStatus} { company && <span> at {company}</span>}</div>
+  <div className="my-1">{location && <span>{location}</span>}<br/>
+  <div>Pay : {jobMinimumPay}&euro;/h &nbsp;<span className='hourlyWage'>{hourlyWage}</span></div>
   Rating :&nbsp;
   {[...Array(5)].map((star, index) =>{
     return (
@@ -28,7 +28,7 @@ const ProfileItem = ({ profile: { ratingsAverage,jobMinimumPay,hourlyWage,user: 
   })}
    
  
-  </p>
+  </div>
   
   <Link to={`/profiles/${_id}`} className='btn btn-primary'>
       View Profile

@@ -31,7 +31,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
              
               <div className="profile-exp bg-white p-2">
                   <h2 className="text-primary fontSize">Experience</h2>
-                  {profile.experience&&profile.experience.length > 0 ? (<Fragment>
+                  {profile.experience&&(profile.experience.length > 0) ? (<Fragment>
                       {profile.experience.map(exp => (
                           <ProfileExperience key={exp._id} experience={exp} />
                       ))}

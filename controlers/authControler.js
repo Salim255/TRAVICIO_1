@@ -37,10 +37,12 @@ exports.signup = catchAsync(async (req, res, next) =>{
         photo: req.body.photo
     });
   /*  const url = `${req.protocol}://${req.get('host')}/dashboard`; */
-  const url = `${req.protocol}://localhost:3006/dashboard`;
-   console.log(url);
+  const url = `${req.protocol}://${req.get('host')}/dashboard`;
+  //const url = `${req.protocol}://localhost:3006/dashboard`;
+
    await new Email(newUser, url).sendWelcome();
     //createSendToken(newUser, 201, res);
+
    const payload = {
             id: newUser._id
     };
@@ -154,13 +156,14 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
             subject: 'Your password reset token (valide for 10min)',
             message
         }); */
-        const resetURL = `${req.protocol}://${req.get('host')}//api/v1/users/resetPassword/${resetToken}`;
+        //const resetURL = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
+        const resetURL = `http://localhost:3006/resetPassword/${resetToken}`;
 
         await new Email(user, resetURL).sendPasswordReset();
     
         res.status(200).json({
             status: 'success',
-            message: 'Token sent to email'
+            message: 'Reset link sent to your email'
         })
     }catch(err){
         user.passwordResetToken = undefined;
@@ -181,7 +184,7 @@ exports.resetPassword = catchAsync(async(req, res, next) => {
     const user = await User.findOne({passwordResetToken: hashedToken, passwordRestExpires: {$gt: Date.now()} })
     //2)If the token not expired, and there is user, set the new password
     if(!user){
-        return next(new AppError('Token is invalid or has expired', 400))
+        return next(new AppError('Your request time has expired try agail, by sending a new request to your email ', 400))
     }
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;

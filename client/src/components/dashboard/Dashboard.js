@@ -17,7 +17,6 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
         getCurrentProfile();
     }, [getCurrentProfile]);
     
-    console.log(user);
     return loading && profile === null ? <Spinner/>: <Fragment>
         <div className='dashboard'>
                 <h1 className="large text-primary">  

@@ -94,7 +94,7 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
     {popUp&&(<div className='popUpInfo'>
     <div className='divName'> 
         <p className="large divName__name">{firstName}{' '}{lastName}</p>
-        <i class="fas fa-times divName__icon" onClick={() => onClick()}></i>
+        <i className="fas fa-times divName__icon" onClick={() => onClick()}></i>
     </div>
     <div className='contacs'>
         <p className='contacs__text'>Contact Info</p>

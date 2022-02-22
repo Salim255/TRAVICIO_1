@@ -5,6 +5,8 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar' ;
 //import Header from './components/layout/Header';
 import Login from './components/auth/Login';
+import ForgotPassword  from './components/auth/ForgotPassword';
+import ResetPassword from './components/auth/ResetPassword';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import Search from './components/layout/Search';
@@ -56,7 +58,8 @@ const App = () => {
           <Alert/>
             <Switch>
               <Route exact path='/register' component={ Register }/>
-              
+              <Route exact path='/forgotPassword' component={ ForgotPassword }/>
+              <Route exact path='/resetPassword/:token' component={ ResetPassword }/>
               <Route exact path='/login' component={ Login }/>
               <Route exact path='/profiles' component={ Profiles }/>
       

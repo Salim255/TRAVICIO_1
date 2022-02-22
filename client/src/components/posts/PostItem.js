@@ -10,7 +10,7 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,
   return <div className="postStyle p-1 my-1">
   <div>
     <Link to={`/profiles/${user}`}>
-    {photo? (<img src={`/img/users/${photo}`} alt="" className="round-img" />) :(<img src={avatar} alt="" className="round-img" />) }
+    {photo? (<img src={`/img/users/${photo}`} alt="user-img" className="round-img" />) :(<img src={avatar} alt="user-img" className="round-img" />) }
       
     </Link>
   </div>
@@ -18,11 +18,12 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,
    <div className='bgWhite'>
       <h4>{name}&nbsp; {lastName}</h4>
         <p className="my-1 ">
-        {text}
-        </p>
-        <p className="post-date">
+        {text}<br/>
+        <span className="post-date">
             Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
+        </span>
         </p>
+        
    </div>
     
 

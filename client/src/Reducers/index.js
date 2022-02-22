@@ -8,8 +8,10 @@ import locationReducer from './locationReducer';
 import postReducer from './postReducer';
 
 import updateUserReducer from './updateUserReducer';
+import forgotReducer from './forgotReducer';
 
+import resetReducer from './resetReducer';
 
 export default combineReducers({
-    alertReducer, authReducer, profileReducer, postReducer, reviewReducer, updateUserReducer, locationReducer
+    alertReducer, authReducer, profileReducer, postReducer, reviewReducer, updateUserReducer, locationReducer, forgotReducer, resetReducer
 });
