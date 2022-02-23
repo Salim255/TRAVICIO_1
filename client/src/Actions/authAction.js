@@ -60,7 +60,7 @@ export const register = ({ firstName,lastName, email, password, passwordConfirm}
     } catch (error) {
         const errors = error.response.data;
         let list = [];
-        
+        console.log("👄👅",errors);
         Object.keys(errors).forEach(key => {
             if(key==='message'){
                 list.push({'message': errors[key]})

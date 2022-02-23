@@ -60,17 +60,26 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
             <small>* = required field</small>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form__form-group">
-                <select name="jobStatus" value={jobStatus} onChange={e => onChange(e)} required>
-                    <option value="0">* Select Professional Status</option>
-                    <option value="Developer">Developer</option>
-                    <option value="Junior Developer">Junior Developer</option>
-                    <option value="Senior Developer">Senior Developer</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Student or Learning">Student or Learning</option>
-                    <option value="Instructor">Instructor or Teacher</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Other">Other</option>
-                </select>
+                <input type="text" name="jobStatus" list="jobStatus" value={jobStatus}  placeholder='Select Professional Status'  onChange={e => onChange(e)} required/>
+                <datalist name="jobStatus" id="jobStatus" value={jobStatus} onChange={e => onChange(e)}  >
+                    <option value="Electrical">Electrical</option>
+                    <option value="Automotive">Automotive</option>
+                    <option value="General labor">General labor</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Electronics/IT">Electronics/IT</option>
+                    <option value="Beauty/cosmetics">Beauty/cosmetics</option>
+                    <option value="Artist/photography">Artist/photography</option>
+                    <option value="Child care">Child care</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="Transport/courier">Transport/courier</option>
+                    <option value="Tutors/classes">Tutors/classes</option>
+                    <option value="Health/fitness/sports">Health/fitness/sports</option>
+                    <option value="Finance/lawyers">Finance/lawyers</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Construction/carpenter">Construction/carpenter</option>
+                    <option value="Gardener">Gardener</option>
+                </datalist>
                {/*  <small className="form__form-text"
                     >Give us an idea of where you are at in your career</small> */}
                 </div>

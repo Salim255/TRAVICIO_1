@@ -18,9 +18,9 @@ export const resetPassword = (FormData, token) => async dispatch => {
         });
         
         dispatch(loadUser());
-        dispatch(setAlert("Your password has been updated"));
+        dispatch(setAlert("Your password has been updated", "success"));
      
     } catch (error) {
-        dispatch(setAlert(error.response.data.message));
+        dispatch(setAlert(error.response.data.message, "danger"));
     }
 }

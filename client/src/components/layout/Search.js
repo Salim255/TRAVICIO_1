@@ -8,7 +8,7 @@ import Spinner from '../layout/Spinner';
 import { getFilteredProfiles,getProfiles } from '../../Actions/profileAction';
 
 import ProfileItem from '../profiles/ProfileItem';
-import Test from './Test.js'
+
 
 
 const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles, loading}}) => {
@@ -33,7 +33,7 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
    useEffect(() =>{
    
     setLocation(locationn.location);
-    getProfiles();
+    //getProfiles();
     /* for(const job in profiles){
       console.log(profiles[job].jobStatus);
       setJobStatus(oldArray=> [...oldArray, profiles[job].jobStatus ])
@@ -48,24 +48,28 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
        <div className="search-section__searchBox">
        <Link to='/search' onClick={e =>handlChange(e) }>
                     < AiIcons.AiOutlineSearch className="search-section__icon" />
-                </Link>
+        </Link>
       <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
-   <input type="text" name="jobStatus" id="jobStatus" value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  
-  {/*    <div > 
-               <select name="jobStatus" value={jobStatus} className='selectList' onChange={(e) => setJobStatus(e.target.value) } >
-                 {jobsList.map(job =>(<option value="Developer">Developer</option>))}
-                   {/* <option value="0"> Work type you are looking for</option>
-                    <option value="Developer">Developer</option>
-                    <option value="Junior Developer">Junior Developer</option>
-                    <option value="Senior Developer">Senior Developer</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Student or Learning">Student or Learning</option>
-                    <option value="Instructor">Instructor or Teacher</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Other">Other</option> 
-                </select>
-                
-     </div> */} 
+      <input type="text" name="jobStatus"  list="jobStatus"  value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  
+      <datalist name="jobStatus" id="jobStatus" value={jobStatus} onChange={e => setJobStatus(e.target.value)}  >
+                    <option value="Electrical">Electrical</option>
+                    <option value="Automotive">Automotive</option>
+                    <option value="General labor">General labor</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Electronics/IT">Electronics/IT</option>
+                    <option value="Beauty/cosmetics">Beauty/cosmetics</option>
+                    <option value="Artist/photography">Artist/photography</option>
+                    <option value="Child care">Child care</option>
+                    <option value="Hospitality">Hospitality</option>
+                    <option value="Transport/courier">Transport/courier</option>
+                    <option value="Tutors/classes">Tutors/classes</option>
+                    <option value="Health/fitness/sports">Health/fitness/sports</option>
+                    <option value="Finance/lawyers">Finance/lawyers</option>
+                    <option value="Catering">Catering</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Construction/carpenter">Construction/carpenter</option>
+                    <option value="Gardener">Gardener</option>
+      </datalist>
 
      </div>
    
@@ -101,9 +105,9 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
             </Link>
             </form>
             
-{/*   <button type="submit" className="btn filterBtn"  onClick={e =>handlChange(e) } >Search</button> */}
+
    <div className='searchItemMargin'>
-   { loading ? <Spinner/>: <Fragment>
+   { loading ? ' ': <Fragment>
    
     <h2 className="lead">
       <i className="fab fa-connectdevelop"></i>

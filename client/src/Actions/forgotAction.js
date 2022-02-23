@@ -15,9 +15,9 @@ export const forgotPassword = (formData) => async dispatch => {
               type:FORGOT_PASSWORD,
               payload:res.data.message
           });
-        dispatch(setAlert(res.data.message));
+        dispatch(setAlert(res.data.message, "success"));
       } catch (error) {
-          dispatch(setAlert(error.response.data.message));
+          dispatch(setAlert(error.response.data.message, 'danger'));
           dispatch({
               type: FORGOT_ERROR,
               payload: error.response.data.message

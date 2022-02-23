@@ -16,6 +16,7 @@
 
 .form {
   & textarea,
+  &datalist,
   & select {
     display: block;
     width: 100%;
