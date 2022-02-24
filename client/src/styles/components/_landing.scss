@@ -12,10 +12,10 @@
   top: 0;
   left: 0;
   width: 100%;
-  background: url('../../img/show3.jpeg') no-repeat center center/cover;
+  /* background: url('../../img/show3.jpeg') no-repeat center center/cover; */
   height: 100vh;
   &__inner {
-    color: var(--light-color);
+    color: $color-gray-dark;
     height: 100%;
     width: 80%;
     margin: auto;
@@ -50,7 +50,7 @@
 }
 
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  // background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
@@ -69,5 +69,5 @@
 .travicio {
   font-size: 5rem;
   font-weight: 700;
-  color: rgb(173, 117, 33);
+  color: $color-primary;
 }

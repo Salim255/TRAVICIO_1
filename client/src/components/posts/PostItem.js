@@ -5,18 +5,18 @@ import Moment from 'react-moment';
 import { connect} from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../Actions/postAction';
 
-const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,firstName, lastName, avatar,photo, user, likes, comments, date},showActions }) =>  {
- 
+const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text,  user, likes, comments, date},showActions }) =>  {
+ console.log(user._id === auth.user._id);
   return <div className="postStyle p-1 my-1">
   <div>
-    <Link to={`/profiles/${user}`}>
-    {photo? (<img src={`/img/users/${photo}`} alt="user-img" className="round-img" />) :(<img src={avatar} alt="user-img" className="round-img" />) }
+    <Link to={`/profiles/${user._id}`}>
+    <img src={`/img/users/${user.photo}`} alt="user-img" className="round-img" />
       
     </Link>
   </div>
   <div className=' '>
    <div className='bgWhite'>
-      <h4>{name}&nbsp; {lastName}</h4>
+      <h4>{user.firstName}&nbsp; {user.lastName}</h4>
         <p className="my-1 ">
         {text}<br/>
         <span className="post-date">
@@ -38,7 +38,7 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text, name,
     <Link to={`/posts/${_id}`} className="btn btn-primary">
       Comment {comments.length > 0 && (<span className='comment-count'>{comments.length}</span>)}
     </Link> 
-   {!auth.loading && user === auth.user._id && (<button  onClick={e => deletePost(_id)}     
+   {!auth.loading && user._id === auth.user._id && (<button  onClick={e => deletePost(_id)}     
     type="button"
     className="btn btn-danger"
   >  <i className="fas fa-times"></i>

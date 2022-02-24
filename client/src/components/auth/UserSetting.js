@@ -66,8 +66,8 @@ const UserSetting = ({updateUserSetting,auth:{user, loading}, history}) => {
                 }
                 
                      <input type="file" accept='image/*' id="file" name="file"   onChange={e =>chanangH(e)} />
-                     <label htmlFor="file" className='form__fileLadel'>Choose new photo </label>
-            </div>
+                     
+            </div><label htmlFor="file" className='form__fileLadel'>Choose new photo </label>
             <div className="form__group right">
                 <input type="submit" className="btnSetting btn-primary" value="Save settings" />
               

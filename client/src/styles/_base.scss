@@ -203,7 +203,7 @@ img {
 .badge-light,
 .alert-light {
   background: var(--light-color);
-  color: #333;
+  color: $color-gray-dark;
 }
 
 .prof {
@@ -582,6 +582,8 @@ img {
 
 .round-img {
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 5px;
 }
 
 .line {
@@ -592,7 +594,7 @@ img {
 
 /* Overlay */
 .dark-overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  //background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;

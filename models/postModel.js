@@ -45,6 +45,9 @@ const PostSchema = new mongoose.Schema({
             avatar:{
                 type: String
             },
+            photo:{
+                type:String
+            },
             date:{
                 type: Date,
                 default: Date.now
@@ -56,6 +59,37 @@ const PostSchema = new mongoose.Schema({
         default: Date.now
     }
 });
+
+
+PostSchema.pre(/^find/, function(next){
+    /*  this.populate({
+         path: 'profile',
+         select: 'jobStatus'
+     }).populate({
+         path: 'user',
+         select: 'firstName lastName avatar'
+ 
+     }); */
+     this.populate({
+         path: 'user',
+         select: 'firstName lastName  photo'
+ 
+     });
+    
+     next();
+ }); 
+
+/*  PostSchema.post('save', function(){//post dont use next()
+    //this.slug = slugify(this.name, {lower: true});
+    this.comments.populate({
+        path: 'user',
+        select: 'firstName lastName  photo'
+
+    });
+    
+}) */
+
+
 
 const Post = mongoose.model('Post', PostSchema);
 module.exports = Post ;

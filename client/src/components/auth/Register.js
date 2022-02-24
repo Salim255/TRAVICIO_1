@@ -13,7 +13,9 @@ const Register = ({ setAlert, register , isAuthenticated}) => {
         lastName:'',
         email: '',
         password:'',
-        passwordConfirm: ''
+        passwordConfirm: '',
+       
+    
     });
 
     const { firstName, lastName, email, password, passwordConfirm} = formData;

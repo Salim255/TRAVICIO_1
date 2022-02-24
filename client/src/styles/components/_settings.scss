@@ -26,6 +26,8 @@
       padding: 1.1rem;
       color: $color-gray-dark-2;
     }
+    @include respond(tab-port) {
+    }
   }
   &__group {
     margin: 2rem 0;

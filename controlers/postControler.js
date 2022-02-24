@@ -12,15 +12,12 @@ const catchAsync = require('../utils/catchAsync');
 //Privite
 exports.creatpost = catchAsync(async (req, res, next) =>{
      const user = await User.findById(req.user.id);
-   
+     
      const newPost = new Post({
           text: req.body.text,
           name: user.firstName,
-          avatar: user.avatar,
-          photo: user.photo,
           user: req.user.id
-     }).populate('user' , ['lastName', 'firstName']);
-
+     });
 
      const post = await newPost.save();
      res.status(200).json({
@@ -72,9 +69,9 @@ exports.deletePostById  = catchAsync(async(req, res, next) =>{
      if(!post){
           return next( new AppError('Post not found', 404));
       }
-
+    
       //Check user
-      if(post.user.toString() !== req.user.id){
+      if(post.user._id.toString() !== req.user.id){
           return res.status(400).json({ 
                status: 'fail',
                message: 'User not authorized'
@@ -134,11 +131,10 @@ exports.addCommentOnPost = catchAsync( async(req, res, next) => {
     
      const user = await User.findById(req.user.id);
      const post = await Post.findById(req.params.id);
-     
+   
      const newComment = new Post({
           text: req.body.text,
           name: user.firstName,
-          avatar: user.avatar,
           photo:user.photo,
           user: req.user.id
      }) ;

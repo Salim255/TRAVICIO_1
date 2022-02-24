@@ -75,7 +75,7 @@ export const deletePost = (id) => async dispatch =>{
 
        dispatch(setAlert('Post Removed', 'success'));
     } catch (error) {
-       
+       console.log(error.response);
         dispatch({
             type: POST_ERROR,
             payload: { message: error.response.statusText, status: error.response.status}

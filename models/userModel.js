@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
             validate: {
                 //This only work on creat on save!!!
                 validator: function (el) {
-                    console.log("🌒🌎");
+                    
                     return el === this.password;
                 },
                 message: 'Passwords are not the same'
@@ -48,7 +48,8 @@ const UserSchema = new mongoose.Schema({
         type:String,//
     },
     photo:{
-        type: String
+            type: String,
+            default: 'default.jpg'
     } ,
     date:{
         type:Date,
@@ -62,7 +63,7 @@ const UserSchema = new mongoose.Schema({
  //DOCUMENT MIDDLEWARE: runs before .save() and create()
 
  UserSchema.pre('save', async function(next) {
-    this.avatar = gravatar.url(this.email, {s: '200',r:'pg', d:'mm'});
+    //this.avatar = gravatar.url(this.email, {s: '200',r:'pg', d:'mm'});
    
 
     //Only run this fucntion if the passwword is modified
