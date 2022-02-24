@@ -162,8 +162,8 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
             subject: 'Your password reset token (valide for 10min)',
             message
         }); */
-        //const resetURL = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
-        const resetURL = `http://localhost:3006/resetPassword/${resetToken}`;
+        const resetURL = `${req.protocol}://${req.get('host')}/resetPassword/${resetToken}`;
+       // const resetURL = `http://localhost:3006/resetPassword/${resetToken}`;
 
         await new Email(user, resetURL).sendPasswordReset();
     
