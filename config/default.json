@@ -1,6 +1,0 @@
-{
-    "DATASBASE": "mongodb+srv://doshka:<PASSWORD>@cluster0.9vwtz.mongodb.net/Travicio?retryWrites=true&w=majority",
-    "JWT_SECRET":"seeking-opportunity-no-secret-security"
-    
-}
-
