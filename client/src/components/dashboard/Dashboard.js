@@ -20,7 +20,7 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
     
     return loading && profile ? <Spinner/>: <Fragment>
         <div className='dashboard'>
-            <h1 className="large text-primary">  
+              <h1 className="large text-primary">  
               <img
             className="round-img my-1 profile-container__img "
             src={`/img/users/${user.photo}`}
