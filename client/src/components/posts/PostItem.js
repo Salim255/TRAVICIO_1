@@ -6,7 +6,7 @@ import { connect} from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../Actions/postAction';
 
 const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text,  user, likes, comments, date},showActions }) =>  {
- console.log(user._id === auth.user._id);
+
   return <div className="postStyle p-1 my-1">
   <div>
     <Link to={`/profiles/${user._id}`}>
