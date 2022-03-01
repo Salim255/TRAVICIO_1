@@ -48,30 +48,30 @@ if(process.env.NODE_ENV === 'production'){
   //Set static folder
   
  // app.use(express.static(`${__dirname}/public`));
-
- 
+ //app.use(express.static('client/build'));
+ //app.use(express.static(`${__dirname}/images`));
 /*  app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public'))
  }); */
-
+ //app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {
     const lookupPath = req.path;
     if(lookupPath[1] === 'i'){
       //console.log("Hello from public");
-      app.use(express.static(`${__dirname}/public`));
+      app.use(express.static(`${__dirname}/images`));
       //app.use(express.static(`public`));
     }
    else{
     app.use(express.static('client/build'));
     //app.use(express.static(`public`));
-    } 
+    }  
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     }) 
 }; 
 
 
-//app.use(express.static(`${__dirname}/public`));
+//app.use(express.static(`${__dirname}/images`));
 //app.use(express.static(`public`));
 
 app.all('*', (req, res, next) =>{
