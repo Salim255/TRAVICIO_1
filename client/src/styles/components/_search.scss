@@ -70,6 +70,25 @@
   text-align: center;
   width: 100%;
 }
+.list {
+  background-color: red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  &__cato {
+    background: url('../../../public/limpair.jpeg');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 20rem;
+    width: 20rem;
+    border-radius: 2rem;
+  }
+}
+
 @include respond(tab-port) {
 }
 
