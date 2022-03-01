@@ -69,7 +69,7 @@ module.exports = (err, req, res, next) =>{
       if(err.name === 'CastError') {err= handleCastErrorDB(err);}
       
       if(err.code === '11000'){
-          console.log("Hello from erroro");
+          
           err = handleDublicateFieldsDB(err);
       }
       if(err.name === 'ValidationError'){

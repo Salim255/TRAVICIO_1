@@ -21,11 +21,16 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
     return loading && profile ? <Spinner/>: <Fragment>
         <div className='dashboard'>
               <h1 className="large text-primary">  
-               {user && <img
-            className="round-img my-1 profile-container__img "
-            src={`/img/users/${user.photo}`}
-            alt="" 
-        />}
+               {user &&(<Fragment>
+                   {user.photo ? (<Fragment>
+                        <img className="round-img my-1 profile-container__img "
+                       src={`/img/users/${user.photo}`} alt="" />
+                   </Fragment>): (<Fragment>
+                     <img className="round-img my-1 profile-container__img "
+                       src={`/img/users/${user.default}`} alt="" />
+                   </Fragment>)}
+               </Fragment>) 
+               }
                </h1>
                 <p className='lead'> <i className="fas fa-user"></i>  { user && (user.firstName +' '+ user.lastName )}</p>
               
