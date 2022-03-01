@@ -13,7 +13,7 @@ const userRouter = require('./routes/userRoute');
 const postRouter = require('./routes/postRoute');
 const reviewRouter = require('./routes/reviewRoute');
 
-
+app.use(morgan('dev')); //3de middle were
 //Mddleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); //3de middle were
@@ -49,24 +49,25 @@ if(process.env.NODE_ENV === 'production'){
   
  // app.use(express.static(`${__dirname}/public`));
  //app.use(express.static('client/build'));
- app.use(express.static(`${__dirname}/images`));
+ //app.use(express.static(`${__dirname}/images`));
 /*  app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public'))
  }); */
- //app.use(express.static('client/build'));
-
+ 
   app.get('*', (req, res) => {
-    /* const lookupPath = req.path;
-    if(lookupPath[1] === 'i'){
-      //console.log("Hello from public");
-      app.use(express.static(`${__dirname}/images`));
-      //app.use(express.static(`public`));
-    }
-   else{
-    app.use(express.static('client/build'));
-    //app.use(express.static(`public`));
-    }   */
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+          const lookupPath = req.path;
+          //console.log(lookupPath );
+          if(lookupPath[1] === 'i'){
+            //console.log("Hello from public");
+            app.use(express.static(`${__dirname}/images`));
+            //app.use(express.static(`public`));
+          }
+        else{
+          app.use(express.static('client/build'));
+          //console.log("Hello from Build");
+          //app.use(express.static(`public`));
+          }   
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     }) 
 }; 
 
