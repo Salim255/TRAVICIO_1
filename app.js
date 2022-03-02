@@ -13,7 +13,7 @@ const userRouter = require('./routes/userRoute');
 const postRouter = require('./routes/postRoute');
 const reviewRouter = require('./routes/reviewRoute');
 
-app.use(morgan('dev')); //3de middle were
+
 //Mddleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); //3de middle were
