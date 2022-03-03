@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json()); //will put the data coming from body in req object(parse the data from the body)
 
 //app.use(express.static(`${__dirname}/public`));
-app.use(compression());//will compress all the files send to th eclient
+//app.use(compression());//will compress all the files send to th eclient
 
 app.use((req, res, next) => {
 
@@ -49,7 +49,7 @@ if(process.env.NODE_ENV === 'production'){
   
  // app.use(express.static(`${__dirname}/public`));
  //app.use(express.static('client/build'));
- app.use(express.static(`${__dirname}/images`));
+ //app.use(express.static(`${__dirname}/images`));
  app.use(express.static(`${__dirname}/client/build`));
 /*  app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public'))
@@ -61,7 +61,7 @@ if(process.env.NODE_ENV === 'production'){
     }) 
 }; 
 
-//app.use(express.static(`${__dirname}/images`));
+app.use(express.static(`${__dirname}/images`));
 //app.use(express.static(`public`));
 
 app.all('*', (req, res, next) =>{
