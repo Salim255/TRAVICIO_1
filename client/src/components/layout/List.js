@@ -2,13 +2,17 @@ import React from 'react'
 
 const List = () => {
   return (
-    <div >
-       {[...Array(9)].map((el, index) => {
-           return(<div className='list__cato' key={index}>
+       <>
+          {[...Array(9)].map((el, index) => {
+           return(<div className='card' key={index}>
+                    <div className='card__cato'>
 
+                    </div>
            </div>)
        })}
-    </div>
+       </>
+     
+ 
   )
 }
 

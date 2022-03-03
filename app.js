@@ -19,12 +19,10 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev')); //3de middle were
  
 }
+
 app.use(express.json()); //will put the data coming from body in req object(parse the data from the body)
 
 //app.use(express.static(`${__dirname}/public`));
-
-
-
 app.use(compression());//will compress all the files send to th eclient
 
 app.use((req, res, next) => {
@@ -33,15 +31,6 @@ app.use((req, res, next) => {
   
   next();
 });
-
-//////END MIDDLEWARE
-//Mounting new router in the route
-app.use('/api/v1/profiles', profileRouter);
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/posts', postRouter);
-app.use('/api/v1/reviews', reviewRouter);
-
 
 //Serve static asset in production
 if(process.env.NODE_ENV === 'production'){
@@ -56,21 +45,20 @@ if(process.env.NODE_ENV === 'production'){
  }); */
  
   app.get('*', (req, res) => {
-          const lookupPath = req.path;
-          //console.log(lookupPath );
-          if(lookupPath[1] === 'i'){
-            //console.log("Hello from public");
-            app.use(express.static(`${__dirname}/images`));
-            //app.use(express.static(`public`));
-          }
-        else{
-          app.use(express.static(`${__dirname}/client/build`));
-          //console.log("Hello from Build");
-          //app.use(express.static(`public`));
-          }   
+          
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     }) 
 }; 
+
+//////END MIDDLEWARE
+//Mounting new router in the route
+app.use('/api/v1/profiles', profileRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/posts', postRouter);
+app.use('/api/v1/reviews', reviewRouter);
+
+
+
 
 
 //app.use(express.static(`${__dirname}/images`));
