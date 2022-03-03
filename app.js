@@ -32,22 +32,13 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-//////END MIDDLEWARE
-//Mounting new router in the route
-app.use('/api/v1/profiles', profileRouter);
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/posts', postRouter);
-app.use('/api/v1/reviews', reviewRouter);
-
 //Serve static asset in production
 if(process.env.NODE_ENV === 'production'){
   //Set static folder
   
  // app.use(express.static(`${__dirname}/public`));
  //app.use(express.static('client/build'));
- //app.use(express.static(`${__dirname}/images`));
+ app.use(express.static(`${__dirname}/images`));
  app.use(express.static(`${__dirname}/client/build`));
 /*  app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'public'))
@@ -59,9 +50,18 @@ if(process.env.NODE_ENV === 'production'){
     }) 
 }; 
 
+//////END MIDDLEWARE
+//Mounting new router in the route
+app.use('/api/v1/profiles', profileRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/posts', postRouter);
+app.use('/api/v1/reviews', reviewRouter);
 
 
-app.use(express.static(`${__dirname}/images`));
+
+
+
+//app.use(express.static(`${__dirname}/images`));
 //app.use(express.static(`public`));
 
 app.all('*', (req, res, next) =>{
