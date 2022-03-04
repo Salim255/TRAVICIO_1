@@ -15,12 +15,13 @@ import ProfileItem from '../profiles/ProfileItem';
 const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles, loading}}) => {
     const [location, setLocation] = useState('');
     const [jobStatus, setJobStatus] = useState('');
+    const [list, setList] = useState('');
     //const [jobsList, setJobsList] = useState([]);
-
+    
 
    const handlChange =(e) =>{
         e.preventDefault() ;
-        
+       
         getFilteredProfiles({location, jobStatus});
         
    };
@@ -126,21 +127,24 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
             </form>
             
   <div className='list'>
-       <List/>
+    {!loading&&profiles.length > 0 ? "": <List/> }
+      
   </div>
    <div className='searchItemMargin'>
    { loading ? ' ': <Fragment>
    
-    <h2 className="lead">
-      <i className="fab fa-connectdevelop"></i>
-      Workers available in your area</h2>
+   
       <div className="">
        {!loading&&profiles.length > 0 ? (
-         profiles.map(profile => (
-          
+         profiles.map(profile => (<Fragment>
+            <h2 className="lead">
+          <i className="fab fa-connectdevelop"></i>
+          Workers available in your area</h2>
            <ProfileItem key={profile._id} profile={profile}/>
+         </Fragment>
+         
          ))
-       ) : <h4> No proiles found... </h4> } </div></Fragment>}
+       ) : <h4> {/* No proiles found...  */}</h4> } </div></Fragment>}
    </div>
   </Fragment>
 };

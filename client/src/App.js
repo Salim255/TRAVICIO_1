@@ -38,6 +38,9 @@ const App = () => {
           <Route exact  path='/' component={ Landing} />
           <Route component={Routes}/>
         </switch>
+          
+          
+          
         </Fragment>
      </Router>
     </Provider>

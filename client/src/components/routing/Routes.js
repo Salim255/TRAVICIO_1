@@ -27,7 +27,7 @@ import NotFound from '../layout/NotFound';
 
 export const Routes = () => {
   return (
-    <section >
+    <section className='container'>
           <Alert/>
             <Switch>
               <Route exact path='/register' component={ Register }/>
