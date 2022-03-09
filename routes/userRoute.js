@@ -11,11 +11,12 @@ router.post('/login', authControler.login) ;
 router.post('/forgotPassword', authControler.forgetPassword)
 router.patch('/resetPassword/:token', authControler.resetPassword);
 
-router.patch('/updateMyPassword',authControler.protect, authControler.updatePassword )
+router.patch('/updateMyPassword',authControler.protect, authControler.updatePassword );
 
 
 
-router.patch('/updateMe', authControler.protect, userControler.uploadUserPhoto,userControler.resizeUserPhoto, userControler.updateMe);
+
+router.patch('/updateMe', authControler.protect, userControler.uploadUserPhoto, userControler.updateMe);
 
 router.route('/')
    .get(authControler.protect, userControler.getUser)

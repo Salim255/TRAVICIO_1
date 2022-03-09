@@ -1,9 +1,18 @@
 const multer  = require('multer');//we use it to pload files
 const sharp = require('sharp');//to images proccessing libary
+//const mysql = require('mysql');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
+const crypto = require('crypto');
+const path = require('path');
+const {GridFsStorage} = require('multer-gridfs-storage');
+const grid = require('gridfs-stream');
 const User = require('../models/userModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
+
+dotenv.config({ path: './config.env' }); //This will read this file and then save the varaiable in the enveroment variable
 //const { updateReview } = require('./reviewControler');
 
 /* const multerStorage = multer.diskStorage({
@@ -20,31 +29,74 @@ const multerStorage = multer.memoryStorage();//the image will be saved as a buff
 
 //To chech if the uploaded file is an image
 const multerFilter = (req, file, cb) =>{
+   
     if(file.mimetype.startsWith('image')){
         cb(null, true)
     }else{
         cb(new AppError('Not an image! Please upload only images.', 400), false);
     }
+
 }
+const mongoUrl = process.env.DATASBASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
+const conn = mongoose.createConnection(mongoUrl);
+
+//init gfs
+let gfs;
+conn.once('open', ()=> {
+  gfs = grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');//most match the bucketName
+})
+
+
+
+//Create storage engine
+let filename ;
+const mogoStorage = new GridFsStorage({
+    url: mongoUrl,
+    options: { useNewUrlParser: true, useUnifiedTopology: true },
+    
+    file: (req, file) => {
+      return new Promise((resolve, reject) => {
+        crypto.randomBytes(16, (err, buf) => {
+          if (err) {
+            return reject(err);
+          }
+          filename = buf.toString('hex') + path.extname(file.originalname);
+          //req.file.filename = filename;
+        
+          const fileInfo = {
+            filename: filename,
+            bucketName: 'uploads'
+          };
+          resolve(fileInfo);
+
+        });
+      });
+    }
+  });
+
 
 const upload = multer({ 
-    storage: multerStorage,
+    storage: mogoStorage,
     fileFilter: multerFilter
-});
+}); 
 
+
+console.log("👄👄", upload.fileFilter);
 exports.uploadUserPhoto = upload.single('photo');
 
 
 exports.resizeUserPhoto = (req, res, next) =>{
     if(!req.file) return next();
-
-    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
    
-    sharp(req.file.buffer)
+    //req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+    req.file.filename = filename;
+  
+     sharp(req.file.buffer)
         .resize(500, 500)
         .toFormat('jpeg')
-        .jpeg({quality: 90}).toFile(`images/img/users/${req.file.filename}`);
-        next();
+        .jpeg({quality: 90})
+    next(); 
 }
 
 
@@ -71,7 +123,7 @@ exports.getAllUsers = catchAsync(
 
 
 exports.updateMe = catchAsync(async (req, res, next) =>{
-
+    
     //1) Create error if user post password
     if(req.body.password || req.body.passwordConfirm){
         return next(new AppError('This route is not for password update. Please use /updateMyPassword.', 400))
@@ -80,6 +132,8 @@ exports.updateMe = catchAsync(async (req, res, next) =>{
     const filteredBody = filterObj(req.body, 'firstName','lastName', 'email');
 
     //Save the image name in our user data base
+    
+
     if(req.file) filteredBody.photo = req.file.filename;
 
     //3)Update the user document

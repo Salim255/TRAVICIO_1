@@ -1,9 +1,10 @@
-import {UPDATE_SETTING , SETTING_ERROR} from "../Actions/actionTypes";
+import {UPDATE_SETTING , SETTING_ERROR, IMAGE_ERROR, GET_IMAGE } from "../Actions/actionTypes";
 
 const initialState = {
     user: null,
     loading: true,
-    error: {}
+    error: {},
+    photo: null
 }
 export default  function(state = initialState , action){
     
@@ -16,11 +17,19 @@ export default  function(state = initialState , action){
              }
             
          case SETTING_ERROR:
+         case IMAGE_ERROR:
              return {
                  ...state,
                  error: action.payload,
                  loading: false
              }
+         case GET_IMAGE :
+                return {
+                    ...state,
+                    photo: action.payload,
+                    loading: false
+                }
+
          default:
            return state;
      }

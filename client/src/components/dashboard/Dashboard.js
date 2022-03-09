@@ -1,8 +1,9 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {Fragment, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { getCurrentProfile , deleteAccount} from '../../Actions/profileAction';
+import{ gettingSingleImage  } from '../../Actions/userSettingAction';
 import DashboardAction from './DashboardAction';
 import Experience from './Experience';
 import Education from './Education';
@@ -11,7 +12,8 @@ import { connect } from 'react-redux';
 
 
 
-const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { profile, loading}}) => {
+const Dashboard = ({getCurrentProfile,deleteAccount,gettingSingleImage , auth: { user}, profile: { profile, loading}}) => {
+    const [image, setImage] = useState('');
 
     useEffect(() =>{
         getCurrentProfile();
@@ -24,7 +26,9 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
                {user &&(<Fragment>
                    {user.photo ? (<Fragment>
                         <img className="round-img my-1 profile-container__img "
-                       src={`/img/users/${user.photo}`} alt="" />
+                      /* 
+                       */ src={`/api/v1/image/${user.photo}`}
+                       alt="" />
                    </Fragment>): (<Fragment>
                      <img className="round-img my-1 profile-container__img "
                        src={`/img/users/${user.default}`} alt="" />
@@ -59,6 +63,7 @@ const Dashboard = ({getCurrentProfile,deleteAccount, auth: { user}, profile: { p
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     deleteAccount: PropTypes.func.isRequired,
+    gettingSingleImage :PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
 }
@@ -69,4 +74,4 @@ const mapStateToProps = state =>({
    
 });
 
-export default connect(mapStateToProps, {getCurrentProfile, deleteAccount})(Dashboard)
+export default connect(mapStateToProps, {getCurrentProfile, deleteAccount,  gettingSingleImage})(Dashboard)

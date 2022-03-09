@@ -49,3 +49,6 @@ export const FORGOT_ERROR= "FORGOT_ERROR"
 
 export const RESET_PASSWORD= "RESET_PASSWORD"
 export const RESET_ERROR= "RESET_ERROR"
+
+export const GET_IMAGE = "GET_IMAGE"
+export const IMAGE_ERROR = "IMAGE_ERROR"
