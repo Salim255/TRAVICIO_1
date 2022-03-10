@@ -825,6 +825,9 @@ button {
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
+form input[type='text'] {
+  text-transform: capitalize;
+}
 
 /* Mobile Styles */
 @media (max-width: 700px) {

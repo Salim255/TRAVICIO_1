@@ -9,22 +9,30 @@ const CreateProfile =({ createProfile, history }) => {
     const [formData, setFormData] = useState({
           location:'',
           jobStatus:'',
+          jobCategory:'',
           bio:'',
           phone:'',
           hourlyWage:'',
           jobMinimumPay:'',
     });
-
+   const list  = ["Beauty","cosmetics", "Artist","photography", "Transport","courier", "Health","fitness","sports", "Finance","lawyers","Construction","carpenter", "Tutors","classes"];
     const { 
     location,
     jobStatus,
+    jobCategory,
     bio,
     phone,
     hourlyWage,
     jobMinimumPay} = formData;
 
     const [displaySocialInputs, toggleSocialInputs ] = useState(false);
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value }) ;
+   // const [displayCos]
+    const onChange = e => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        if(list.includes(jobStatus)){
+            console.log("Hello ",jobStatus);
+        }
+    } ;
 
 
     const onSubmit = e =>{
@@ -71,14 +79,29 @@ const CreateProfile =({ createProfile, history }) => {
                 <small className="form__form-text"
                     >Give us an idea of where you are at in your career</small>
                 </div>
+                <div className="form__form-group">
+                <input type="text" name="jobCategory" list="jobCategory" value={jobCategory}  placeholder='Select Your  Job Category'  onChange={e => onChange(e)} />
+                <datalist name="jobCategory" id="jobCategory" value={jobCategory} onChange={e => onChange(e)}  >
+                   
+                    <option value="Beauty">Beauty</option>
+                    <option value="Cosmetics">Cosmetics</option>
+                    <option value="Artist">Artist</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Construction">Construction </option>
+                    <option value="Other">Other </option>
+    
+                </datalist>
+               <small className="form__form-text"
+                    >Job Category</small> 
+                </div>
               
               
                 <div className="form__form-group">
                 <input type="text" placeholder="Phone number" name="phone" value={phone} onChange={e => onChange(e)} required/>
                 <small className="form__form-text"
-                    >City & state suggested (eg. Boston, MA)</small>
+                    >Your phone number</small>
                 </div>
-
+                
                 <div className="form__form-group">
                 <input type="text" placeholder="Location" name="location" value={location} onChange={e => onChange(e)} required/>
                 <small className="form__form-text"
@@ -109,7 +132,7 @@ const CreateProfile =({ createProfile, history }) => {
                 <span>Optional</span>
                 </div>
                  
-                 {/* {displaySocialInputs && <Fragment><div className="form__form-group social-input">
+                  {/* {displaySocialInputs && <Fragment><div className="form__form-group social-input">
                 <i className="fab fa-twitter fa-2x"></i>
                 <input type="text" placeholder="Twitter URL" name="twitter" value={twitter} onChange={e => onChange(e)} />
                 </div>
@@ -133,7 +156,7 @@ const CreateProfile =({ createProfile, history }) => {
                 <i className="fab fa-instagram fa-2x"></i>
                 <input type="text" placeholder="Instagram URL" name="instagram" value={instagram} onChange={e => onChange(e)}/>
                 </div>
-                </Fragment>} */}
+                </Fragment>}  */}
 
                 
                 <input type="submit" className="btn btn-primary my-1" />

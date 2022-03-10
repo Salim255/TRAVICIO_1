@@ -10,21 +10,24 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
     const [formData, setFormData] = useState({
         location:'',
         jobStatus:'',
+        jobCategory:'',
         bio:'',
         phone:'',
         hourlyWage:'',
         jobMinimumPay:'',
   });
-
+  const list  = ["Beauty","cosmetics", "Artist","photography", "Transport","courier", "Health","fitness","sports", "Finance","lawyers","Construction","carpenter", "Tutors","classes"];
   const { 
   location,
   jobStatus,
+  jobCategory,
   bio,
   phone,
   hourlyWage,
   jobMinimumPay} = formData;
 
     const [displaySocialInputs, toggleSocialInputs ] = useState(false);
+    const [displayInputs, toggleInputs ] = useState(false);
 
     useEffect(()=>{
         getCurrentProfile();
@@ -33,17 +36,23 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
             hourlyWage: loading || !profile.hourlyWage? '': profile.hourlyWage,
             location: loading || !profile.location ? '': profile.location,
             jobStatus: loading || !profile.jobStatus ? '': profile.jobStatus,
+            jobCategory: loading || !profile.jobCategory ? '': profile.jobCategory,
             bio: loading || !profile.bio ? '': profile.bio,
             jobMinimumPay: loading || !profile.jobMinimumPay ? '': profile.jobMinimumPay,
            
-        })
+        });
+       
     }, [])
-
-    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value }) 
+    
+    const onChange = e => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+       
+     }
     
     const onSubmit = e =>{
         e.preventDefault();
         createProfile(formData, history, true);
+        
     }
 
     return (
@@ -66,35 +75,47 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
                     <option value="Automotive">Automotive</option>
                     <option value="General labor">General labor</option>
                     <option value="Cleaning">Cleaning</option>
-                    <option value="Electronics/IT">Electronics/IT</option>
-                    <option value="Beauty/cosmetics">Beauty/cosmetics</option>
-                    <option value="Artist/photography">Artist/photography</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="photography">photography</option>
                     <option value="Child care">Child care</option>
                     <option value="Hospitality">Hospitality</option>
-                    <option value="Transport/courier">Transport/courier</option>
-                    <option value="Tutors/classes">Tutors/classes</option>
-                    <option value="Health/fitness/sports">Health/fitness/sports</option>
-                    <option value="Finance/lawyers">Finance/lawyers</option>
+                    <option value="courier">courier</option>
+                    <option value="Tutors">Tutors</option>
+                    <option value="lawyers">lawyers</option>
                     <option value="Catering">Catering</option>
                     <option value="Urgent">Urgent</option>
-                    <option value="Construction/carpenter">Construction/carpenter</option>
+                    <option value="carpenter">carpenter</option>
                     <option value="Gardener">Gardener</option>
                 </datalist>
-               {/*  <small className="form__form-text"
-                    >Give us an idea of where you are at in your career</small> */}
+               <small className="form__form-text"
+                    >Give us an idea of where you are at in your career</small> 
                 </div>
-              
-              
+               
+                <div className="form__form-group">
+                <input type="text" name="jobCategory" list="jobCategory" value={jobCategory}  placeholder='Select Your  Job Category'  onChange={e => onChange(e)} />
+                <datalist name="jobCategory" id="jobCategory" value={jobCategory} onChange={e => onChange(e)}  >
+                   
+                    <option value="Beauty">Beauty</option>
+                    <option value="Cosmetics">Cosmetics</option>
+                    <option value="Artist">Artist</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Construction">Construction </option>
+                    <option value="Other">Other </option>
+    
+                </datalist>
+               <small className="form__form-text"
+                    >Job Category</small> 
+                </div>
                 <div className="form__form-group">
                 <input type="number" placeholder="Phone number" name="phone" value={phone} onChange={e => onChange(e)} />
-                {/* <small className="form__form-text"
-                    >City & state suggested (eg. Boston, MA)</small> */}
+                <small className="form__form-text"
+                    >Phone number</small> 
                 </div>
 
                 <div className="form__form-group">
                 <input type="text" placeholder="Location" name="location" value={location} onChange={e => onChange(e)} required/>
-                {/* <small className="form__form-text"
-                    >City & state suggested (eg. Boston, MA)</small> */}
+                <small className="form__form-text"
+                    >City & state suggested (eg. Boston, MA)</small> 
                 </div>
                
                 
