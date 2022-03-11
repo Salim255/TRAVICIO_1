@@ -21,7 +21,14 @@ const reviewRouter = require('./routes/reviewRoute');
 
 
 const mongoUrl = process.env.DATASBASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
-const conn = mongoose.createConnection(mongoUrl);
+const conn = mongoose.createConnection(mongoUrl,
+  {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+   
+} );
 
 //init gfs
 let gfs;

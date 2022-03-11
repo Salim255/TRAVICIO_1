@@ -22,6 +22,7 @@ mongoose.connect(DB, {
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true
+   
 }).then(() =>{
    /*  console.log('BD connection successful'); */
 });//The option for the decraptionss
