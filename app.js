@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
-const sharp = require('sharp');//to images proccessing libary
-const resize = require('resizer-stream');
+
 const mongoose = require('mongoose');
 
 
@@ -19,7 +18,7 @@ const profileRouter = require('./routes/profileRoute');
 const userRouter = require('./routes/userRoute');
 const postRouter = require('./routes/postRoute');
 const reviewRouter = require('./routes/reviewRoute');
-const userControler =  require('./controlers/userControler');
+
 
 const mongoUrl = process.env.DATASBASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 const conn = mongoose.createConnection(mongoUrl);
@@ -68,7 +67,7 @@ app.get('/api/v1/files/:filename',  (req, res) =>{
            err: 'No files exists'
          });
     }
-   console.log(file);
+  
    //File exist
    return res.json(file);
   })

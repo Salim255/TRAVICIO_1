@@ -82,7 +82,7 @@ const upload = multer({
 }); 
 
 
-console.log("👄👄", upload.fileFilter);
+
 exports.uploadUserPhoto = upload.single('photo');
 
 
