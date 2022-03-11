@@ -16,7 +16,7 @@ const ProfileTop = ({profile: { _id,jobStatus, company, location, website, socia
       <div className=" bg-primary ">
          <img
             className="round-img my-1 profile-container__img "
-            src={`/img/users/${photo}`}
+            src={`/api/v1/image/${photo}`}
             alt="" 
         />
         

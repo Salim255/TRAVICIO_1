@@ -1,3 +1,9 @@
+.fnt {
+  //background-color: red;
+
+  font-size: 10rem;
+  font-weight: bold;
+}
 .search-sm {
   background-color: $color-gray-light;
   width: 100%;
@@ -80,6 +86,9 @@
   position: absolute;
   top: 35%;
   left: 0;
+  @include respond(tab-port) {
+    margin-top: 15rem;
+  }
 }
 .card {
   /*  background: url('../../../public/limpair.jpeg');
@@ -104,7 +113,8 @@
     transform: scale(1.05);
   }
   @include respond(tab-port) {
-    flex-basis: 80%;
+    flex-basis: 100%;
+    height: 35rem;
   }
   &__cato-0 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -118,6 +128,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-1 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -131,6 +144,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-2 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -144,6 +160,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-3 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -157,6 +176,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-4 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -170,6 +192,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-5 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -183,6 +208,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-6 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -196,6 +224,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-7 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -209,6 +240,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
   &__cato-8 {
     background-image: linear-gradient(to right bottom, gray, transparent),
@@ -222,6 +256,9 @@
     background-size: cover;
     height: 28rem;
     width: 100%;
+    @include respond(tab-port) {
+      height: 35rem;
+    }
   }
 
   &__heading {

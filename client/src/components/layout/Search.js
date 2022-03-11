@@ -1,4 +1,4 @@
-import React,{Fragment, useEffect, useState} from 'react';
+import React,{Fragment, useEffect, useState, useRef} from 'react';
 import { Link , Redirect} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as AiIcons  from 'react-icons/ai';
@@ -7,7 +7,10 @@ import {connect} from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getFilteredProfiles,getProfiles } from '../../Actions/profileAction';
 import List from './List';
+//import {FontAwesomeIcon} from '@fortawesome/fontawesome-free';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
+import {GiVacuumCleaner} from 'react-icons/gi'
 import ProfileItem from '../profiles/ProfileItem';
 
 
@@ -15,10 +18,16 @@ import ProfileItem from '../profiles/ProfileItem';
 const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles, loading}}) => {
     const [location, setLocation] = useState('');
     const [jobStatus, setJobStatus] = useState('');
-    const [list, setList] = useState('');
+    const [jobCategory, setJobCategory,] = useState('');
+   const refContainer = useRef(null);
     //const [jobsList, setJobsList] = useState([]);
     
-
+   const handleClick = (e) => {
+    
+     console.log(e.target);
+     const result = document.querySelector('.card__heading-span');
+     console.log(result);
+   }
    const handlChange =(e) =>{
         e.preventDefault() ;
        
@@ -54,22 +63,21 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
       <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
       <input type="text" name="jobStatus"  list="jobStatus"  value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  
       <datalist name="jobStatus" id="jobStatus" value={jobStatus} onChange={e => setJobStatus(e.target.value)}  >
-                    <option value="Electrical">Electrical</option>
+      <option value="Electrical">Electrical</option>
                     <option value="Automotive">Automotive</option>
-                    <option value="General labor">General labor</option>
                     <option value="Cleaning">Cleaning</option>
-                    <option value="Electronics/IT">Electronics/IT</option>
-                    <option value="Beauty/cosmetics">Beauty/cosmetics</option>
-                    <option value="Artist/photography">Artist/photography</option>
-                    <option value="Child care">Child care</option>
+                    <option value="IT">IT</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="cosmetics">cosmetics</option>
+                    <option value="photography">photography</option>
                     <option value="Hospitality">Hospitality</option>
-                    <option value="Transport/courier">Transport/courier</option>
-                    <option value="Tutors/classes">Tutors/classes</option>
-                    <option value="Health/fitness/sports">Health/fitness/sports</option>
-                    <option value="Finance/lawyers">Finance/lawyers</option>
+                    <option value="courier">courier</option>
+                    <option value="classes">classes</option>
+                    <option value="fitness">fitness</option>
+                    <option value="lawyers">lawyers</option>
                     <option value="Catering">Catering</option>
                     <option value="Urgent">Urgent</option>
-                    <option value="Construction/carpenter">Construction/carpenter</option>
+                    <option value="carpenter">carpenter</option>
                     <option value="Gardener">Gardener</option>
       </datalist>
     
@@ -99,20 +107,19 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                 <datalist name="jobStatus" id="jobStatus" value={jobStatus} onChange={e => setJobStatus(e.target.value)}  >
                     <option value="Electrical">Electrical</option>
                     <option value="Automotive">Automotive</option>
-                    <option value="General labor">General labor</option>
                     <option value="Cleaning">Cleaning</option>
-                    <option value="Electronics/IT">Electronics/IT</option>
-                    <option value="Beauty/cosmetics">Beauty/cosmetics</option>
-                    <option value="Artist/photography">Artist/photography</option>
-                    <option value="Child care">Child care</option>
+                    <option value="IT">IT</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="cosmetics">cosmetics</option>
+                    <option value="photography">photography</option>
                     <option value="Hospitality">Hospitality</option>
-                    <option value="Transport/courier">Transport/courier</option>
-                    <option value="Tutors/classes">Tutors/classes</option>
-                    <option value="Health/fitness/sports">Health/fitness/sports</option>
-                    <option value="Finance/lawyers">Finance/lawyers</option>
+                    <option value="courier">courier</option>
+                    <option value="classes">classes</option>
+                    <option value="fitness">fitness</option>
+                    <option value="lawyers">lawyers</option>
                     <option value="Catering">Catering</option>
                     <option value="Urgent">Urgent</option>
-                    <option value="Construction/carpenter">Construction/carpenter</option>
+                    <option value="carpenter">carpenter</option>
                     <option value="Gardener">Gardener</option>
                 </datalist>
                     
@@ -125,11 +132,54 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                     Search
             </Link>
             </form>
-            
+ {/*  <div >
+  <GiVacuumCleaner className='fnt' />
+  </div>  */}     
   <div className='list'>
-    {!loading&&profiles.length > 0 ? "": <List/> }
+    {!loading&&profiles.length > 0 ? "": <Fragment>
+    {[...Array(9)].map((el, index) => {
+           return(<div className='card' key={index} onClick={e =>handleClick(e)} >
+                    <h1 className='card__heading' >
+                      <span className='card__heading-span' ref={refContainer} >
+                          {(() => {
+                              switch(index){
+                                  case 0:
+                                      return "Jardineria/Piscinas";
+                                  case 1:
+                                        return "Trabajos Generals";
+                                  case 2:
+                                     return "Servicio de Limpieza";
+                                  case 3:
+                                        return "Electronica/Informatica";
+                                  case 4:
+                                        
+                                        return "Cosmetica";
+                                  case 5:
+                                        return "Construccion";
+                                  case 6:
+                                        return "Tutores/Cursos";
+                                  case 7:
+                                        return "Transportes/Correo";
+                                  case 8:
+                                        return "Artistico/Creativo";
+                                  case 9:
+                                            return "Artistico/Creativo";
+                                  default:
+                                    return ""
+                              }
+
+                          })()}
+                                    
+                       </span>
+                    </h1>
+                    <div className={`card__cato-${index}`}>
+                       
+                    </div>
+           </div>)
+       })}
+    </Fragment> }
       
-  </div>
+  </div> 
    <div className='searchItemMargin'>
    { loading ? ' ': <Fragment>
    

@@ -10,7 +10,7 @@ const PostItem = ({addLike, removeLike,deletePost, auth, post: {_id, text,  user
   return <div className="postStyle p-1 my-1">
   <div>
     <Link to={`/profiles/${user._id}`}>
-    <img src={`/img/users/${user.photo}`} alt="user-img" className="round-img" />
+    <img src={`/api/v1/image/${user.photo}`} alt="user-img" className="round-img" />
       
     </Link>
   </div>

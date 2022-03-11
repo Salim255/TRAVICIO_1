@@ -60,20 +60,17 @@ const CreateProfile =({ createProfile, history }) => {
                 <datalist name="jobStatus" id="jobStatus" value={jobStatus} onChange={e => onChange(e)}  >
                     <option value="Electrical">Electrical</option>
                     <option value="Automotive">Automotive</option>
-                    <option value="General labor">General labor</option>
                     <option value="Cleaning">Cleaning</option>
-                    <option value="Electronics/IT">Electronics/IT</option>
-                    <option value="Beauty/cosmetics">Beauty/cosmetics</option>
-                    <option value="Artist/photography">Artist/photography</option>
-                    <option value="Child care">Child care</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="photography">photography</option>
                     <option value="Hospitality">Hospitality</option>
-                    <option value="Transport/courier">Transport/courier</option>
-                    <option value="Tutors/classes">Tutors/classes</option>
-                    <option value="Health/fitness/sports">Health/fitness/sports</option>
-                    <option value="Finance/lawyers">Finance/lawyers</option>
+                    <option value="courier">courier</option>
+                    <option value="classes">classes</option>
+                    <option value="fitness">fitness</option>
+                    <option value="lawyers">lawyers</option>
                     <option value="Catering">Catering</option>
                     <option value="Urgent">Urgent</option>
-                    <option value="Construction/carpenter">Construction/carpenter</option>
+                    <option value="carpenter">carpenter</option>
                     <option value="Gardener">Gardener</option>
                 </datalist>
                 <small className="form__form-text"
@@ -88,6 +85,7 @@ const CreateProfile =({ createProfile, history }) => {
                     <option value="Artist">Artist</option>
                     <option value="Transport">Transport</option>
                     <option value="Construction">Construction </option>
+                    <option value="sports">sports </option>
                     <option value="Other">Other </option>
     
                 </datalist>

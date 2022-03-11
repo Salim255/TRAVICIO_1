@@ -14,7 +14,7 @@ const ReviewItem = ({deleteFeedBack,auth,review:{user:{_id,firstName, lastName, 
  <h6>{firstName} {lastName}</h6>
  </Link>  */}
  <Link to={`/profiles/${profile}`}>
-    <img src={`/img/users/${photo}`} alt="photo" className="round-img"/>
+    <img src={`/api/v1/image/${photo}`} alt="photo" className="round-img"/>
    
   </Link>
   <div className='bgWhite'>

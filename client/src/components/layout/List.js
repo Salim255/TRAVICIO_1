@@ -18,9 +18,10 @@ const List = () => {
                                   case 3:
                                         return "Electronica/Informatica";
                                   case 4:
-                                        return "Cosmetica/Estética";
+                                        
+                                        return "Cosmetica";
                                   case 5:
-                                        return "Construccion/Carpinteria";
+                                        return "Construccion";
                                   case 6:
                                         return "Tutores/Cursos";
                                   case 7:

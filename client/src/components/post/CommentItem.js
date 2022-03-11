@@ -14,7 +14,7 @@ const CommentItem = ({postId, comment:{_id, text, photo, name, avatar, user, dat
       <Link to={`/profiles/${user}`}>
        {photo ?  ( <img
           className="round-img"
-          src={`/img/users/${photo}`}
+          src={`/api/v1/image/${photo}`}
           alt=""
         />): ( <img
           className="round-img"

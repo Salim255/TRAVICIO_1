@@ -85,9 +85,13 @@ app.get('/api/v1/image/:filename',  (req, res) =>{
    //Check if its image
    if(file.contentType === 'image/jpeg'){
      //Read the output to browser
-     const readstream = gfs.createReadStream(file.filename).pipe(resize({ width: 300, height: 300, fit: true }));
+     const readstream = gfs.createReadStream(file.filename);
+
+  
+     //.pipe(resize({ width: 300, height: 300, fit: true }));
      //sharp(res).resize(500, 500).jpeg({quality: 90});
-      readstream.pipe(res);
+      //readstream.pipe(res);
+      readstream.pipe(res)
     
      
    }else{

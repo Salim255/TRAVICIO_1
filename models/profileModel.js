@@ -42,6 +42,9 @@ const profileSchema = new mongoose.Schema({
       type: String,
       required: [true, 'Job status is required']
     },
+    jobCategory: {
+          type: String
+    },
     skills: {
       type: [String],
       required: true
@@ -169,11 +172,14 @@ profileSchema.virtual('reviews', {
 } );
 
   //DOCUMENT MIDDLEWARE: runs before .save() and create()
- /*  profileSchema.pre('save', function(next) {
-      this.slug = slugify(this.name, {lower: true});
-     
+/*  profileSchema.pre('save', function(next) {
+      //this.slug = slugify(this.name, {lower: true});
+      this.jobStatus = this.jobStatus.toLowerCase();
+      this.location = this.location.toLowerCase();
+      this.jobCategory = this.jobCategory.toLowerCase();
+      
       next();
-  }); */
+  });  */
 
 
   const Profile = mongoose.model('Profile', profileSchema);
