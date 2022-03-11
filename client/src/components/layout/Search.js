@@ -18,7 +18,7 @@ import ProfileItem from '../profiles/ProfileItem';
 const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles, loading}}) => {
     const [location, setLocation] = useState('');
     const [jobStatus, setJobStatus] = useState('');
-    const [jobCategory, setJobCategory,] = useState('');
+ 
    const refContainer = useRef(null);
     //const [jobsList, setJobsList] = useState([]);
     
