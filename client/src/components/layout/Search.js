@@ -6,11 +6,8 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getFilteredProfiles,getProfiles } from '../../Actions/profileAction';
-import List from './List';
-//import {FontAwesomeIcon} from '@fortawesome/fontawesome-free';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+//import List from './List';
 
-import {GiVacuumCleaner} from 'react-icons/gi'
 import ProfileItem from '../profiles/ProfileItem';
 
 

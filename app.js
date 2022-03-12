@@ -9,7 +9,7 @@ const grid = require('gridfs-stream');
 
 const app = express();
 const morgan = require('morgan');
-const compression = require('compression');
+//const compression = require('compression');
 const globalErrorHandler =  require('./controlers/errorControler');
 const AppError = require('./utils/appError');
 
