@@ -32,12 +32,12 @@ const App = () => {
     <Provider store={store}>
       <Router>
         < Fragment>
-        <switch>
+        
           <Navbar/>
           <Shape/>
           <Route exact  path='/' component={ Landing} />
           <Route component={Routes}/>
-        </switch>
+        
           
           
           
