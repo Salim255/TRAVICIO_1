@@ -12,7 +12,7 @@ const ProfileItem = ({ profile: { ratingsAverage,jobMinimumPay,hourlyWage,user: 
     }}) => {
   const E = Math.trunc(ratingsAverage);
   const rating =Math.round( ratingsAverage);
-
+  console.log(ratingsAverage);
 
   return (
       <div className='profile bg-light  profileItem'>
@@ -29,14 +29,22 @@ const ProfileItem = ({ profile: { ratingsAverage,jobMinimumPay,hourlyWage,user: 
  Rating :&nbsp;
  {[...Array(5)].map((star, index) =>{
    return (
-    
-     <MdStar   color={E<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
-     
+
+     <Fragment>
+        { ((ratingsAverage - index <1) && (ratingsAverage - index > 0))? ( <IoIosStarHalf  color={ "#ffcc10" }   className='starMargin'/> ): (index<E)? (<MdStar   color={"#ffcc10" } key={index} className='starMargin'/>):(<MdStar   color={"#FFFFFF" } key={index} className='starMargin'/>)}
+         
+     </Fragment>
+     /*  <MdStar   color={"#ffcc10" } key={index} className='starMargin'/> index <= E ? (<MdStar   color={"#ffcc10" } key={index} className='starMargin'/>):*/
    )
  })}
 
-{/*  { ratingsAverage > E &&(( <IoIosStarHalf  color={ "#ffcc10" }   className='starMargin'/> )) } */}
-  
+{/* { ratingsAverage > E &&(( <IoIosStarHalf  color={ "#ffcc10" }   className='starMargin'/> )) }
+{[...Array(5)].map((star, index) =>{
+   return (
+     <MdStar   color={"	#FFFFFF" } key={index} className='starMargin'/>
+     
+   )
+ })} */}
 
  </div>
  

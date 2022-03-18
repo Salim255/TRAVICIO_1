@@ -34,7 +34,8 @@ export const Routes = () => {
               <Route exact path='/search' component={ Search }/>
 
              
-             <Route exact path='/register' component={ Register }/>
+            <div className='contain'>
+            <Route exact path='/register' component={ Register }/>
               <Route exact path='/forgotPassword' component={ ForgotPassword }/>
               <Route exact path='/resetPassword/:token' component={ ResetPassword }/>
               <Route exact path='/login' component={ Login }/>
@@ -48,6 +49,7 @@ export const Routes = () => {
               <PrivateRoute exact path='/settings' component={ UserSetting }/>
               <PrivateRoute exact path='/posts/:id' component={ Post }/>
               <PrivateRoute exact path='/add-feedback/:id/reviews' component={ Rating }/>
+            </div>
        
               
               

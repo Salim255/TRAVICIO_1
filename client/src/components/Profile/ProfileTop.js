@@ -3,15 +3,27 @@ import PropTypes from 'prop-types';
 import Rating from '../layout/Rating';
 import { Link } from 'react-router-dom';
 import { MdStar} from 'react-icons/md';
+import {IoIosStarHalf} from 'react-icons/io'
 
 const ProfileTop = ({profile: { _id,jobStatus,ratingsAverage,jobMinimumPay,hourlyWage, company, location, website, social,phone, user: {firstName,lastName, photo,avatar, email}}}) => {
     
     const [popUp, setPopUp] = useState(false);
     
+    const onChange = e => {
+        e.preventDefault();
+    } ;
+
+
+    const onSubmit = e =>{
+        e.preventDefault();
+    
+    }
+
     const onClick =() =>{
         setPopUp(!popUp);
     }
     const rating =Math.round( ratingsAverage);
+    const E = Math.trunc(ratingsAverage);
   return <><div className='block '>
       <div className='profile-container '>
       <div className=" bgprimary ">
@@ -42,7 +54,10 @@ const ProfileTop = ({profile: { _id,jobStatus,ratingsAverage,jobMinimumPay,hourl
                     <p className="lead">{location && <span>HourlyPay: {jobMinimumPay}&euro;/h </span>}
                     <p className="lead">{location && <span>{[...Array(5)].map((star, index) =>{
    return (
-     <MdStar   color={rating<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
+    <Fragment>
+    { ((ratingsAverage - index <1) && (ratingsAverage - index > 0))? ( <IoIosStarHalf  color={ "#ffcc10" }   className='starMargin'/> ): (index<E)? (<MdStar   color={"#ffcc10" } key={index} className='starMargin'/>):(<MdStar   color={"#FFFFFF" } key={index} className='starMargin'/>)}
+     
+ </Fragment>
    )
  })}</span>}
                     </p>
@@ -53,18 +68,19 @@ const ProfileTop = ({profile: { _id,jobStatus,ratingsAverage,jobMinimumPay,hourl
       
        <div className='profileTop'>
             <div>
-                 <p className='contactifo padingLR ' onClick={()=> onClick()}>Work Photos
+                 <p className='contactifo padingLR ' /* onClick={()=> onClick()} */>Work Photos
                     
                     </p>
-                <p className='contactifo padingLR' onClick={()=> onClick()}>Resume
+                <p className='contactifo padingLR' /* onClick={()=> onClick()} */>Resume
                     
                     </p>
             </div>
             <div>
            
-            <p className='contactifo padingLR' onClick={()=> onClick()}> Reviews  </p>
+            <p className='contactifo padingLR' onClick={()=> onClick()}> <i class="far fa-envelope"></i> </p>
+            <p className='contactifo padingLR' /* onClick={()=> onClick()} */> <i class="fas fa-phone-volume"></i> </p>
             <Link to={`/add-feedback/${_id}/reviews`} className='contactifo padingLR' >
-                  Contact info 
+                     Reviews
             </Link>
             </div>
        </div>
@@ -121,21 +137,39 @@ const ProfileTop = ({profile: { _id,jobStatus,ratingsAverage,jobMinimumPay,hourl
         </div>
      </div>
     </div>
-    {popUp&&(<div className='popUpInfo'>
+ 
+  </div>
+  {popUp&&(<div className='popUpInfo'>
     <div className='divName'> 
-        <p className="large divName__name">{firstName}{' '}{lastName}</p>
+       <p className="large divName__name"></p> 
         <i className="fas fa-times divName__icon" onClick={() => onClick()}></i>
     </div>
     <div className='contacs'>
         <p className='contacs__text'>Contact Info</p>
-         <div className='contacs__info'>
+       {/*   <div className='contacs__info'>
            <p className=""> <i class="fas fa-phone-volume"></i> {' '}Phone: {' '} {phone}</p>
           <p className=""><i class="far fa-envelope"></i> {' '}Email: {' '}{email}</p>
-         </div>
+         </div>  */}
+         <form className='form'>
+         <div className="form__form-group">
+                    <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => onChange(e)} required />
+                    <small className="form__form-text"
+                    >Your Email</small>
+        </div>
+         <div className="form__form-group">
+                <input type="text" placeholder="Phone number" name="phone" value={phone} onChange={e => onChange(e)} required/>
+                <small className="form__form-text"
+                    >Your phone number</small>
+        </div>
+         <div className="form__form-group">
+                <textarea placeholder="Your message..." name="bio" value=""  className='classarea'></textarea>
+                <small className="form__form-text">Tell us a little about yourself</small>
+                </div>
+                <input type="submit" className="btn btn-primary my-1" value="Send"/>
+         </form>
     </div>
 </div>)}
-  </div>
-  
+
 </>
 };
 

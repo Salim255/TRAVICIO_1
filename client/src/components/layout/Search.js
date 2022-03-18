@@ -196,7 +196,7 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
          ))
        ) : <h4> {/* No proiles found...  */}</h4> } </div></Fragment>}
    </div>
-   <img src={logo} className='imageSt'/>
+  
   </Fragment>
 };
 
