@@ -1,13 +1,14 @@
 .dashboard {
   //background-color: $color-gray-light;
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  height: 100vh;
+  background-color: $color-secondary;
+  padding: 2.5rem;
   /*   &__title {
     //background-color: red;
     position: relative;
     top: 20%;
     left: 10%;
   } */
+}
+
+.dashContainer {
 }

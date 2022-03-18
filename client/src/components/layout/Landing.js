@@ -22,7 +22,10 @@ const Landing = ({isAuthenticated, saveLocation}) => {
     <section className="landing">
         <div className="dark-overlay">
           <div className="landing__inner">
-            <p className="x-large worker travicio">Travicio</p>
+            <div>
+                <p className="x-large worker travicio">Travicio</p>
+                <h3>Trabajos  y  Servicios</h3>
+            </div>
             <p className="lead textSearch">
               Searching for workers in your area right now. No account needed.<br/>
               Want to advertise your skills or post a job offer? Then easy, just register above
@@ -47,10 +50,10 @@ const Landing = ({isAuthenticated, saveLocation}) => {
             </div>
       
         </div>
-        {!isAuthenticated && <Fragment> <div className="landing__buttons">
+      {/*   {!isAuthenticated && <Fragment> <div className="landing__buttons">
               <Link to="/register" className="btn btn-primary">Sign Up</Link>
               <Link to="/login" className="btn btn-light">Login</Link>
-            </div></Fragment>}
+            </div></Fragment>} */}
            
         </div>
       </div>

@@ -17,7 +17,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
     }, [ getProfileById, match.params.id]);
   
    
-  return  <Fragment>
+  return  <Fragment >
       {profile === null || loading ? <Spinner/> : <Fragment>
           <Link to='/profiles' className='btn btn-light'>
               Back To Profiles
@@ -25,7 +25,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
           {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (<Link to='/edit-profile' className='btn btn-dark'>
                 Edit Profile
           </Link>) }
-          <div className="profile-gride my-1">
+          <div className="profile-gride my-1 ">
               <ProfileTop profile={profile} user={auth} />
               <ProfileAbout profile={profile}/>
              

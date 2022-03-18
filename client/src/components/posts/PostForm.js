@@ -8,7 +8,7 @@ const PostForm = ({addPost}) => {
     const [text, setText] = useState('');
   return (
   <div className="post-form">
-        <div className="bg-primary p-1 borderRad">
+        <div className="bgprimary p-1 borderRad">
             <h2>Say Something...</h2>
         </div>
         <form className="form  my-1" onSubmit={e => {e.preventDefault() ;

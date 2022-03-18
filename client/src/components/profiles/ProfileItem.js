@@ -3,40 +3,50 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {RiStarLine} from 'react-icons/ri';
 import { MdStar} from 'react-icons/md';
+import {IoIosStarHalf} from 'react-icons/io'
 
 const ProfileItem = ({ profile: { ratingsAverage,jobMinimumPay,hourlyWage,user: {_id, firstName,lastName, avatar, photo},
     jobStatus,
     company,
     location,
     }}) => {
-  
+  const E = Math.trunc(ratingsAverage);
   const rating =Math.round( ratingsAverage);
 
 
-  return <div className='profile bg-light'>
+  return (
+      <div className='profile bg-light  profileItem'>
    
-    {!photo? (<img src={`${avatar}`} alt="user-img" className="round-img profile-containerimg" />) :(<img src={`/api/v1/image/${photo}`} alt="user-img" className="round-img" />) }
  <div>
- <h2>{firstName}&nbsp;{lastName}</h2>
-  <div>{jobStatus} { company && <span> at {company}</span>}</div>
-  <div className="my-1">{location && <span>{location}</span>}<br/>
-  <div>Pay : {jobMinimumPay}&euro;/h &nbsp;<span className='hourlyWage'>{hourlyWage}</span></div>
-  Rating :&nbsp;
-  {[...Array(5)].map((star, index) =>{
-    return (
-      <MdStar   color={rating<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
-    )
-  })}
-   
- 
-  </div>
-  
-  <Link to={`/profiles/${_id}`} className='btn btn-primary'>
-      View Profile
-  </Link>
+ {photo ==='default.jpg'? (<img src={`/img/users/${photo}`} alt="user-avatar" className="round-img profile-containerimg" />) :(<img src={`/api/v1/image/${photo}`} alt="user-img" className="round-img" />) }
+   <h4>{firstName}&nbsp;{lastName}</h4>
  </div>
+<div>
+
+ <div>{jobStatus} { company && <span> at {company}</span>}</div>
+ <div className="my-1">{location && <span>{location}</span>}<br/>
+ <div>Pay : {jobMinimumPay}&euro;/h &nbsp;<span className='hourlyWage'>{hourlyWage}</span></div>
+ Rating :&nbsp;
+ {[...Array(5)].map((star, index) =>{
+   return (
+    
+     <MdStar   color={E<= index ? "#e4e5e9": "#ffcc10" } key={index} className='starMargin'/>
+     
+   )
+ })}
+
+{/*  { ratingsAverage > E &&(( <IoIosStarHalf  color={ "#ffcc10" }   className='starMargin'/> )) } */}
   
-</div>; 
+
+ </div>
+ 
+ <Link to={`/profiles/${_id}`} className='btn btn-primary'>
+     View Profile
+ </Link>
+</div>
+ 
+</div>
+)
  
 };
 

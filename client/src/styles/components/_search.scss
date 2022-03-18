@@ -104,7 +104,7 @@
   border-radius: 5px;
   //background-color: red;
   flex-basis: 30%;
-  height: 28rem;
+  height: 18rem;
   box-shadow: 0 1.5rem 4rem rgba($color: #000000, $alpha: 0.8);
   margin: 2rem;
   overflow: hidden;
@@ -118,158 +118,161 @@
   }
   &__cato-0 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/jardin.jpeg');
+      url('../../../public/jardineria.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    // clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-1 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/arts.jpeg');
+      url('../../../public/artistico.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-2 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/cleaning.jpeg');
+      url('../../../public/limpieza.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-3 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/electronico.jpeg');
+      url('../../../public/electronica.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-4 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/cosmetic.jpeg');
+      url('../../../public/cosmetico.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-5 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/build.jpeg');
+      url('../../../public/carpinteria.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    // clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-6 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/class.jpeg');
+      url('../../../public/tutores.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-7 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/delivery.jpeg');
+      url('../../../public/transportes.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    // clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
   &__cato-8 {
     background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/garage.jpeg');
+      url('../../../public/automovilistico.jpg');
 
-    clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
-    background-repeat: no-repeat;
+    //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
+    //background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 28rem;
-    width: 100%;
+    /*  height: 20.7rem;
+    width: 50%; */
+    height: 18rem;
+    width: 17.5rem;
     @include respond(tab-port) {
       height: 35rem;
     }
   }
 
   &__heading {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 300;
     /*  text-transform: uppercase; */
-    text-align: left;
+    text-align: right;
     color: $color-white;
+
     position: relative;
     top: 10%;
-    left: 10%;
+    right: -130%;
   }
   &__heading-span {
     padding: 1rem 1.5rem;
@@ -295,4 +298,26 @@
   .searchBtn {
     display: none;
   }
+}
+.profilesContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profileItem {
+  flex-basis: 31.7%;
+  margin: 1rem;
+  @include respond(tab-port) {
+    // flex-basis: 50%;
+    flex-basis: 100%;
+  }
+  @include respond(mobile) {
+    flex-basis: 100%;
+  }
+}
+
+.imageSt {
+  margin-top: 150vh;
+  height: 10rem;
+  width: 10rem;
+  font-size: 1rem;
 }

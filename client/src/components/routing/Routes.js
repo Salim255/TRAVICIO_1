@@ -27,17 +27,18 @@ import NotFound from '../layout/NotFound';
 
 export const Routes = () => {
   return (
-    <section className='container'>
+    <section className='container' >
           <Alert/>
             <Switch>
-              <Route exact path='/register' component={ Register }/>
+              <Route exact path='/profiles' component={ Profiles }/>
+              <Route exact path='/search' component={ Search }/>
+
+             
+             <Route exact path='/register' component={ Register }/>
               <Route exact path='/forgotPassword' component={ ForgotPassword }/>
               <Route exact path='/resetPassword/:token' component={ ResetPassword }/>
               <Route exact path='/login' component={ Login }/>
-              <Route exact path='/profiles' component={ Profiles }/>
-      
-              <Route exact path='/profiles/:id' component={ Profile }/>
-              <Route exact path='/search' component={ Search }/>
+              <Route exact path='/profiles/:id'  component={ Profile }/>
               <PrivateRoute exact path='/dashboard' component={ Dashboard }/>
               <PrivateRoute exact path='/edit-profile' component={ EditProfile }/>
               <PrivateRoute exact path='/add-experience' component={ AddExperience }/>
@@ -47,6 +48,9 @@ export const Routes = () => {
               <PrivateRoute exact path='/settings' component={ UserSetting }/>
               <PrivateRoute exact path='/posts/:id' component={ Post }/>
               <PrivateRoute exact path='/add-feedback/:id/reviews' component={ Rating }/>
+       
+              
+              
           {/* <Route component={NotFound}/> */}
             </Switch>
           

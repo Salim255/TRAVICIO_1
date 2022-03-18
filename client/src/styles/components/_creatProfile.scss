@@ -2,7 +2,9 @@
   background-color: $color-gray-light;
 }
 .createProfile {
-  padding: 20rem;
+  //padding: 20rem;
+  padding: 5rem;
+  background-color: $color-secondary;
   @include respond(tab-port) {
     padding: 2rem;
   }
@@ -19,7 +21,7 @@
   &datalist,
   & select {
     display: block;
-    width: 100%;
+    width: 80%;
     border-radius: 2px;
     border: none;
     padding: 1.5rem 2rem;
@@ -47,6 +49,11 @@
   &__form-text {
     display: block;
     margin-top: 0.3rem;
-    color: #888;
+    color: rgb(68, 66, 66);
   }
+}
+
+.classarea {
+  width: 300px;
+  height: 180px;
 }

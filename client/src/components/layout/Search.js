@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getFilteredProfiles,getProfiles } from '../../Actions/profileAction';
 //import List from './List';
-
+import logo from '../../images/auto.jpeg';
 import ProfileItem from '../profiles/ProfileItem';
 
 
@@ -137,8 +137,13 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
     {[...Array(9)].map((el, index) => {
            return(<div className='card' key={index} onClick={e =>handleClick(e)} >
                     <h1 className='card__heading' >
-                      <span className='card__heading-span' ref={refContainer} >
-                          {(() => {
+                     {/*  <span className='card__heading-span' ref={refContainer} >
+                         
+                                    
+                       </span> */}
+                    </h1>
+                    <div className={`card__cato-${index}`}>
+                    <h1 className='card__heading' > <span className='card__heading-span'> {(() => {
                               switch(index){
                                   case 0:
                                       return "Jardineria/Piscinas";
@@ -165,34 +170,33 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                                     return ""
                               }
 
-                          })()}
-                                    
-                       </span>
-                    </h1>
-                    <div className={`card__cato-${index}`}>
-                       
+                          })()}</span></h1>
                     </div>
            </div>)
        })}
     </Fragment> }
       
   </div> 
-   <div className='searchItemMargin'>
+   <div className='searchItemMargin  '>
    { loading ? ' ': <Fragment>
    
-   
-      <div className="">
-       {!loading&&profiles.length > 0 ? (
-         profiles.map(profile => (<Fragment>
-            <h2 className="lead">
+   <h2 className="lead">
           <i className="fab fa-connectdevelop"></i>
           Workers available in your area</h2>
-           <ProfileItem key={profile._id} profile={profile}/>
+      <div  className="profilesContainer" >
+       {!loading&&profiles.length > 0 ? (
+         profiles.map(profile => (<Fragment>
+          
+          
+               <ProfileItem key={profile._id} profile={profile}/>
+          
+           
          </Fragment>
          
          ))
        ) : <h4> {/* No proiles found...  */}</h4> } </div></Fragment>}
    </div>
+   <img src={logo} className='imageSt'/>
   </Fragment>
 };
 

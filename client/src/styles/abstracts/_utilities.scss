@@ -17,6 +17,9 @@
 }
 
 /* Utilities */
+.contain {
+  max-width: 1100px;
+}
 .container {
   max-width: 1100px;
   margin: auto;
@@ -36,7 +39,7 @@
 .btn {
   display: inline-block;
   border: none;
-  border-radius: 50px;
+  border-radius: 2px;
   padding: 0.4rem 1.3rem;
   margin-top: 1rem;
   background-color: $color-white;
@@ -68,7 +71,7 @@
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: $color-primary;
   color: #fff;
 }
 

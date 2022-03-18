@@ -2,6 +2,29 @@
   padding: 10rem 20rem;
 }
 
+.profileTop {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  align-items: center;
+  grid-gap: 2.5rem;
+  padding: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+.profileTop2 {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  align-items: center;
+  grid-gap: 2.5rem;
+  padding: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
 .viewWorker {
   background-color: $color-gray-light;
   display: flex;
@@ -45,7 +68,7 @@
   //padding-bottom: 5rem;
   box-shadow: var(--dark-shadow);
   &__img {
-    border-radius: 50rem;
+    //border-radius: 50rem;
     width: 200px;
     height: 200px;
     border: 1px solid rgba(0, 0, 0, 0.25);
@@ -68,7 +91,7 @@
     margin: 0 auto;
     margin-top: 1.5rem;
     text-transform: uppercase;
-    background: $color-primary-light;
+    background: $color-primary;
     color: var(--clr-white);
     padding: 0.375rem 0.75rem;
     letter-spacing: var(--spacing);
@@ -124,7 +147,7 @@
 
 /* Profiles Page */
 .profile {
-  border-radius: 2rem;
+  border-radius: 2px;
   display: grid;
   grid-template-columns: 1fr 6fr;
   align-items: center;
@@ -146,6 +169,11 @@
   }
 }
 
+.bgprimary {
+  background: $color-secondary;
+  color: white;
+}
+
 .profile-top {
   grid-area: top;
   display: flex;
@@ -162,13 +190,13 @@
 .contactifo {
   position: relative;
   top: 0;
-  left: 30%;
+  left: 0;
   cursor: pointer;
-
   font-size: 1.5rem;
   color: $color-gray-dark;
   transition: all 0.2s;
   padding: 0.5rem;
+  margin: 1rem;
   background-color: white;
   display: inline-block;
   border-radius: 2rem;
@@ -178,7 +206,6 @@
     transform: scale(1.2);
   }
   @include respond(tab-port) {
-    left: 15%;
   }
 }
 

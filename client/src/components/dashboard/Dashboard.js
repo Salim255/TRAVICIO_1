@@ -21,17 +21,18 @@ const Dashboard = ({getCurrentProfile,deleteAccount,gettingSingleImage , auth: {
     }, [getCurrentProfile]);
     
     return loading && profile ? <Spinner/>: <Fragment>
+        <div className='dashContainer'>
         <div className='dashboard'>
               <h1 className="large text-primary">  
                {user &&(<Fragment>
-                   {user.photo ? (<Fragment>
-                        <img className="round-img my-1 profile-container__img "
+                   {user.photo ==='default.jpg'?  (<Fragment>
+                        <img    src={`/img/users/${user.photo}`} className="round-img my-1 profile-container__img "
                       /* 
-                       */ src={`/api/v1/image/${user.photo}`}
+                       */ 
                        alt="" />
                    </Fragment>): (<Fragment>
                      <img className="round-img my-1 profile-container__img "
-                       src={`/img/users/${user.default}`} alt="" />
+                     src={`/api/v1/image/${user.photo}`}alt="" />
                    </Fragment>)}
                </Fragment>) 
                }
@@ -56,6 +57,7 @@ const Dashboard = ({getCurrentProfile,deleteAccount,gettingSingleImage , auth: {
                     Create Profile
                 </Link>
                 </Fragment>}
+        </div>
         </div>
     </Fragment>
 }

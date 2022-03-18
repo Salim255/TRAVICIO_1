@@ -126,7 +126,7 @@ if(process.env.NODE_ENV === 'production'){
     }) 
 }; 
 
-//app.use(express.static(`${__dirname}/images`));
+app.use(express.static(`${__dirname}/images`));
 //app.use(express.static(`public`));
 
 app.all('*', (req, res, next) =>{

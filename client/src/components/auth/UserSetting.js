@@ -67,10 +67,22 @@ const UserSetting = ({updateUserSetting,gettingSingleImage ,auth:{user, loading}
                     <input type="text" className="form__input" name="email" value={email} onChange={e => onChange(e)} />
             </div>
             <div className="form__group">
-                { 
+              {/*   { 
                    user&&(user.photo ? (<img src={`/api/v1/image/${user.photo}`} alt="" className="round-img my-1 profile-container__img " />) :( <img src={user.avatar} alt="" className="round-img my-1 profile-container__img " /> ) )
                   
-                }
+                } */}
+                {user &&(<Fragment>
+                   {user.photo ==='default.jpg'?  (<Fragment>
+                        <img    src={`/img/users/${user.photo}`} className="round-img my-1 profile-container__img "
+                      /* 
+                       */ 
+                       alt="" />
+                   </Fragment>): (<Fragment>
+                     <img className="round-img my-1 profile-container__img "
+                     src={`/api/v1/image/${user.photo}`}alt="" />
+                   </Fragment>)}
+               </Fragment>) 
+               }
                 
                      <input type="file" accept='image/*' id="file" name="file"   onChange={e =>chanangH(e)} />
                      

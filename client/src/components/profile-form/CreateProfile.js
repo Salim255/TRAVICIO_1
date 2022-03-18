@@ -49,10 +49,9 @@ const CreateProfile =({ createProfile, history }) => {
                 Create Your Profile
             </h1>
             <p className="lead">
-                <i className="fas fa-user"></i> Let's get some information to make your
-                profile stand out
+                <i className="fas fa-user"></i> 
             </p>
-            <small>* = required field</small>
+            <small>{/* * = required field */}</small>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form__form-group">
               
@@ -74,7 +73,7 @@ const CreateProfile =({ createProfile, history }) => {
                     <option value="Gardener">Gardener</option>
                 </datalist>
                 <small className="form__form-text"
-                    >Give us an idea of where you are at in your career</small>
+                    >Your job title</small>
                 </div>
                 <div className="form__form-group">
                 <input type="text" name="jobCategory" list="jobCategory" value={jobCategory}  placeholder='Select Your  Job Category'  onChange={e => onChange(e)} />
@@ -103,13 +102,10 @@ const CreateProfile =({ createProfile, history }) => {
                 <div className="form__form-group">
                 <input type="text" placeholder="Location" name="location" value={location} onChange={e => onChange(e)} required/>
                 <small className="form__form-text"
-                    >City & state suggested (eg. Boston, MA)</small>
+                    >Your City  (eg. Madrid)</small>
                 </div>
                
-                <div className="form__form-group">
-                <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={e => onChange(e)}></textarea>
-                <small className="form__form-text">Tell us a little about yourself</small>
-                </div>
+               
                 <div className="form__form-group">
                 <input  type="number" placeholder="Job minimum Pay" name="jobMinimumPay" value={jobMinimumPay} onChange={e => onChange(e)} required/>
                 <small className="form__form-text">Minimum Pay /h</small>
@@ -121,14 +117,18 @@ const CreateProfile =({ createProfile, history }) => {
                     <option value="No Negotiable">No Negotiable</option>
                 </select>
                 <small className="form__form-text"
-                    >Give us an idea of where you are at in your career</small>
+                    >Select wage type</small>
                 </div>
-                <div className="my-2">
+                <div className="form__form-group">
+                <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={e => onChange(e)} className='classarea'></textarea>
+                <small className="form__form-text">Tell us a little about yourself</small>
+                </div>
+              {/*   <div className="my-2">
                 <button onClick={() => toggleSocialInputs(!displaySocialInputs)} type="button" className="btn btn-light">
                     Add Social Network Links
                 </button>
                 <span>Optional</span>
-                </div>
+                </div> */}
                  
                   {/* {displaySocialInputs && <Fragment><div className="form__form-group social-input">
                 <i className="fab fa-twitter fa-2x"></i>

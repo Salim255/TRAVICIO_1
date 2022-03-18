@@ -62,11 +62,10 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
               <h1 className="large text-primary">
                 Edit Your Profile
             </h1>
-            <p className="lead">
-                <i className="fas fa-user"></i> Let's get some information to make your
-                profile stand out
-            </p>
-            <small>* = required field</small>
+             <p className="lead">
+                <i className="fas fa-user"></i> 
+            </p> 
+            {/* <small>* = required field</small> */}
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form__form-group">
                 <input type="text" name="jobStatus" list="jobStatus" value={jobStatus}  placeholder='Select Professional Status'  onChange={e => onChange(e)} required/>
@@ -88,7 +87,7 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
                     <option value="Gardener">Gardener</option>
                 </datalist>
                <small className="form__form-text"
-                    >Give us an idea of where you are at in your career</small> 
+                    >Your job title</small> 
                 </div>
                
                 <div className="form__form-group">
@@ -109,19 +108,19 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
                 <div className="form__form-group">
                 <input type="number" placeholder="Phone number" name="phone" value={phone} onChange={e => onChange(e)} />
                 <small className="form__form-text"
-                    >Phone number</small> 
+                    >Your Phone number</small> 
                 </div>
 
                 <div className="form__form-group">
                 <input type="text" placeholder="Location" name="location" value={location} onChange={e => onChange(e)} required/>
                 <small className="form__form-text"
-                    >City & state suggested (eg. Boston, MA)</small> 
+                    >Your City </small> 
                 </div>
                
                 
                 <div className="form__form-group">
                 <input type="text" placeholder="Minimum Pay /h" name="jobMinimumPay" value={jobMinimumPay} onChange={e => onChange(e)}></input>
-               {/*  <small className="form__form-text">Minimum Pay /h</small> */}
+               <small className="form__form-text">Minimum Pay /h</small> 
                 </div>
 
                 <div className="form__form-group">
@@ -130,23 +129,23 @@ const EditProfile = ({ profile:{profile, loading},createProfile,getCurrentProfil
                     <option value="Developer">Negotiable</option>
                     <option value="Junior Developer">No Negotiable</option>
                 </select>
-                {/* <small className="form__form-text"
-                    >Give us an idea of where you are at in your career</small> */}
+                 <small className="form__form-text"
+                    >Your wage type</small> 
                 </div>
 
                 <div className="form__form-group">
-                <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={e => onChange(e)}></textarea>
+                <textarea placeholder="A short bio of yourself" name="bio" value={bio} onChange={e => onChange(e)} className='classarea'></textarea>
                 <small className="form__form-text">Tell us a little about yourself</small>
                 </div>
                 
 
              
-                <div className="my-2">
+               {/*  <div className="my-2">
                 <button onClick={() => toggleSocialInputs(!displaySocialInputs)} type="button" className="btn btn-light">
                     Add Social Network Links
                 </button>
                 <span>Optional</span>
-                </div>
+                </div> */}
                  
                  {/* {displaySocialInputs && <Fragment><div className="form__form-group social-input">
                 <i className="fab fa-twitter fa-2x"></i>
