@@ -150,7 +150,7 @@ span {
 }
 .searchItemMargin {
   margin-top: 15rem;
-  min-height: 80vh;
+  //min-height: 80vh;
   @include respond(tab-port) {
     margin-top: 20rem;
   }
