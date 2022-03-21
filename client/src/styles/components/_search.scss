@@ -83,23 +83,15 @@
   justify-content: center;
   align-items: center;
   margin-top: 10rem;
-  position: absolute;
+  position: relative;
   top: 35%;
   left: 0;
   @include respond(tab-port) {
-    margin-top: 15rem;
+    margin-top: 10rem;
   }
 }
-.card {
-  /*  background: url('../../../public/limpair.jpeg');
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  margin: 2rem;
-  height: 40rem;
-  flex-basis: 28%;*/
+
+.cardd {
   cursor: pointer;
   border-radius: 5px;
   //background-color: red;
@@ -116,26 +108,50 @@
     flex-basis: 100%;
     height: 35rem;
   }
+}
+.card {
+  /*  background: url('../../../public/limpair.jpeg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 2rem;
+  height: 40rem;
+  flex-basis: 28%;*/
+  cursor: pointer;
+  padding-top: 0.2rem;
+  border-radius: 5px;
+  //background-color: red;
+  flex-basis: 30%;
+  height: 15.5rem;
+  box-shadow: 0 1.5rem 4rem rgba($color: #000000, $alpha: 0.8);
+  margin: 2rem;
+  overflow: hidden;
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+  @include respond(tab-port) {
+    flex-basis: 45%;
+    //height: 15.5rem;
+  }
+  @include respond(phone) {
+    flex-basis: 100%;
+    height: 10rem;
+    margin: 1rem;
+    margin: 2rem;
+  }
   &__cato-0 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/jardineria.jpg');
-
-    // clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-    height: 18rem;
-    width: 17.5rem;
+    height: 20rem;
+    width: 18.5rem;
     @include respond(tab-port) {
       height: 35rem;
+      width: 28rem;
     }
   }
   &__cato-1 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/artistico.jpg');
-
     //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -149,9 +165,6 @@
     }
   }
   &__cato-2 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/limpieza.jpg');
-
     //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -165,9 +178,6 @@
     }
   }
   &__cato-3 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/electronica.jpg');
-
     //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -181,9 +191,6 @@
     }
   }
   &__cato-4 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/cosmetico.jpg');
-
     //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -197,9 +204,6 @@
     }
   }
   &__cato-5 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/carpinteria.jpg');
-
     // clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -213,9 +217,6 @@
     }
   }
   &__cato-6 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/tutores.jpg');
-
     //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -229,9 +230,6 @@
     }
   }
   &__cato-7 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/transportes.jpg');
-
     // clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -245,9 +243,6 @@
     }
   }
   &__cato-8 {
-    background-image: linear-gradient(to right bottom, gray, transparent),
-      url('../../../public/automovilistico.jpg');
-
     //clip-path: polygon(10% 35%, 100% 0, 100% 90%, 0 100%);
     //background-repeat: no-repeat;
     -webkit-background-size: cover;
@@ -269,10 +264,18 @@
     /*  text-transform: uppercase; */
     text-align: right;
     color: $color-white;
-
     position: relative;
-    top: 10%;
-    right: -130%;
+    top: -70%;
+    right: -122%;
+    //transform: translate(-10%, 50%);
+    @include respond(tab-port) {
+      right: -108%;
+    }
+    @include respond(phone) {
+      right: -5%;
+      top: -20%;
+      font-size: 1.2rem;
+    }
   }
   &__heading-span {
     padding: 1rem 1.5rem;
@@ -301,10 +304,11 @@
 }
 .profilesContainer {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .profileItem {
-  flex-basis: 31.7%;
+  flex-basis: 31%;
   margin: 1rem;
   @include respond(tab-port) {
     // flex-basis: 50%;
@@ -316,8 +320,12 @@
 }
 
 .imageSt {
-  margin-top: 150vh;
-  height: 10rem;
-  width: 10rem;
+  //margin-top: 150vh;
+  height: 15rem;
+  width: 15rem;
   font-size: 1rem;
+  @include respond(phone) {
+    height: 10rem;
+    width: 10rem;
+  }
 }

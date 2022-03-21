@@ -7,7 +7,20 @@ import {connect} from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getFilteredProfiles,getProfiles } from '../../Actions/profileAction';
 //import List from './List';
-import logo from '../../images/auto.jpeg';
+import auto from '../../images/auto.jpeg';
+import artistico from '../../images/artistico.jpg';
+import carpinteria from '../../images/carpinteria.jpg';
+import cosmetico from '../../images/cosmetico.jpg';
+import jardineria from '../../images/jardineria.jpg';
+import limpieza from '../../images/limpieza.jpg';
+import transportes from '../../images/transportes.jpg';
+import tutores from '../../images/tutores.jpg';
+import salud from '../../images/salud.jpg';
+import generales from '../../images/generales.jpg';
+import cuidado from '../../images/cuidado.jpg';
+import electronica from '../../images/electronica.jpg';
+
+
 import ProfileItem from '../profiles/ProfileItem';
 
 
@@ -23,13 +36,13 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
     
      console.log(e.target);
      const result = document.querySelector('.card__heading-span');
-     console.log(result);
+    
    }
    const handlChange =(e) =>{
         e.preventDefault() ;
-       
         getFilteredProfiles({location, jobStatus});
-        
+       // window.location.hash = "#profilesId";
+       document.getElementById('profilesId').scrollIntoView();
    };
 
  /*   const getJobstatus = () =>{
@@ -54,8 +67,8 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
         setJobStatus('')
     }} className='filterSerch hide-sm'>
        <div className="search-section__searchBox">
-       <Link to='/search' onClick={e =>handlChange(e) }>
-                    < AiIcons.AiOutlineSearch className="search-section__icon" />
+       <Link to='/search'  onClick={e =>handlChange(e) }  >
+                    < AiIcons.AiOutlineSearch className="search-section__icon"  /* href="#profilesId" *//>
         </Link>
       <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
       <input type="text" name="jobStatus"  list="jobStatus"  value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  
@@ -125,7 +138,7 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
              <br/>
              <br/>
              <br/>
-             <Link to='/search' onClick={e =>handlChange(e) } className='searchBtn'>
+             <Link to='/search' href="#profilesId" onClick={e =>handlChange(e) } className='searchBtn'>
                     Search
             </Link>
             </form>
@@ -133,33 +146,18 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
   <GiVacuumCleaner className='fnt' />
   </div>  */}     
   <div className='list'>
-    {!loading&&profiles.length > 0 ? "": <Fragment>
-    {[...Array(9)].map((el, index) => {
-           return(<div className='card' key={index} onClick={e =>handleClick(e)} >
-                    <h1 className='card__heading' >
-                     {/*  <span className='card__heading-span' ref={refContainer} >
-                         
-                                    
-                       </span> */}
-                    </h1>
-                    <div className={`card__cato-${index}`}>
-                    <h1 className='card__heading' > <span className='card__heading-span'> {(() => {
+   {/*  {!loading&&profiles.length > 0 ? "": <Fragment> */}
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={auto} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Automovilistico {/* {(() => {
                               switch(index){
-                                  case 0:
-                                      return "Jardineria/Piscinas";
-                                  case 1:
-                                        return "Trabajos Generals";
-                                  case 2:
-                                     return "Servicio de Limpieza";
-                                  case 3:
-                                        return "Electronica/Informatica";
-                                  case 4:
-                                        
-                                        return "Cosmetica";
-                                  case 5:
-                                        return "Construccion";
-                                  case 6:
-                                        return "Tutores/Cursos";
+                                  
+                                  
+                                
+                                
+                                 
+                                
                                   case 7:
                                         return "Transportes/Correo";
                                   case 8:
@@ -168,19 +166,97 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
                                             return "Artistico/Creativo";
                                   default:
                                     return ""
-                              }
+                              } 
 
-                          })()}</span></h1>
-                    </div>
-           </div>)
-       })}
-    </Fragment> }
+                          })()} */}</span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={artistico} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Artistico/Creativo
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={carpinteria} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Construccion
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={cosmetico} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Cosmetica
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={jardineria} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Jardineria/Piscinas 
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={limpieza} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Servicio de Limpieza
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={transportes} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Transportes/Correo
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={tutores} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Tutores/Cursos
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={salud} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Jardineria/Piscinas 
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={generales} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Trabajos Generals
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={cuidado} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Jardineria/Piscinas 
+                        </span></h1>
+                    </figure>
+           </div>
+           <div className='card'  onClick={e =>handleClick(e)} >
+                   <figure className={`card__cato-0`}>
+                      <img src={electronica} alt="Trulli"  className='imageSt'/>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Electronica/Informatica
+                        </span></h1>
+                    </figure>
+           </div>
+       
+   {/*  </Fragment> } */}
       
   </div> 
-   <div className='searchItemMargin  '>
+
+   <section className='searchItemMargin'  id="profilesId">
    { loading ? ' ': <Fragment>
    
-   <h2 className="lead">
+   <h2 className="lead" >
           <i className="fab fa-connectdevelop"></i>
           Workers available in your area</h2>
       <div  className="profilesContainer" >
@@ -189,13 +265,11 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
           
           
                <ProfileItem key={profile._id} profile={profile}/>
-          
-           
          </Fragment>
          
          ))
        ) : <h4> {/* No proiles found...  */}</h4> } </div></Fragment>}
-   </div>
+   </section>
   
   </Fragment>
 };

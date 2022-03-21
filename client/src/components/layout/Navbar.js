@@ -46,7 +46,7 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
             <Link to="/">  < FaHandshake className="navbar-icon"/> </Link>
             <h1 className="navabr__name hide-sm">
             
-               <Link to="/"> Travicio</Link>
+               {/* <Link to="/"> Travicio</Link> */}
             </h1>
            </div>
           { !loading && (<Fragment>

@@ -213,11 +213,16 @@
   position: fixed;
   top: 15%;
   left: 20%;
-  transform: translate(50, 50);
+  //transform: translate(50, 50);
   background-color: $color-terciary;
   width: 60%;
   border-radius: 1rem;
   color: rgb(51, 50, 50);
+  @include respond(tab-port) {
+    top: 15%;
+    left: 5%;
+    width: 90%;
+  }
 }
 
 .divName {
@@ -252,5 +257,9 @@
   }
   &__info {
     font-size: 2rem;
+  }
+  @include respond(tab-port) {
+    padding: 1rem 1rem;
+    line-height: 1;
   }
 }

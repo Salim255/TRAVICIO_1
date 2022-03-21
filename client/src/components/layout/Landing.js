@@ -23,8 +23,8 @@ const Landing = ({isAuthenticated, saveLocation}) => {
         <div className="dark-overlay">
           <div className="landing__inner">
             <div>
-                <p className="x-large worker travicio">Travicio</p>
-                <h3>Trabajos  y  Servicios</h3>
+                <h1 className="x-large worker travicio">Travicio</h1>
+                <h2 className=" textSearch">Trabajos  y  Servicios</h2>
             </div>
             <p className="lead textSearch">
               Searching for workers in your area right now. No account needed.<br/>

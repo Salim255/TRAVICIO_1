@@ -44,7 +44,7 @@
   padding: 0.4rem 1.3rem;
   margin-top: 1rem;
   background-color: $color-white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: $color-primary;
   outline: none;
   margin-left: 1rem;
@@ -150,6 +150,7 @@ span {
 }
 .searchItemMargin {
   margin-top: 15rem;
+  min-height: 80vh;
   @include respond(tab-port) {
     margin-top: 20rem;
   }
