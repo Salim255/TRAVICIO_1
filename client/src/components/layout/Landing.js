@@ -22,15 +22,15 @@ const Landing = ({isAuthenticated, saveLocation}) => {
     <section className="landing">
         <div className="dark-overlay">
           <div className="landing__inner">
-            <div>
-                <h1 className="x-large worker travicio">TRAVICIO</h1>
-              
+            <div className='travTEXT'>
+                <h1 className="x-large worker travicio">Travicio</h1>
+                <p className='textTrav' >Trabajos  y  Servicios</p> 
             </div>
             <div className="lead textSearch">
-            <h2 >Trabajos  y  Servicios</h2>
+            
               <p>
-              Searching for workers in your area right now. No account needed.<br/>
-              Want to advertise your skills or post a job offer? Then easy, just register above
+              Find workers near to you <br/>
+              Or advertise your services, by creating your account in 5 minutes 
               </p>
             </div>
             
@@ -44,7 +44,7 @@ const Landing = ({isAuthenticated, saveLocation}) => {
                     < AiIcons.AiOutlineSearch className="search-section__icon" onClick={()=> saveLocation(location)}/>
                 </Link>)}
                 
-                <input type="text" name="search" id="search" placeholder="The City you are  for searching worker in"  className="search-section__input" onChange={(e) => onChange(e)}  required/>  
+                <input type="text" name="search" id="search" placeholder="The City you are searching workers in"  className="search-section__input" onChange={(e) => onChange(e)}  required/>  
                 {/* <input type="text" name="search" id="search" placeholder="The work type you are looking for"  className="search-section__input"/>  */}
                </div>
               {/*  <button type="submit" className="search-section__btn">

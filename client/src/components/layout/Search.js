@@ -34,9 +34,33 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
     
    const handleClick = (e) => {
     
-     console.log(e.target.value);
-     const result = document.querySelector('.card__heading-span');
-     //console.log(result);
+     
+     const result = e.target;
+     let jobCategory = '';
+    
+     //console.log('3//: ',result.innerHTML);
+     //console.log(result.classList.contains('list'));
+     if(result.classList.contains('card')){
+         //console.log(result.children[0].lastChild.children[0].innerHTML);
+        jobCategory = result.children[0].lastChild.children[0].innerHTML;
+        jobCategory =  jobCategory.split('/')[0];
+         
+       
+     }else if(result.classList.contains('card__cato-0')){
+          jobCategory = result.children[1].children[0].innerHTML.split('/')[0];
+       
+            
+     }else if(result.classList.contains('imageSt')){
+
+          jobCategory = result.nextSibling.children[0].innerHTML;
+         
+     }else if((result.classList.contains('card__heading-span'))){
+          jobCategory = result.innerHTML.split('/');
+          
+     }
+
+     getFilteredProfiles({location, jobStatus, jobCategory});
+     jobCategory = "";
    }
    const handlChange =(e) =>{
         e.preventDefault() ;
@@ -70,7 +94,7 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
        <Link to='/search'  onClick={e =>handlChange(e) }  >
                     < AiIcons.AiOutlineSearch className="search-section__icon"  /* href="#profilesId" *//>
         </Link>
-      <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are  for searching worker in"  className="search-section__input"/>  
+      <input type="text" name="location" id="location" value={location} onChange={e => setLocation(e.target.value)} placeholder="The City you are searching worker in"  className="search-section__input"/>  
       <input type="text" name="jobStatus"  list="jobStatus"  value={jobStatus}  onChange={e => setJobStatus(e.target.value)} placeholder="The work type you are looking for"  className="search-section__input"/>  
       <datalist name="jobStatus" id="jobStatus" value={jobStatus} onChange={e => setJobStatus(e.target.value)}  >
       <option value="Electrical">Electrical</option>
@@ -148,27 +172,9 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
   <div className='list'>
    {/*  {!loading&&profiles.length > 0 ? "": <Fragment> */}
            <div className='card'  onClick={e =>handleClick(e)} >
-                   <figure className={`card__cato-0`}>
+                   <figure className={`card__cato-0`} >
                       <img src={auto} alt="Trulli"  className='imageSt'/>
-                      <h1 className='card__heading' > <span className='card__heading-span'> Automovilistico {/* {(() => {
-                              switch(index){
-                                  
-                                  
-                                
-                                
-                                 
-                                
-                                  case 7:
-                                        return "Transportes/Correo";
-                                  case 8:
-                                        return "Artistico/Creativo";
-                                  case 9:
-                                            return "Artistico/Creativo";
-                                  default:
-                                    return ""
-                              } 
-
-                          })()} */}</span></h1>
+                      <h1 className='card__heading' > <span className='card__heading-span'> Automovilistico </span></h1>
                     </figure>
            </div>
            <div className='card'  onClick={e =>handleClick(e)} >

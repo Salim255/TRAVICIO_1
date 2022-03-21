@@ -3,7 +3,7 @@
   bottom: 100%;
   width: 100%;
   margin-top: 10rem;
-  height: 11rem;
+  height: 18rem;
   background-color: black;
   font-size: 1.5rem;
   @include respond(tab-land) {
@@ -14,7 +14,8 @@
 }
 
 .footer {
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
+  padding-top: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,6 +95,7 @@
       &:hover {
         cursor: pointer;
         transform: scale(1.2);
+        color: $color-terciary;
       }
     }
     &-link {
@@ -104,6 +106,9 @@
       &:link,
       &:active {
         color: $color-white;
+      }
+      &:hover {
+        color: $color-terciary;
       }
       @include respond(tab-land) {
         font-size: 1.5rem;
@@ -127,7 +132,7 @@
   &__copyright {
     font-size: 0.5rem;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     color: $color-gray-dark;
     @include respond(phone) {
       margin-top: 0.5rem;

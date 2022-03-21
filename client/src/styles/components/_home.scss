@@ -9,19 +9,20 @@
     background-color: $color-gray-light;
     width: 80%;
     position: absolute;
-    top: 52%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     border-radius: 50rem;
+    //border: 0.1px solid $color-gray-dark-2;
     padding: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 1rem 2rem rgba($color: #998e8e, $alpha: 0.5);
+    box-shadow: 0rem 1rem 2rem rgba($color: #757070, $alpha: 0.5);
     transition: all 0.2s;
     &:hover {
-      box-shadow: 0 1rem 2rem rgba($color: #3b3939, $alpha: 1);
+      box-shadow: 0 1rem 2rem rgba($color: #3b3939, $alpha: 0.8);
       width: 80.5%;
     }
     @include respond(tab-port) {
@@ -67,10 +68,13 @@
     &::-webkit-input-placeholder {
       font-weight: 200;
       color: $color-gray-dark-2;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      @include respond(phone) {
+        font-size: 1.5rem;
+      }
     }
     @include respond(phone) {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       padding-left: 0.5rem;
       margin-right: 0.5rem;
       //padding-top: 0.8rem;

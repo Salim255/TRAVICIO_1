@@ -57,6 +57,9 @@ export const getFilteredProfiles = option => async dispatch  => {
             if(option.location && option.jobStatus){
                res = await axios.get(`/api/v1/profiles/?location=${option.location}&&jobStatus=${option.jobStatus}`);
             }
+            else if(option.location && option.jobCategory){
+                res = await axios.get(`/api/v1/profiles/?location=${option.location}&&jobStatus=${option.jobStatus}&&jobCategory=${option.jobCategory}`);
+             }
             else if(option.location){
                 res = await axios.get(`/api/v1/profiles/?location=${option.location}`);
             }

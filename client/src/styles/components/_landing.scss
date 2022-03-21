@@ -1,8 +1,9 @@
 .home {
-  margin-top: 25rem;
+  margin-top: 20rem;
   margin-bottom: 5rem;
   @include respond(tab-port) {
     margin-bottom: 0rem;
+    margin-top: 35rem;
   }
 }
 
@@ -24,6 +25,11 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    @include respond(phone) {
+      // background-color: red;
+      padding-top: 12rem;
+      font-size: 1rem;
+    }
   }
 
   &__buttons {
@@ -60,10 +66,12 @@
 
 .textSearch {
   font-size: 2rem;
+  margin-top: 1.5rem;
   //color: $color-terciary;
   @include respond(tab-port) {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
+    margin-top: 1.5rem;
   }
 }
 
@@ -71,4 +79,28 @@
   font-size: 7rem;
   font-weight: 700;
   color: $color-secondary;
+
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary,
+    rgb(173, 117, 33)
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.5rem;
+  transition: all 0.2s;
+}
+
+.travTEXT {
+}
+
+.textTrav {
+  margin-top: -2rem;
+  color: $color-terciary;
+  letter-spacing: 1rem;
+  @include respond(phone) {
+    letter-spacing: 0.5rem;
+  }
 }
