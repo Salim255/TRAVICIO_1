@@ -5,6 +5,7 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar' ;
 //import Header from './components/layout/Header';
 import Shape from './components/layout/Shape';
+import Footer from './components/layout/Footer';
 import { Routes } from './components/routing/Routes';
 
 
@@ -37,10 +38,7 @@ const App = () => {
           <Shape/>
           <Route exact  path='/' component={ Landing} />
           <Route component={Routes}/>
-        
-          
-          
-          
+          <Footer/>
         </Fragment>
      </Router>
     </Provider>

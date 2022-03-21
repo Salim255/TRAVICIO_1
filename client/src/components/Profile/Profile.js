@@ -18,7 +18,8 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
   
    
   return  <Fragment >
-      {profile === null || loading ? <Spinner/> : <Fragment>
+    <div className='profilTO'>
+    {profile === null || loading ? <Spinner/> : <Fragment>
           <Link to='/profiles' className='btn btn-light'>
               Back To Profiles
           </Link>
@@ -27,7 +28,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
           </Link>) }
           <div className="profile-gride my-1 ">
               <ProfileTop profile={profile} user={auth} />
-              <ProfileAbout profile={profile}/>
+             {/*  <ProfileAbout profile={profile}/> */}
              
               <div className="profile-exp bg-white p-2">
                   <h2 className="text-primary fontSize">Experience</h2>
@@ -49,6 +50,7 @@ const Profile = ({getProfileById, profile: {profile, loading}, match , auth}) =>
           </div>
           
       </Fragment> }
+    </div>
   </Fragment> 
 };
 

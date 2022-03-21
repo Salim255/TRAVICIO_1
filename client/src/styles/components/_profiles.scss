@@ -157,6 +157,7 @@
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 1.5rem;
+  height: 25rem;
   @include respond(tab-port) {
     grid-template-columns: 1fr 3fr;
     border-radius: 1rem;

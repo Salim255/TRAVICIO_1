@@ -1,121 +1,141 @@
-.footer{
-    height: 25rem;
-    background-color: black;
-    padding: 4rem 2rem;
+.footerSection {
+  position: relative;
+  bottom: 100%;
+  width: 100%;
+  margin-top: 10rem;
+  height: 11rem;
+  background-color: black;
+  font-size: 1.5rem;
+  @include respond(tab-land) {
+    flex-direction: column;
+    padding: 4rem 0rem;
+    height: 45rem;
+  }
+}
+
+.footer {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  //flex-direction: column;
+  @include respond(tab-land) {
+    flex-direction: column;
+    padding: 4rem 0rem;
+    height: 35rem;
+  }
+  @include respond(phone) {
+    flex-direction: column;
+    padding: 1rem 0rem;
+    height: 35rem;
+    //justify-content: start;
+  }
+  &__list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-transform: capitalize;
-    //flex-direction: column;
-    @include respond(tab-land){
-        flex-direction: column;
-        padding: 4rem 0rem;
-        height: 35rem;
-        
-    } 
-    &__list{
-       display: flex;
-       justify-content: space-between;
-       align-items: center; 
-       @include respond(tab-land){
-           border-bottom: .8px solid $color-gray-light-1;
-           width: 90%;
-         
-           
-        } 
+    @include respond(tab-land) {
+      border-bottom: 0.8px solid $color-gray-dark-2;
+      width: 90%;
+      flex-direction: column;
+      li:last-child {
+        margin-bottom: 2rem;
+      }
     }
-    &__item{
-        list-style: none;
-        padding: 1.5rem;
-        transition: all .2s;
-        &:hover{
-            transform: scale(1.2) ;
-        }
+  }
+  &__item {
+    list-style: none;
+    padding: 1.5rem;
+    transition: all 0.2s;
+    @include respond(phone) {
+      //flex-basis: 100%;
+      padding: 0.5rem;
     }
-    &__link{
-        text-decoration: none;
-        color: $color-gray-dark;
-        font-size: 2rem;
-        font-weight: 300;
-        @include respond(tab-land){
-            font-size: 1.5rem;
-        }
-    } 
-    &__social{
-        
-        color:$color-gray-light-1;
-        @include respond(tab-land){
-            width: 80%;
-        }
-        font-weight: 300;
-        &-list{
-            display: flex;
-            list-style: none;
-            justify-content: space-between;
-            align-items: center;
-            @include respond(tab-land){
-                border-bottom: .8px solid $color-gray-light-1;
-                margin-top: .5rem;
-                
-                
-            }
-        
-        }
-        &-item{
-            padding: 1.5rem;
-            transition: all .2s;
-            &:hover{
-                cursor: pointer;
-                transform: scale(1.2) ;
-               
-            }
-        }
-        &-link{
-            text-decoration: none;
-            margin: 1rem;
-            color: $color-gray-dark;
-            font-size: 2rem;
-            &:link,
-            &:active{
-                color: $color-white;
-            }
-            @include respond(tab-land){
-                font-size: 1.5rem;
-                
-                
-            }
-          
-        }
+    &:hover {
+      transform: scale(1.05);
     }
-    &__logo{
-        background-image: linear-gradient(
-        $color-primary-light,
-        $color-gray-dark
-       );
-       color: $color-gray-light-1;
-        border-radius: 50%;
-        padding: 2rem .5rem;
-        font-size: 1rem;
-        transition: all 1s ;
-        &:hover{
-            cursor: pointer;
-            //transform: scale(1.1), ;
-            transform:rotateX(360deg) translateZ(0);
-        }
-       
+  }
+  &__link {
+    text-decoration: none;
+    color: rgb(235, 227, 227);
+    //font-size: 1.5rem;
+    font-weight: 300;
+    @include respond(tab-land) {
+      font-size: 1.5rem;
     }
-    &__copyright{
-        font-size: .5rem;
-        text-align: center;
-        margin-top: 2rem;
-        color: $color-gray-dark;
+    &:hover {
+      color: $color-terciary;
     }
-    &__mid{
-        
-        @include respond(tab-land){
-            order: 1;
-            margin-top: 4rem;
-        }
+  }
+  &__social {
+    color: rgb(235, 227, 227);
+    @include respond(tab-land) {
+      width: 80%;
     }
+    font-weight: 300;
+    &-list {
+      display: flex;
+      list-style: none;
+      justify-content: space-between;
+      align-items: center;
+      @include respond(tab-land) {
+        margin-bottom: 4rem;
+        border-bottom: 0.8px solid $color-gray-dark-2;
+        margin-top: 0.5rem;
+      }
+    }
+    &-item {
+      padding: 1.5rem;
+      transition: all 0.2s;
+      @include respond(phone) {
+        padding: 1rem;
+      }
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
+    }
+    &-link {
+      text-decoration: none;
+      margin: 1rem;
+      color: rgb(235, 227, 227);
+      //font-size: 1.5rem;
+      &:link,
+      &:active {
+        color: $color-white;
+      }
+      @include respond(tab-land) {
+        font-size: 1.5rem;
+        margin: 0rem;
+      }
+    }
+  }
+  /* &__logo {
+    background-image: linear-gradient($color-primary, $color-gray-dark);
+    color: $color-gray-light-1;
+    border-radius: 50%;
+    padding: 2rem 0.5rem;
+    font-size: 1rem;
+    transition: all 1s;
+    &:hover {
+      cursor: pointer;
+      //transform: scale(1.1), ;
+      transform: rotateX(360deg) translateZ(0);
+    }
+  } */
+  &__copyright {
+    font-size: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: $color-gray-dark;
+    @include respond(phone) {
+      margin-top: 0.5rem;
+    }
+  }
+  &__mid {
+    @include respond(tab-land) {
+      order: 1;
+    }
+  }
 }
-

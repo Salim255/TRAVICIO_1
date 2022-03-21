@@ -34,9 +34,9 @@ const Search = ({ getFilteredProfiles,getProfiles, locationn,profile:{ profiles,
     
    const handleClick = (e) => {
     
-     console.log(e.target);
+     console.log(e.target.value);
      const result = document.querySelector('.card__heading-span');
-    
+     //console.log(result);
    }
    const handlChange =(e) =>{
         e.preventDefault() ;
