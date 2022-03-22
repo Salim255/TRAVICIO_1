@@ -105,16 +105,18 @@
   width: 100%;
   //margin-top: -6rem;
   position: fixed;
+  top: 0;
+  left: -2%;
   z-index: 1000;
   overflow: hidden;
   align-items: center;
   clip-path: polygon(70% -10%, 0% 100%, 0% 80%);
 
   @include respond(tab-port) {
-    margin-top: -8rem;
+    //margin-top: -8rem;
   }
   @include respond(phone) {
-    margin-top: 0rem;
+    // margin-top: 0rem;
   }
   /*  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);  */
 }

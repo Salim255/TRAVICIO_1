@@ -328,7 +328,7 @@ img {
 /* Mobile Styles */
 @media (max-width: 700px) {
   .container {
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
 
   .hide-sm {
@@ -826,10 +826,6 @@ form input[type='text'] {
 
 /* Mobile Styles */
 @media (max-width: 700px) {
-  .container {
-    margin-top: 8rem;
-  }
-
   .hide-sm {
     display: none;
   }
@@ -882,6 +878,9 @@ form input[type='text'] {
   .profile img {
     width: 150px;
     margin: auto;
+    @include respond(phone) {
+      width: 100px;
+    }
   }
 
   .profile-grid {

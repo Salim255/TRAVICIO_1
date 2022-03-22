@@ -30,7 +30,7 @@ const Landing = ({isAuthenticated, saveLocation}) => {
             
               <p>
               Find workers near to you <br/>
-              Or advertise your services, by creating your account in 5 minutes 
+              Or advertise your services, by creating your account. 
               </p>
             </div>
             

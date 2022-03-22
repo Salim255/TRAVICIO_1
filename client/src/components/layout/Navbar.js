@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes  from 'prop-types';
 import { logout } from '../../Actions/authAction';
 import {FaHandshake} from 'react-icons/fa';
-
+import Shape from './Shape';
 const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
 
   
@@ -52,6 +52,7 @@ const Navbar = ({ auth: { isAuthenticated , loading }, logout}) => {
           { !loading && (<Fragment>
               { isAuthenticated ? authLinks : guestLinks}
           </Fragment>)}
+          <Shape/>
       </nav>
     )
 };

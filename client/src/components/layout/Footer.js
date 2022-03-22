@@ -5,14 +5,17 @@ const Footer = () => {
        <div className='footerSection'>
              <div className="footer">
             <ul className="footer__list">
-             <li className="footer__item">
+               <li className="footer__item">
+                    <a href="#" className="footer__link">FAQ</a>
+                </li>
+                <li className="footer__item">
                     <a href="/" className="footer__link">home</a>
                 </li>
                 <li className="footer__item">
                     <a href="#" className="footer__link">About Travicio</a>
                 </li>
                 <li className="footer__item">
-                    <a href="#" className="footer__link">FAQ</a>
+                    <a href="#" className="footer__link">Contact/Support</a>
                 </li>
                 <li className="footer__item">
                     <a href="#" className="footer__link">Helpful Documents</a>
@@ -20,9 +23,7 @@ const Footer = () => {
                 <li className="footer__item">
                     <a href="#" className="footer__link">Terms of Use And Privacy</a>
                 </li>
-                <li className="footer__item">
-                    <a href="#" className="footer__link">Contact/Support</a>
-                </li>
+             
                
             </ul>
          

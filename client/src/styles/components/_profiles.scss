@@ -168,6 +168,9 @@
     font-weight: 300;
     margin-bottom: 1.5rem;
   }
+  @include respond(phone) {
+    height: 18rem;
+  }
 }
 
 .bgprimary {

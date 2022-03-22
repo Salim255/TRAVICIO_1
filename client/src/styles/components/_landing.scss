@@ -26,8 +26,7 @@
     justify-content: center;
     text-align: center;
     @include respond(phone) {
-      // background-color: red;
-      padding-top: 12rem;
+      margin-top: 13rem;
       font-size: 1rem;
     }
   }

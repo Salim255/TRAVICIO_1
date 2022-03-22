@@ -35,7 +35,7 @@ const App = () => {
         < Fragment>
         
           <Navbar/>
-          <Shape/>
+         
           <Route exact  path='/' component={ Landing} />
           <Route component={Routes}/>
           <Footer/>
